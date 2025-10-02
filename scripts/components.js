@@ -1,4 +1,3 @@
-
 function includeHTML() {
   const elements = document.querySelectorAll('[include-html]');
   if (elements.length === 0) return;
@@ -21,8 +20,55 @@ function includeHTML() {
   });
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', includeHTML);
-} else {
+
+function currentSlug() {
+  const h = window.location.hash.replace(/^#\/?/, '');
+  return h || 'home';
+}
+
+function fileFor(slug) {
+  return `componentes/page/${slug}/${slug}.html`;
+}
+
+function updateActiveNav(slug) {
+  const links = document.querySelectorAll('header .fullbtn a[href^="#/"]');
+  links.forEach(a => {
+    const href = a.getAttribute('href');
+    if (href === `#/${slug}`) a.classList.add('is-active');
+    else a.classList.remove('is-active');
+  });
+}
+
+async function render() {
+  const outlet = document.querySelector('#app, [data-router-outlet]');
+  if (!outlet) return;
+  const slug = currentSlug();
+  let url = fileFor(slug);
+  try {
+    let res = await fetch(url);
+    if (!res.ok) {
+
+      url = fileFor('home');
+      res = await fetch(url);
+    }
+    const html = await res.text();
+    outlet.innerHTML = html;
+    includeHTML(); // processa includes dentro da página
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } catch (e) {
+    outlet.innerHTML = `<div style="color:red; padding:16px">${e.message}</div>`;
+  }
+  updateActiveNav(slug);
+}
+
+function boot() {
   includeHTML();
+  render();
+}
+
+window.addEventListener('hashchange', render);
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', boot);
+} else {
+  boot();
 }

@@ -1,18 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="scripts/components.js">
-    </script>
-    <link rel="stylesheet" href="../inpe-sensoriamentoremoto/componentes/layouts/carrossel/carrossel.css">  
-    <link rel="stylesheet" href="componentes/layouts/header/header.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgriRSLab</title>
+  
+    <!-- Global/base styles first -->
+    <link rel="stylesheet" href="global.css" />
+  
+    <!-- Component styles -->
+    <link rel="stylesheet" href="componentes/layouts/header/header.css" />
+    <link rel="stylesheet" href="componentes/layouts/carrossel/carrossel.css" />
+
+        <script src="scripts/components.js" defer></script>
 </head>
 <body>
-    <h1>PRINCIPAL</h1>
-    
+    <!-- Header at the very top -->
     <div include-html="componentes/layouts/header/header.html"></div>
-    <div include-html="componentes/page/home/home.html"></div>
+
+    <main class="container" style="padding: 24px 0;">
+        <div id="app" data-router-outlet></div>
+    </main>
 </body>
 </html>

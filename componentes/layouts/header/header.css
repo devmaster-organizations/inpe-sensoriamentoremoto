@@ -1,70 +1,75 @@
-*{
-    margin: 0;
-}
-header{
+header {
     width: 100%;
     position: relative;
-    padding: 0px;
-    align-items: center;
-    margin: 0px;
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--border);
 }
-#logo{
+
+.toolbar {
+    min-height: 96px;
     display: flex;
-    margin-left: 187px;
-    margin-right: 60px;
+    align-items: center;
 }
-#imglogo{
-    height:80px;
-    width: 80px;
-    margin: 0px;
-    margin-right: 9px;
-    margin-bottom: 20px;
+
+/* Use the global .container to center header content */
+.toolbar.container {
+    justify-content: space-between;
+    gap: 24px;
 }
-.txtbar{
+
+#logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+#imglogo {
+    height: 64px;
+    width: 64px;
+}
+
+.txtbar {
     display: flex;
     flex-direction: column;
 }
-.txtbar h2{
-    margin-bottom: 10px;
-}
-#plogo{
- margin-block-start: auto;
-}
-.toolbar{
-    height: 80px;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    background-color: white ;
-    padding: 30px;
-    margin: 0 auto;
-    align-items: center;
-    justify-content: space-around;
-}
-.toolbar > div{
-    margin: 0px;
-}
-.btnpadrao{
-    margin-left: 60px;
-    border-radius: 12px;
-    width: 130px;
-    height: 40px;
-    font-size: 20px;
-    margin: 0px;
-    padding: 10px;
-}
-body{
-    background-color: black;
-    margin: 0px;
-    padding: 0px;
-}
-.fullbtn button{
-    display: flex;
-    gap: 2 rem;
 
+.txtbar h2 {
+    margin: 0;
+    font-size: 1.5rem;
 }
-.fullbtn{
+
+.txtbar p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.fullbtn {
     display: flex;
-    gap: 2rem;
-    margin-right: 24px;
+    align-items: center;
+    gap: 16px;
+}
+
+.btnpadrao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 12px;
+    min-width: 120px;
+    height: 40px;
+    font-size: 1rem;
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    background: #fff;
+}
+
+.btnpadrao:hover {
+    border-color: var(--accent);
+}
+
+.btnpadrao.is-active {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px color-mix(in oklab, var(--accent) 20%, transparent);
 }
