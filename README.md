@@ -49,4 +49,16 @@
 - Link da documentação da Sprint
 - Link do video da entrega da sprint
 
-- Equipe : https://fatecspgov.sharepoint.com/:x:/r/sites/DevMaster/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7B8d06a1f0-ae83-4d06-ac98-d0c82b50ae88%7D&wdOrigin=TEAMS-WEB.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1757978527294&web=1
+- Equipe : [link](https://fatecspgov.sharepoint.com/:x:/r/sites/DevMaster/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7B8d06a1f0-ae83-4d06-ac98-d0c82b50ae88%7D&wdOrigin=TEAMS-WEB.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1757978527294&web=1)
+
+
+## Equipe Desenvolvimento
+| Nome | Função | Github |
+|------|--------|---------|
+| Caio Henrique de Souza | Desenvolvedor Frontend | [Link](https://github.com/caiosouza) |
+| Kennedy Maciel de Almeida | Product Owner (PO) | [Link](https://github.com/kennedymaciel) |
+| Victor Ramos de Oliveira | Scrum Master (SM) | [Link](https://github.com/victorramos) |
+| Ivanildo Santos Toledo | Desenvolvedor Frontend | [Link](https://github.com/ivanildosantos) |
+| Jocelio Gomes da Silva | Desenvolvedor Frontend | [Link](https://github.com/joceliogomes) |
+| Lucas dos Santos Ribeiro | Desenvolvedor Frontend | [Link](https://github.com/lucassantos) |
+| Luiz Gustavo de Oliveira | Desenvolvedor Frontend | [Link](https://github.com/luizgustavo) |
