@@ -3,7 +3,7 @@
 
 | id | Nome | Responsável | Pontos | Link | Data | Requsitos |
 |----|------|-------------|--------|------|-----------|-----------|
-| ES-001 | Criar Planilha de backlog | Caio (Desenvolvedor) | 3 | <a href="https://fatecspgov.sharepoint.com/:x:/r/sites/DevMaster/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7Bf1184380-273d-4e81-b8a1-ee1e34f69c86%7D&wdOrigin=TEAMS-WEB.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1759790862383&web=1" target="_blank">Link</a> | 16/09/2025 |  Geral |
+| ES-001 | Criar Planilha de backlog | Caio (Desenvolvedor) | 3 | <a href="https://fatecspgov.sharepoint.com/:x:/r/sites/DevMaster/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7Bf1184380-273d-4e81-b8a1-ee1e34f69c86%7D&wdOrigin=TEAMS-WEB.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1759790862383&web=1" target="_blank" rel="noopener noreferrer">Link 🔗</a> | 16/09/2025 |  Geral |
 | ES-002 | Criar Pesos e Layout para BounDown Chart | Kennedy Maciel de Almeida (PO) | 2 | [Link](https://fatecspgov.sharepoint.com/:x:/r/sites/DevMaster/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7Bf1184380-273d-4e81-b8a1-ee1e34f69c86%7D&wdOrigin=TEAMS-WEB.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1759790862383&web=1) | 16/09/2025 |  Geral |
 | ES-003 | Criar Organização e repositorio Github | Victor Ramos (Scrum Master) | 2 | [Link](https://trello.com/b/3mX4bX1t/devmaster) | 16/09/2025 |  Geral |
 | DD-001 | Figma - Criar Identidade Visual | Ivanildo Santos Toledo (Desenvolvedor) | 5 | [Link](https://www.figma.com/design/r2rq2R7oh6zVwKZGYy1w82/ABP?node-id=12-2&p=f&t=BRZM8BkF3mj3fyT4-0) | 16/09/2025 |  Geral |
