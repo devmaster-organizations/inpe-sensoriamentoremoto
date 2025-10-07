@@ -1,0 +1,35 @@
+.carrossel{
+    max-width: 1200px; 
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.carrossel div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.carrossel img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.voltar,
+.avancar {
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.voltar:hover,
+.avancar:hover {
+    background: rgba(0,0,0,0.8); /* destaque ao passar o mouse */
+}

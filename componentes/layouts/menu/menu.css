@@ -1,0 +1,67 @@
+.sectMenu{
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto; 
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+}
+
+.btnMenu{
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+.btnMenu button{
+    width: 160px;
+    background-color: rgb(255, 255, 255);
+    height: 70px;
+    border-radius: 15px;
+    border: 1px solid #AFAFAF;
+    box-shadow: 1px 1px 4px rgb(182, 182, 182);
+    transition: 0.4s;
+}
+
+.btnMenu button:hover{
+    background-color: #9DFFAF;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+a{
+    text-decoration: none;
+    color: #4E4949;
+    font-family: poppins, sans-serif;
+    font-weight: 450;
+    font-size: 20px;
+}
+
+/* RESPONSIVIDADE */
+
+/* Tablets (até 768px) */
+@media (max-width: 768px) {
+    .btnMenu {
+        gap: 20px; /* menos espaço entre botões */
+    }
+
+    .btnMenu button {
+        width: 45%;   /* dois botões por linha */
+    }
+}
+
+/* Celulares (até 480px) */
+@media (max-width: 480px) {
+    .btnMenu {
+        gap: 10px;
+    }
+
+    .btnMenu button {
+        width: 60%;  /* botão ocupa largura inteira */
+    }
+
+    a {
+        font-size: 16px; /* reduz a fonte */
+    }
+}

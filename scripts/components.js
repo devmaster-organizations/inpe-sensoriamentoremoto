@@ -3,6 +3,7 @@
 
 // --- Configuração rápida ---
 const DEFAULT_ROUTE = 'home';
+const NOTFOUND_ROTER = 'notfound'
 const PAGES_DIR = 'componentes/page';
 const OUTLET_SELECTOR = '#app, [data-router-outlet]';
 
@@ -61,7 +62,7 @@ async function renderPage() {
     let res = await fetch(url);
     if (!res.ok) {
       // Se a página não existe, tenta a rota padrão
-      url = resolvePagePath(DEFAULT_ROUTE);
+      url = resolvePagePath(NOTFOUND_ROTER);
       res = await fetch(url);
     }
     outlet.innerHTML = await res.text();
