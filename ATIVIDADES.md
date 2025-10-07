@@ -19,20 +19,20 @@
 | ES-016 | Tarefa ES-016 | Caio (Desenvolvedor) | 0 | [-](#) | 24/09/2025 | Geral |
 | ALP-001 | Tarefa ALP-001 | Caio (Desenvolvedor) | 0 | [-](#) | 26/09/2025 | Geral |
 | DW-008 | Tarefa DW-008 | Caio (Desenvolvedor) | 0 | [Link](https://github.com/devmaster-organizations/inpe-sensoriamentoremoto/issues/75) | 30/09/2025 | Geral |
-| ES-018 | Tarefa ES-018 | Caio (Desenvolvedor) | 0 | [-](#) | 30/09/2025 | Geral |
+| ES-018 | Tarefa ES-018 | Caio (Desenvolvedor) | 0 | [Planilha](https://fatecspgov.sharepoint.com/:x:/r/sites/DevMaster/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7Bf1184380-273d-4e81-b8a1-ee1e34f69c86%7D&wdOrigin=TEAMS-WEB.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1759795424262&web=1) | 30/09/2025 | Geral |
 | ALP-008 | Tarefa ALP-008 | Caio (Desenvolvedor) | 0 | [-](#) | 30/09/2025 | Geral |
 | DD-020 | Tarefa DD-020 | Caio (Desenvolvedor) | 0 | [Link](https://github.com/devmaster-organizations/inpe-sensoriamentoremoto/issues/60) | 30/09/2025 | Geral |
-| ES-005 | Tarefa ES-005 | Ivanildo Santos Toledo (Desenvolvedor) | 0 | [-](#) | 18/09/2025 | Geral |
-| DD-007 | Tarefa DD-007 | Ivanildo Santos Toledo (Desenvolvedor) | 0 | [Link](#https://github.com/devmaster-organizations/inpe-sensoriamentoremoto/issues/54) | 18/09/2025 | Geral |
+| ES-005 | Tarefa ES-005 | Ivanildo Santos Toledo (Desenvolvedor) | 0 | [Planilha](https://fatecspgov.sharepoint.com/:x:/r/sites/DevMaster/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7Bf1184380-273d-4e81-b8a1-ee1e34f69c86%7D&wdOrigin=TEAMS-WEB.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1759795424262&web=1) | 18/09/2025 | Geral |
+| DD-007 | Tarefa DD-007 | Ivanildo Santos Toledo (Desenvolvedor) | 0 | [Link](https://github.com/devmaster-organizations/inpe-sensoriamentoremoto/issues/54) | 18/09/2025 | Geral |
 | SO-002 | Tarefa SO-002 | Ivanildo Santos Toledo (Desenvolvedor) | 0 | [-](#) | 18/09/2025 | Geral |
 | DD-014 | Tarefa DD-014 | Ivanildo Santos Toledo (Desenvolvedor) | 0 | [Link](https://github.com/devmaster-organizations/inpe-sensoriamentoremoto/issues/65) | 22/09/2025 | Geral |
 | SO-014 | Tarefa SO-014 | Ivanildo Santos Toledo (Desenvolvedor) | 0 | [-](#) | 22/09/2025 | Geral |
-| DD-021 | Tarefa DD-021 | Ivanildo Santos Toledo (Desenvolvedor) | 0 | [-](#) | 24/09/2025 | Geral |
-| DW-002 | Tarefa DW-002 | Ivanildo Santos Toledo (Desenvolvedor) | 0 | [-](#) | 26/09/2025 | Geral |
-| ALP-002 | Tarefa ALP-002 | Ivanildo Santos Toledo (Desenvolvedor) | 0 | [-](#) | 26/09/2025 | Geral |
-| DW-009 | Tarefa DW-009 | Ivanildo Santos Toledo (Desenvolvedor) | 0 | [-](#) | 30/09/2025 | Geral |
-| ES-019 | Tarefa ES-019 | Ivanildo Santos Toledo (Desenvolvedor) | 0 | [-](#) | 30/09/2025 | Geral |
-| ALP-009 | Tarefa ALP-009 | Ivanildo Santos Toledo (Desenvolvedor) | 0 | [-](#) | 30/09/2025 | Geral |
+| DD-021 | Tarefa DD-021 | Ivanildo Santos Toledo (Desenvolvedor) | 0 | [Figma](https://www.figma.com/design/r2rq2R7oh6zVwKZGYy1w82/ABP?node-id=62-2&p=f&t=BRZM8BkF3mj3fyT4-0) | 24/09/2025 | Geral |
+| DW-002 | Tela de projetos DW-002 | Ivanildo Santos Toledo (Desenvolvedor) | 0 | [HTML](https://github.com/devmaster-organizations/inpe-sensoriamentoremoto/issues/65) | 26/09/2025 | Geral |
+| ALP-002 | Tarefa ALP-002 | Ivanildo Santos Toledo (Desenvolvedor) | 0 | [JS](https://github.com/devmaster-organizations/inpe-sensoriamentoremoto/issues/65) | 26/09/2025 | Geral |
+| DW-009 | Tarefa DW-009 | Ivanildo Santos Toledo (Desenvolvedor) | 0 | [HTML](https://github.com/devmaster-organizations/inpe-sensoriamentoremoto/issues/65) | 30/09/2025 | Geral |
+| ES-019 | Tarefa ES-019 | Ivanildo Santos Toledo (Desenvolvedor) | 0 | [-](https://github.com/devmaster-organizations/inpe-sensoriamentoremoto/issues/86) | 30/09/2025 | Geral |
+| ALP-009 | Tarefa ALP-009 | Ivanildo Santos Toledo (Desenvolvedor) | 0 | [JS](https://github.com/devmaster-organizations/inpe-sensoriamentoremoto/issues/65) | 30/09/2025 | Geral |
 | ES-006 | Tarefa ES-006 | Kennedy Maciel de Almeida (PO) | 0 | [-](#) | 18/09/2025 | Geral |
 | DD-008 | Tarefa DD-008 | Kennedy Maciel de Almeida (PO) | 0 | [Link](https://github.com/devmaster-organizations/inpe-sensoriamentoremoto/issues/60) | 18/09/2025 | Geral |
 | SO-003 | Tarefa SO-003 | Kennedy Maciel de Almeida (PO) | 0 | [-](#) | 18/09/2025 | Geral |
