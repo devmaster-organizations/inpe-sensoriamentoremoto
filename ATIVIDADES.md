@@ -55,15 +55,15 @@
 | ES-021 | Backlog | Jocelio Gomes da Silva (Desenvolvedor) | 0 | [Planilha](https://fatecspgov.sharepoint.com/:x:/r/sites/DevMaster/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7Bf1184380-273d-4e81-b8a1-ee1e34f69c86%7D&wdOrigin=TEAMS-WEB.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1759795424262&web=1) | 30/09/2025 | Geral |
 | DD-023 | Telas gerais fontes e cores | Jocelio Gomes da Silva (Desenvolvedor) | 0 | [Figma](https://www.figma.com/design/r2rq2R7oh6zVwKZGYy1w82/ABP?node-id=62-2&p=f&t=BRZM8BkF3mj3fyT4-0) | 30/09/2025 | Geral |
 | ES-008 | Tarefa ES-008 | Lucas dos Santos Ribeiro (Desenvolvedor) | 0 | [-](#) | 18/09/2025 | Geral |
-| DD-010 | Tarefa DD-010 | Lucas dos Santos Ribeiro (Desenvolvedor) | 0 | [-](#) | 18/09/2025 | Geral |
+| DD-010 | Tela de Equipes | Lucas dos Santos Ribeiro (Desenvolvedor) | 0 | [-](#) | 18/09/2025 | Geral |
 | SO-005 | Tarefa SO-005 | Lucas dos Santos Ribeiro (Desenvolvedor) | 0 | [-](#) | 18/09/2025 | Geral |
 | DD-015 | Pagina de Equipes | Lucas dos Santos Ribeiro (Desenvolvedor) | 0 | [Figma](https://www.figma.com/design/r2rq2R7oh6zVwKZGYy1w82/ABP?node-id=62-2&p=f&t=BRZM8BkF3mj3fyT4-0) | 22/09/2025 | Geral |
 | SO-017 | Tarefa SO-017 | Lucas dos Santos Ribeiro (Desenvolvedor) | 0 | [-](#) | 22/09/2025 | Geral |
-| DD-018 | Pagina de Equipes | Lucas dos Santos Ribeiro (Desenvolvedor) | 0 | [Figma](https://www.figma.com/design/r2rq2R7oh6zVwKZGYy1w82/ABP?node-id=62-2&p=f&t=BRZM8BkF3mj3fyT4-0) | 24/09/2025 | Geral |
-| DW-005 | Tarefa DW-005 | Lucas dos Santos Ribeiro (Desenvolvedor) | 0 | [Link](https://github.com/orgs/devmaster-organizations/projects/5/views/1?filterQuery=HT&pane=issue&itemId=129950904&issue=devmaster-organizations%7Cinpe-sensoriamentoremoto%7C78) | 26/09/2025 | Geral |
+| DD-018 | Pagina de Contatos | Lucas dos Santos Ribeiro (Desenvolvedor) | 0 | [Figma](https://www.figma.com/design/r2rq2R7oh6zVwKZGYy1w82/ABP?node-id=62-2&p=f&t=BRZM8BkF3mj3fyT4-0) | 24/09/2025 | Geral |
+| DW-005 | Criação do cabeçalho | Lucas dos Santos Ribeiro (Desenvolvedor) | 0 | [Link](https://github.com/orgs/devmaster-organizations/projects/5/views/1?filterQuery=HT&pane=issue&itemId=129950904&issue=devmaster-organizations%7Cinpe-sensoriamentoremoto%7C78) | 26/09/2025 | Geral |
 | ALP-005 | Tarefa ALP-005 | Lucas dos Santos Ribeiro (Desenvolvedor) | 0 | [-](#) | 26/09/2025 | Geral |
-| DW-012 | Tarefa DW-012 | Lucas dos Santos Ribeiro (Desenvolvedor) | 0 | [-](#) | 30/09/2025 | Geral |
-| ES-022 | Tarefa ES-022 | Lucas dos Santos Ribeiro (Desenvolvedor) | 0 | [-](#) | 30/09/2025 | Geral |
+| DW-012 | Cabeçalho | Lucas dos Santos Ribeiro (Desenvolvedor) | 0 | [HTML e CSS](https://github.com/orgs/devmaster-organizations/projects/5/views/1?filterQuery=HT&pane=issue&itemId=129950904&issue=devmaster-organizations%7Cinpe-sensoriamentoremoto%7C78) | 30/09/2025 | Geral |
+| ES-022 | Tarefa ES-022 | Lucas dos Santos Ribeiro (Desenvolvedor) | 0 | [Planilha](https://fatecspgov.sharepoint.com/:x:/r/sites/DevMaster/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7Bf1184380-273d-4e81-b8a1-ee1e34f69c86%7D&wdOrigin=TEAMS-WEB.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1759795424262&web=1) | 30/09/2025 | Geral |
 | DD-024 | Layout de Contatos | Lucas dos Santos Ribeiro (Desenvolvedor) | 0 | [Figma](https://www.figma.com/design/r2rq2R7oh6zVwKZGYy1w82/ABP?node-id=62-2&p=f&t=BRZM8BkF3mj3fyT4-0) | 30/09/2025 | Geral |
 | ES-009 | Tarefa ES-009 | Luis Gustavo de Faria (Desenvolvedor) | 0 | [BACKLOG](https://fatecspgov.sharepoint.com/:x:/r/sites/DevMaster/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7Bf1184380-273d-4e81-b8a1-ee1e34f69c86%7D&wdOrigin=TEAMS-WEB.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1759795424262&web=1) | 18/09/2025 | Geral |
 | DD-011 | Tarefa DD-011 | Luis Gustavo de Faria (Desenvolvedor) | 0 | [Link](https://github.com/devmaster-organizations/inpe-sensoriamentoremoto/issues/55) | 18/09/2025 | Geral |
