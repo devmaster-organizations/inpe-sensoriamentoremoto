@@ -12,9 +12,9 @@
 | DD-004 | Figma - Criar Identidade Visual | Luis Gustavo de Faria (Desenvolvedor) | 5 | [Link](https://www.figma.com/design/r2rq2R7oh6zVwKZGYy1w82/ABP?node-id=12-2&p=f&t=BRZM8BkF3mj3fyT4-0) | 16/09/2025 |  Geral |    
 | DD-005 | Figma - Criar Identidade Visual | Samuel Lima de Morais (Desenvolvedor) | 5 | [-](#) | 16/09/2025 | Geral |
 | ES-004 | Tarefa ES-004 | Caio (Desenvolvedor) | 0 | [Link](https://github.com/orgs/devmaster-organizations/projects/5/views/1?pane=issue&itemId=129941655&issue=devmaster-organizations%7Cinpe-sensoriamentoremoto%7C48) | 18/09/2025 | Geral |
-| DD-006 | Tarefa DD-006 | Caio (Desenvolvedor) | 0 | [Link](#https://github.com/devmaster-organizations/inpe-sensoriamentoremoto/issues/48) | 18/09/2025 | Geral |
+| DD-006 | Tarefa DD-006 | Caio (Desenvolvedor) | 0 | [FIGMA](https://github.com/devmaster-organizations/inpe-sensoriamentoremoto/issues/48) | 18/09/2025 | Geral |
 | SO-001 | Tarefa SO-001 | Caio (Desenvolvedor) | 0 | [-](#) | 18/09/2025 | Geral |
-| DW-001 | Tarefa DW-001 | Caio (Desenvolvedor) | 0 | [Link](#https://github.com/devmaster-organizations/inpe-sensoriamentoremoto/issues/74) | 22/09/2025 | Geral |
+| DW-001 | Tarefa DW-001 | Caio (Desenvolvedor) | 0 | [HTML](https://github.com/devmaster-organizations/inpe-sensoriamentoremoto/issues/74) | 22/09/2025 | Geral |
 | SO-013 | Tarefa SO-013 | Caio (Desenvolvedor) | 0 | [-](#) | 22/09/2025 | Geral |
 | ES-016 | Tarefa ES-016 | Caio (Desenvolvedor) | 0 | [-](#) | 24/09/2025 | Geral |
 | ALP-001 | Tarefa ALP-001 | Caio (Desenvolvedor) | 0 | [-](#) | 26/09/2025 | Geral |
