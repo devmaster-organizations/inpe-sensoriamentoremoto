@@ -51,10 +51,8 @@
 | ES-013 | Tarefa ES-013 | Jocelio Gomes da Silva (Desenvolvedor) | 0 | [Planilha](https://fatecspgov.sharepoint.com/:x:/r/sites/DevMaster/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7Bf1184380-273d-4e81-b8a1-ee1e34f69c86%7D&wdOrigin=TEAMS-WEB.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1759795424262&web=1) | 22/09/2025 | Geral |
 | SO-016 | Tarefa SO-016 | Jocelio Gomes da Silva (Desenvolvedor) | 0 | [-](#) | 22/09/2025 | Geral |
 | DW-004 | Tela de contatos | Jocelio Gomes da Silva (Desenvolvedor) | 0 | [HTML E CSS](https://github.com/devmaster-organizations/inpe-sensoriamentoremoto/issues/76) | 26/09/2025 | Geral |
-<!-- | ALP-004 | Tarefa ALP-004 | Jocelio Gomes da Silva (Desenvolvedor) | 0 | [-](#) | 26/09/2025 | Geral | -->
 | DW-011 | Tela de contatos | Jocelio Gomes da Silva (Desenvolvedor) | 0 | [HTML E CSS](https://github.com/devmaster-organizations/inpe-sensoriamentoremoto/issues/76) | 30/09/2025 | Geral |
 | ES-021 | Backlog | Jocelio Gomes da Silva (Desenvolvedor) | 0 | [Planilha](https://fatecspgov.sharepoint.com/:x:/r/sites/DevMaster/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7Bf1184380-273d-4e81-b8a1-ee1e34f69c86%7D&wdOrigin=TEAMS-WEB.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1759795424262&web=1) | 30/09/2025 | Geral |
-<!-- | ALP-011 | Tarefa ALP-011 | Jocelio Gomes da Silva (Desenvolvedor) | 0 | [-](#) | 30/09/2025 | Geral | -->
 | DD-023 | Telas gerais fontes e cores | Jocelio Gomes da Silva (Desenvolvedor) | 0 | [Figma](https://www.figma.com/design/r2rq2R7oh6zVwKZGYy1w82/ABP?node-id=62-2&p=f&t=BRZM8BkF3mj3fyT4-0) | 30/09/2025 | Geral |
 | ES-008 | Tarefa ES-008 | Lucas dos Santos Ribeiro (Desenvolvedor) | 0 | [-](#) | 18/09/2025 | Geral |
 | DD-010 | Tarefa DD-010 | Lucas dos Santos Ribeiro (Desenvolvedor) | 0 | [-](#) | 18/09/2025 | Geral |
