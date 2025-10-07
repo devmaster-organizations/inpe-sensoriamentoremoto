@@ -59,28 +59,25 @@
 | ES-008 | Tarefa ES-008 | Lucas dos Santos Ribeiro (Desenvolvedor) | 0 | [-](#) | 18/09/2025 | Geral |
 | DD-010 | Tarefa DD-010 | Lucas dos Santos Ribeiro (Desenvolvedor) | 0 | [-](#) | 18/09/2025 | Geral |
 | SO-005 | Tarefa SO-005 | Lucas dos Santos Ribeiro (Desenvolvedor) | 0 | [-](#) | 18/09/2025 | Geral |
-| DD-015 | Tarefa DD-015 | Lucas dos Santos Ribeiro (Desenvolvedor) | 0 | [-](#) | 22/09/2025 | Geral |
+| DD-015 | Pagina de Equipes | Lucas dos Santos Ribeiro (Desenvolvedor) | 0 | [Figma](https://www.figma.com/design/r2rq2R7oh6zVwKZGYy1w82/ABP?node-id=62-2&p=f&t=BRZM8BkF3mj3fyT4-0) | 22/09/2025 | Geral |
 | SO-017 | Tarefa SO-017 | Lucas dos Santos Ribeiro (Desenvolvedor) | 0 | [-](#) | 22/09/2025 | Geral |
-| DD-018 | Tarefa DD-018 | Lucas dos Santos Ribeiro (Desenvolvedor) | 0 | [-](#) | 24/09/2025 | Geral |
+| DD-018 | Pagina de Equipes | Lucas dos Santos Ribeiro (Desenvolvedor) | 0 | [Figma](https://www.figma.com/design/r2rq2R7oh6zVwKZGYy1w82/ABP?node-id=62-2&p=f&t=BRZM8BkF3mj3fyT4-0) | 24/09/2025 | Geral |
 | DW-005 | Tarefa DW-005 | Lucas dos Santos Ribeiro (Desenvolvedor) | 0 | [Link](https://github.com/orgs/devmaster-organizations/projects/5/views/1?filterQuery=HT&pane=issue&itemId=129950904&issue=devmaster-organizations%7Cinpe-sensoriamentoremoto%7C78) | 26/09/2025 | Geral |
 | ALP-005 | Tarefa ALP-005 | Lucas dos Santos Ribeiro (Desenvolvedor) | 0 | [-](#) | 26/09/2025 | Geral |
 | DW-012 | Tarefa DW-012 | Lucas dos Santos Ribeiro (Desenvolvedor) | 0 | [-](#) | 30/09/2025 | Geral |
 | ES-022 | Tarefa ES-022 | Lucas dos Santos Ribeiro (Desenvolvedor) | 0 | [-](#) | 30/09/2025 | Geral |
-| DD-024 | Tarefa DD-024 | Lucas dos Santos Ribeiro (Desenvolvedor) | 0 | [Link](https://github.com/devmaster-organizations/inpe-sensoriamentoremoto/issues/60) | 30/09/2025 | Geral |
-| ES-009 | Tarefa ES-009 | Luis Gustavo de Faria (Desenvolvedor) | 0 | [-](#) | 18/09/2025 | Geral |
+| DD-024 | Layout de Contatos | Lucas dos Santos Ribeiro (Desenvolvedor) | 0 | [Figma](https://www.figma.com/design/r2rq2R7oh6zVwKZGYy1w82/ABP?node-id=62-2&p=f&t=BRZM8BkF3mj3fyT4-0) | 30/09/2025 | Geral |
+| ES-009 | Tarefa ES-009 | Luis Gustavo de Faria (Desenvolvedor) | 0 | [BACKLOG](https://fatecspgov.sharepoint.com/:x:/r/sites/DevMaster/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7Bf1184380-273d-4e81-b8a1-ee1e34f69c86%7D&wdOrigin=TEAMS-WEB.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1759795424262&web=1) | 18/09/2025 | Geral |
 | DD-011 | Tarefa DD-011 | Luis Gustavo de Faria (Desenvolvedor) | 0 | [Link](https://github.com/devmaster-organizations/inpe-sensoriamentoremoto/issues/55) | 18/09/2025 | Geral |
-| DD-016 | Tarefa DD-016 | Luis Gustavo de Faria (Desenvolvedor) | 0 | [Link](https://github.com/devmaster-organizations/inpe-sensoriamentoremoto/issues/60) | 22/09/2025 | Geral |
+| DD-016 | Pagina de Pesquisas e Projetos | Luis Gustavo de Faria (Desenvolvedor) | 0 | [Figma](https://www.figma.com/design/r2rq2R7oh6zVwKZGYy1w82/ABP?node-id=62-2&p=f&t=BRZM8BkF3mj3fyT4-0) | 22/09/2025 | Geral |
 | SO-018 | Tarefa SO-018 | Luis Gustavo de Faria (Desenvolvedor) | 0 | [-](#) | 22/09/2025 | Geral |
-| DD-019 | Tarefa DD-019 | Luis Gustavo de Faria (Desenvolvedor) | 0 | [-](#) | 24/09/2025 | Geral |
-| DW-006 | Tarefa DW-006 | Luis Gustavo de Faria (Desenvolvedor) | 0 | [-](#) | 26/09/2025 | Geral |
+| DD-019 | Pagina de Pesquisa | Luis Gustavo de Faria (Desenvolvedor) | 0 | [Figma](https://www.figma.com/design/r2rq2R7oh6zVwKZGYy1w82/ABP?node-id=62-2&p=f&t=BRZM8BkF3mj3fyT4-0) | 24/09/2025 | Geral |
+| DW-006 | Tarefa DW-006 | Luis Gustavo de Faria (Desenvolvedor) | 0 | [HTML](https://github.com/devmaster-organizations/inpe-sensoriamentoremoto/issues/74) | 26/09/2025 | Geral |
 | ALP-006 | Tarefa ALP-006 | Luis Gustavo de Faria (Desenvolvedor) | 0 | [-](#) | 26/09/2025 | Geral |
-| DW-013 | Tarefa DW-013 | Luis Gustavo de Faria (Desenvolvedor) | 0 | [-](#) | 30/09/2025 | Geral |
+| DW-013 | Tarefa DW-013 | Luis Gustavo de Faria (Desenvolvedor) | 0 | [HTML](https://github.com/devmaster-organizations/inpe-sensoriamentoremoto/issues/74) | 30/09/2025 | Geral |
 | ES-023 | Tarefa ES-023 | Luis Gustavo de Faria (Desenvolvedor) | 0 | [-](#) | 30/09/2025 | Geral |
 | ALP-012 | Tarefa ALP-012 | Luis Gustavo de Faria (Desenvolvedor) | 0 | [-](#) | 30/09/2025 | Geral |
-| DD-025 | Tarefa DD-025 | Luis Gustavo de Faria (Desenvolvedor) | 0 | [-](#) | 30/09/2025 | Geral |
-| ES-010 | Tarefa ES-010 | Samuel Lima de Morais (Desenvolvedor) | 0 | [-](#) | 18/09/2025 | Geral |
-| DD-012 | Tarefa DD-012 | Samuel Lima de Morais (Desenvolvedor) | 0 | [-](#) | 18/09/2025 | Geral |
-| DD-017 | Tarefa DD-017 | Samuel Lima de Morais (Desenvolvedor) | 0 | [-](#) | 22/09/2025 | Geral |
+| DD-025 | Navegação Figma | Luis Gustavo de Faria (Desenvolvedor) | 0 | [FIGMA](https://www.figma.com/design/r2rq2R7oh6zVwKZGYy1w82/ABP?node-id=62-2&p=f&t=BRZM8BkF3mj3fyT4-0) | 30/09/2025 | Geral |
 | ES-011 | Tarefa ES-011 | Victor Ramos Pereira Mendes Soares (SM) | 0 | [-](#) | 18/09/2025 | Geral |
 | DD-013 | Tarefa DD-013 | Victor Ramos Pereira Mendes Soares (SM) | 0 | [-](#) | 18/09/2025 | Geral |
 | SO-012 | Tarefa SO-012 | Victor Ramos Pereira Mendes Soares (SM) | 0 | [-](#) | 18/09/2025 | Geral |
