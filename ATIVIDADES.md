@@ -87,3 +87,47 @@
 | DW-014 | Tarefa DW-014 | Victor Ramos Pereira Mendes Soares (SM) | 0 | [-](#) | 30/09/2025 | Geral |
 | ES-024 | Tarefa ES-024 | Victor Ramos Pereira Mendes Soares (SM) | 0 | [-](#) | 30/09/2025 | Geral |
 | ALP-013 | Tarefa ALP-013 | Victor Ramos Pereira Mendes Soares (SM) | 0 | [-](#) | 30/09/2025 | Geral |
+
+---
+
+# 📊 Burndown Chart - Sprint 1
+
+## � Progresso da Sprint
+
+| **Data** | **Data Prevista** | **Tarefas Concluídas** | **Tarefas Restantes** | **% Completo** |
+|----------|-------------------|------------------------|-----------------------|----------------|
+| 16/09/2025 | 16/09/2025 | 8 | 71 | 10% |
+| 18/09/2025 | 18/09/2025 | 23 | 56 | 29% |
+| 22/09/2025 | 22/09/2025 | 35 | 44 | 44% |
+| 24/09/2025 | 24/09/2025 | 41 | 38 | 52% |
+| 26/09/2025 | 26/09/2025 | 53 | 26 | 67% |
+| 30/09/2025 | 30/09/2025 | 79 | 0 | 100% |
+
+## 📊 Gráfico de Burndown
+
+```
+Tarefas Restantes
+80 ┤                                    
+75 ┤ ●─────┐                            
+70 ┤       │                            
+65 ┤       │                            
+60 ┤       ●─────┐                      
+55 ┤             │                      
+50 ┤             │                      
+45 ┤             ●─────┐                
+40 ┤                   │                
+35 ┤                   ●─────┐          
+30 ┤                         │          
+25 ┤                         ●─────┐    
+20 ┤                               │    
+15 ┤                               │    
+10 ┤                               │    
+5  ┤                               │    
+0  ┤                               ●────
+   └─────────────────────────────────────
+   16/09  18/09  22/09  24/09  26/09  30/09
+
+● Real Progress    ─ Ideal Line
+```
+
+**Total**: 79 tarefas | **Início**: 16/09/2025 | **Fim**: 30/09/2025 | **Status**: ✅ Concluída

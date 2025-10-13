@@ -4,6 +4,9 @@
 //===========================
 
 // Objeto com textos que serão exibidos no modal
+
+const fetch = require('node-fetch');
+
 const textosInfo= {
     monitoramento:`<h3>Monitoramento e Mapeamento Agrícola</h3>
     <p>O AgriRS realiza o monitoramento e o mapeamento das principais culturas agrícolas cultivadas no 
