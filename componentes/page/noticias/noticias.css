@@ -4,6 +4,10 @@
     box-sizing: border-box;
 } /* Reset de estilos padrão */
 
+h1 {
+    text-align: center;
+}
+
 body {
     font-family: Arial, sans-serif; /* Fonte geral */
     background-color: #f4f8f2; /* Cor de fundo */
