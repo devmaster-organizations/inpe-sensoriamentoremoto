@@ -171,11 +171,5 @@ inpe-sensoriamentoremoto/
 
 ---
 
-<div align="center">
-
 **🌱 Desenvolvido com ❤️ pela equipe DevMaster para o AgriRS Lab - INPE**
 
-[FATEC](https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/157/2024/09/slide3.jpg)
-[![INPE](https://img.shields.io/badge/INPE-AgriRS%20Lab-blue?style=for-the-badge)](http://www.inpe.br/)
-
-</div>
