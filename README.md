@@ -133,6 +133,9 @@ git clone https://github.com/devmaster-organizations/inpe-sensoriamentoremoto.gi
 # Entre no diretório
 cd inpe-sensoriamentoremoto
 
+# Abra o index.html no navegador
+```
+
 ### Estrutura do Projeto
 ```
 inpe-sensoriamentoremoto/
@@ -148,28 +151,4 @@ inpe-sensoriamentoremoto/
 └── 📋 README.md          # Este arquivo
 ```
 
-## 🤝 Como Contribuir
-
-1. **Fork** este repositório
-2. Crie uma **branch** para sua feature (`git checkout -b feature/AmazingFeature`)
-3. **Commit** suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. **Push** para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um **Pull Request**
-
-### 📏 Padrões de Código
-- Usar **HTML semântico**
-- Seguir **BEM** para nomenclatura CSS
-- **JavaScript** vanilla sem dependências externas
-- **Commits** em português com mensagens descritivas
-
-## 📞 Contato
-
-- **Laboratório**: AgriRS Lab - INPE
-- **Scrum Master**: Victor Ramos ([GitHub](https://github.com/victorramos887))
-- **Product Owner**: Kennedy Maciel ([GitHub](https://github.com/KennedyAlmeida))
-- **Equipe Dev**: [Lista completa acima](#-equipe-de-desenvolvimento)
-
----
-
-**🌱 Desenvolvido com ❤️ pela equipe DevMaster para o AgriRS Lab - INPE**
 
