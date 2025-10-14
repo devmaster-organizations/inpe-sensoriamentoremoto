@@ -133,14 +133,6 @@ git clone https://github.com/devmaster-organizations/inpe-sensoriamentoremoto.gi
 # Entre no diretório
 cd inpe-sensoriamentoremoto
 
-# Abra o index.html no navegador ou use um servidor local
-# Exemplo com Python:
-python -m http.server 8000
-
-# Exemplo com Node.js:
-npx serve .
-```
-
 ### Estrutura do Projeto
 ```
 inpe-sensoriamentoremoto/
@@ -150,7 +142,9 @@ inpe-sensoriamentoremoto/
 ├── 📁 img/                # Imagens e assets
 ├── 📁 scripts/            # JavaScript
 ├── 📄 index.html          # Página principal
-├── 🎨 global.css          # Estilos globais
+├── 🎨 global.css          # Estilos globais 
+├── 📋 REQUISITOS.md      # Requisitos do projeto
+├── 📋 ATIVIDADES.md     # Atas das reuniões
 └── 📋 README.md          # Este arquivo
 ```
 
@@ -171,8 +165,8 @@ inpe-sensoriamentoremoto/
 ## 📞 Contato
 
 - **Laboratório**: AgriRS Lab - INPE
-- **Scrum Master**: Victor Ramos ([GitHub](https://github.com/victorramos))
-- **Product Owner**: Kennedy Maciel ([GitHub](https://github.com/kennedymaciel))
+- **Scrum Master**: Victor Ramos ([GitHub](https://github.com/victorramos887))
+- **Product Owner**: Kennedy Maciel ([GitHub](https://github.com/KennedyAlmeida))
 - **Equipe Dev**: [Lista completa acima](#-equipe-de-desenvolvimento)
 
 ---
@@ -181,7 +175,7 @@ inpe-sensoriamentoremoto/
 
 **🌱 Desenvolvido com ❤️ pela equipe DevMaster para o AgriRS Lab - INPE**
 
-[![FATEC](https://img.shields.io/badge/FATEC-São%20José%20dos%20Campos-red?style=for-the-badge)](https://fatecsjc.sp.gov.br/)
+[FATEC](https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/157/2024/09/slide3.jpg)
 [![INPE](https://img.shields.io/badge/INPE-AgriRS%20Lab-blue?style=for-the-badge)](http://www.inpe.br/)
 
 </div>
