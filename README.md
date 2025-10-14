@@ -24,22 +24,21 @@ Desenvolver um **website institucional moderno e responsivo** para o **Laborató
 
 | Nome | Função | GitHub | LinkedIn |
 |------|--------|---------|----------|
-| **Victor Ramos Pereira Mendes Soares** | 🏃‍♂️ Scrum Master | [GitHub](https://github.com/victorramos) | [LinkedIn](#) |
-| **Kennedy Maciel de Almeida** | 🎯 Product Owner | [GitHub](https://github.com/kennedymaciel) | [LinkedIn](#) |
-| **Caio Henrique de Souza** | 💻 Dev Frontend | [GitHub](https://github.com/caiosouza) | [LinkedIn](#) |
-| **Ivanildo Santos Toledo** | 💻 Dev Frontend | [GitHub](https://github.com/ivanildosantos) | [LinkedIn](#) |
-| **Jocelio Gomes da Silva** | 💻 Dev Frontend | [GitHub](https://github.com/joceliogomes) | [LinkedIn](#) |
-| **Lucas dos Santos Ribeiro** | 💻 Dev Frontend | [GitHub](https://github.com/lucassantos) | [LinkedIn](#) |
-| **Luis Gustavo de Faria** | 💻 Dev Frontend | [GitHub](https://github.com/luizgustavo) | [LinkedIn](#) |
-| **Samuel Lima de Morais** | 💻 Dev Frontend | [GitHub](https://github.com/samuellima) | [LinkedIn](#) |
+| **Victor Ramos Pereira Mendes Soares** | 🏃‍♂️ Scrum Master | [GitHub](https://github.com/victorramos887) | [LinkedIn](https://www.linkedin.com/in/victor-ramos-pereira-mendes-soares-6b3a005b/) |
+| **Kennedy Maciel de Almeida** | 🎯 Product Owner | [GitHub](https://github.com/KennedyAlmeida) | [LinkedIn](https://www.linkedin.com/in/kennedy-almeida-?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) |
+| **Caio Henrique de Souza** | 💻 Dev Frontend | [GitHub](https://github.com/caiao93guitar) | [LinkedIn](#) |
+| **Ivanildo Santos Toledo** | 💻 Dev Frontend | [GitHub](https://github.com/ivanildotoledo) | [LinkedIn](https://www.linkedin.com/in/ivanildo-santos-toledo-48a3bb167?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) |
+| **Jocelio Gomes da Silva** | 💻 Dev Frontend | [GitHub](https://github.com/Git-Jocelio) | [LinkedIn](#) |
+| **Lucas dos Santos Ribeiro** | 💻 Dev Frontend | [GitHub](https://github.com/LucassantosR25) | [LinkedIn](https://www.linkedin.com/in/lucas-dos-santos-1504712b1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app) |
+| **Luis Gustavo de Faria** | 💻 Dev Frontend | [GitHub](https://github.com/LuisGustavo9) | [LinkedIn](#) |
 
 ## 🚀 Tecnologias Utilizadas
 
-- **Frontend**: HTML5, CSS3, JavaScript Vanilla
+- **Frontend**: HTML5, CSS3, JavaScript
 - **Metodologia**: Scrum/Agile
 - **Versionamento**: Git/GitHub
 - **Design**: Figma
-- **Hospedagem**: TBD
+- **Hospedagem**: Não Definida (a ser decidida)
 
 ## 📋 Funcionalidades Principais
 ### 🏠 Página Inicial
@@ -74,87 +73,16 @@ Desenvolver um **website institucional moderno e responsivo** para o **Laborató
 - ✅ Mapa interativo da localização no INPE
 
 ## 📋 Requisitos Funcionais Detalhados
-
-### RF01 - Página Inicial (Home)
-- **RF01.1** - Apresentar botões/menus de navegação para todas as páginas do site
-- **RF01.2** - Exibir seções em destaque (cards) com chamadas para notícias, projetos, publicações
-- **RF01.3** - Links para redes sociais e contato no rodapé da página
-
-### RF02 - Página Sobre o AgriRS
-- **RF02.1** - Descrever o laboratório, objetivos e foco de pesquisa
-- **RF02.2** - **Página de Membros (Equipe/Team)**:
-  - **RF02.2.1** - Listar integrantes com nome, foto, função e breve descrição
-  - **RF02.2.2** - Categorizar por tipo: pesquisadores titulares, colaboradores, bolsistas, doutorandos, mestrandos, ex-membros
-  - **RF02.2.3** - Ordenar cada categoria por ordem alfabética
-- **RF02.3** - **Página de Colaboradores**:
-  - **RF02.3.1** - Incluir colaboradores e financiadores (CNPq, CAPES, FAPESP)
-- **RF02.4** - **Página de Vagas (Oportunidades)**:
-  - **RF02.4.1** - Listar oportunidades: estágios, IC, pós-graduação e parcerias
-  - **RF02.4.2** - Informar processo de candidatura (documentos, critérios, prazos)
-
-### RF03 - Página de Atuação (Projetos/Projects)
-- **RF03.1** - **Áreas de Atuação**:
-  - **RF03.1.1** - Descrever áreas de pesquisa com textos explicativos
-- **RF03.2** - **Projetos**:
-  - **RF03.2.1** - Listar projetos com título, resumo, ano de início, status e equipe
-  - **RF03.2.2** - Permitir inclusão de imagens ou links para mais informações
-
-### RF04 - Página de Publicações
-- **RF04.1** - Listar artigos, livros, capítulos com título, revista, autores, ano e link
-- **RF04.2** - Sistema de busca por palavra-chave
-
-### RF05 - Página de Notícias
-- **RF05.1** - Permitir publicação de notícias com título, data, imagem e texto
-- **RF05.2** - Organizar cronologicamente (mais recentes primeiro)
-
-### RF06 - Página de Contato
-- **RF06.1** - Formulário com campos: nome, e-mail, assunto e mensagem (redirect para e-mail do lab)
-- **RF06.2** - Exibir informações institucionais: telefone, e-mail, endereço
-- **RF06.3** - Incluir links para redes sociais do laboratório
-- **RF06.4** - Mapa interativo para localização do laboratório no INPE
-
-## ⚙️ Requisitos Não Funcionais
-
-### RNF01 - Responsividade
-- 📱 **Mobile First**: Otimizado para dispositivos móveis
-- 💻 **Multi-device**: Compatível com tablets e desktops
-- 🔄 **Layout Adaptativo**: Interface que se ajusta automaticamente
-
-### RNF02 - Facilidade de Atualização
-- 🔧 **CMS Simples**: Interface intuitiva para integrantes do laboratório
-- 📝 **Edição de Conteúdo**: Atualização fácil de textos, imagens e notícias
-- 👥 **Múltiplos Usuários**: Sistema de permissões para diferentes níveis
-
-### RNF03 - Performance
-- ⚡ **Carregamento Rápido**: Tempo de loading < 3 segundos
-- 🖼️ **Imagens Otimizadas**: Compressão e formatos adequados (WebP, AVIF)
-- 📊 **Core Web Vitals**: Pontuação verde no PageSpeed Insights
-
-### RNF04 - Internacionalização
-- 🇧🇷 **Português**: Versão completa em português brasileiro
-- 🇺🇸 **Inglês**: Versão completa em inglês
-- � **Troca de Idioma**: Botão de alternância entre idiomas
-
-### RNF05 - Hospedagem e Infraestrutura
-- 🌐 **Domínio Próprio**: URL personalizada para o laboratório
-- 🔒 **HTTPS**: Certificado SSL/TLS obrigatório
-- ☁️ **Servidor Confiável**: Uptime > 99.5%
-- 💾 **Backup**: Sistema automatizado de backup
-
-### RNF06 - Identidade Visual
-- 🎨 **Design System**: Padronização visual consistente
-- � **Branding INPE**: Alinhamento com identidade institucional
-- ♿ **Acessibilidade**: Conformidade com WCAG 2.1 AA
-- 🎯 **UX/UI**: Interface intuitiva e profissional
+[REQUISITOS.md](./REQUISITOS.md)
 
 ## 🔍 Critérios de Aceitação
 
 ### Técnicos
-- ✅ Código validado W3C
+<!-- - ✅ Código validado W3C -->
 - ✅ Compatibilidade com navegadores modernos (Chrome, Firefox, Safari, Edge)
-- ✅ Tempo de carregamento < 3s
+<!-- - ✅ Tempo de carregamento < 3s -->
 - ✅ Responsivo em dispositivos 320px - 1920px+
-- ✅ Score > 90 no Lighthouse
+<!-- - ✅ Score > 90 no Lighthouse -->
 
 ### Funcionais
 - ✅ Todas as páginas navegáveis
@@ -166,7 +94,7 @@ Desenvolver um **website institucional moderno e responsivo** para o **Laborató
 ## 📊 Gestão do Projeto
 
 ### 🏃‍♂️ Metodologia Scrum
-- **Sprints**: 2-3 semanas cada
+- **Sprints**: 5-6 semanas cada
 - **Daily Standup**: Reuniões diárias de 15min
 - **Sprint Planning**: Planejamento no início de cada sprint
 - **Sprint Review**: Demonstração das funcionalidades
@@ -185,10 +113,10 @@ Desenvolver um **website institucional moderno e responsivo** para o **Laborató
 | Recurso | Link | Descrição |
 |---------|------|-----------|
 | 📊 **Backlog do Projeto** | [SharePoint](https://fatecspgov.sharepoint.com/:x:/r/sites/DevMaster/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7B8d06a1f0-ae83-4d06-ac98-d0c82b50ae88%7D&wdOrigin=TEAMS-WEB.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1757978527294&web=1) | Gerenciamento completo do projeto |
-| 🎯 **Project Board** | [GitHub Projects](https://github.com/orgs/devmaster-organizations/projects) | Kanban e acompanhamento de tarefas |
-| 🎨 **Design System** | [Figma](https://figma.com/agrirslab) | Protótipos e identidade visual |
+| 🎯 **Project Board** | [GitHub Projects](https://github.com/orgs/devmaster-organizations/projects/5) | Kanban e acompanhamento de tarefas |
+| 🎨 **Design System** | [Figma](https://www.figma.com/design/r2rq2R7oh6zVwKZGYy1w82/ABP?node-id=62-2&p=f&t=CaYGauHSDEwjccZu-0) | Protótipos e identidade visual |
 | 📝 **Atas das Reuniões** | [ATIVIDADES.md](./ATIVIDADES.md) | Registro detalhado das atividades |
-| 🎥 **Demo das Sprints** | [YouTube](#) | Vídeos de demonstração |
+| 🎥 **Demo das Sprints** | [YouTube](https://www.youtube.com/watch?v=vQp3FPSWLzI) | Vídeos de demonstração |
 | 📈 **Burndown Chart** | [Dashboard](#) | Acompanhamento do progresso |
 
 ## 🚀 Como Executar o Projeto
