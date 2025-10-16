@@ -1,0 +1,183 @@
+/* -------------- TOPO E TÍTULO -------------- */
+.page-top {
+    display: flex;
+    width: 100%;
+    padding: 18px 0;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .page-title {
+    font-size: 36px;
+    text-align: center;
+    color: #08181a;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  
+  /* -------------- CONTAINER PRINCIPAL -------------- */
+  .site-container {
+    max-width: 1200px;
+    margin: 28px auto;
+    padding: 0 24px;
+  }
+  
+  /* -------------- GRID DE PROJECTS -------------- */
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+  
+  /* -------------- CARD -------------- */
+  .project-card {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    text-decoration: none;
+    transition: transform 300ms, box-shadow 300ms;
+    background: #000;
+  }
+  
+  /* Imagem responsiva, cobrindo a caixa */
+  .project-card img {
+    display: block;
+    width: 100%;
+    height: 280px; /* altura base; muda em responsividade */
+    object-fit: cover; /* mantém o 'crop' natural */
+    transition: transform 400ms ease;
+  }
+  
+  /* Overlay com gradiente para legibilidade do texto */
+  .card-overlay {
+    position: absolute;
+    inset: 0; /* cobre todo o card */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 28px;
+    color: white;
+    text-align: center;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.15),
+      rgba(0, 0, 0, 0.5)
+    );
+    transition: background 0.5s ease;
+  }
+  
+  /* Texto do cartão */
+  .card-overlay h2 {
+    text-align: center;
+    font-size: 20px;
+    line-height: 1.25;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+    margin: 0;
+    font-weight: 600;
+    transform: translateY(0);
+  }
+  
+  .card-overlay span {
+    list-style-type: circle;
+    text-align: left;
+    margin-bottom: 6px;
+    opacity: 0;
+    font-size: 0px;
+    transform: translateY(40px); /* começa escondido e abaixo */
+  }
+  
+  .card-overlay h2,
+  .card-overlay span {
+    transition: all 0.6s ease;
+  }
+  
+  /* Hover: leve zoom na imagem e realce do card */
+  .project-card:hover,
+  .project-card:focus {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+  }
+  .project-card:hover img,
+  .project-card:focus img {
+    transform: scale(1.06);
+  }
+  
+  /* Hover no overlay: escurece levemente para melhorar contraste */
+  .project-card:hover .card-overlay,
+  .project-card:focus .card-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.6)
+    );
+  }
+  .project-card:hover .card-overlay h2,
+  .project-card:focus .card-overlay h2 {
+    transform: translateY(-50px);
+  }
+  .project-card:hover .card-overlay span,
+  .project-card:focus .card-overlay span {
+    font-size: 16px;
+    opacity: 1;
+    transform: translateY(-20px); /* descrição sobe */
+    transition-delay: 0.1s; /* leve atraso pra parecer fluido */
+  }
+  /* -------------- Acessibilidade: foco visível -------------- */
+  .project-card:focus {
+    outline: 3px solid rgba(0, 150, 0, 0.16);
+    outline-offset: 3px;
+  }
+  
+  /* -------------- RESPONSIVIDADE (ajustar alturas e paddings) -------------- */
+  @media (max-width: 900px) {
+    .projects {
+      grid-template-columns: 1fr;
+    }
+    .project-card img {
+      height: 240px;
+    }
+    .project-card:hover .card-overlay h2,
+    .project-card:focus .card-overlay h2 {
+      transform: translateY(-30px);
+    }
+    .project-card:hover .card-overlay span,
+    .project-card:focus .card-overlay span{
+      font-size: 16px;
+      opacity: 1;
+      transform: translateY(-10px); /* descrição sobe */
+      transition-delay: 0.1s;   /* leve atraso pra parecer fluido */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .page-title {
+      font-size: 28px;
+    }
+    .project-card img {
+      height: 200px;
+    }
+    .card-overlay {
+      padding: 18px;
+    }
+    .card-overlay h2 {
+      font-size: 16px;
+    }
+    .site-container {
+      margin: 18px auto;
+    }
+    .project-card:hover .card-overlay h2,
+    .project-card:focus .card-overlay h2 {
+      transform: translateY(-20px);
+    }
+    .project-card:hover .card-overlay span,
+    .project-card:focus .card-overlay span{
+      font-size: 14px;
+      opacity: 1;
+      transform: translateY(-8px); /* descrição sobe */
+      transition-delay: 0.1s;   /* leve atraso pra parecer fluido */
+    }
+  }
+  
