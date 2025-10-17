@@ -18,10 +18,59 @@ body {
   color: var(--text-color);
   background: #ffffff;
   line-height: 1.5;
+  min-height: 100vh;
+}
+
+main {
+  padding-top: 120px; /* Espaço maior para o header fixo + margem */
+  min-height: calc(100vh + 200px); /* Altura mínima maior para garantir scroll */
+  padding-bottom: 60px; /* Espaço para ver o footer parcial */
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
+}
+
+/* Classe para conteúdo das páginas */
+#app {
+  min-height: calc(100vh - 140px); /* Força altura mínima para gerar scroll */
+  margin-top: 32px !important; /* Margem fixa no próprio #app */
+  padding: 24px 0; /* Padding interno menor */
+  position: relative;
+  z-index: 1; /* Garante que fique acima de outros elementos */
+}
+
+/* Margem padrão para TODAS as páginas (filhos do #app) */
+#app > * {
+  margin-top: 24px; /* Margem entre elementos dentro das páginas */
+}
+
+/* Remove margem do primeiro elemento para não duplicar */
+#app > *:first-child {
+  margin-top: 0;
+}
+
+/* Utilitário para páginas que precisam de mais espaço */
+.page-content {
+  padding: 32px 0;
+  margin-bottom: 32px;
+}
+
+/* Classes utilitárias para margens customizadas */
+.margin-top-sm { margin-top: 16px !important; }
+.margin-top-md { margin-top: 32px !important; }
+.margin-top-lg { margin-top: 48px !important; }
+.margin-top-xl { margin-top: 64px !important; }
+
+/* Para páginas específicas que precisam de margem diferente */
+.page-header {
+  margin-top: 24px;
+  margin-bottom: 32px;
+}
+
+.page-section {
+  margin-top: 40px;
+  margin-bottom: 24px;
 }

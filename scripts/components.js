@@ -45,6 +45,7 @@ function resolvePagePath(slug) {
 // Destaca o link ativo no header (adiciona .is-active)
 function updateActiveNav(slug) {
   const links = document.querySelectorAll('header .fullbtn a[href^="#/"]');
+
   links.forEach(a => {
     const href = a.getAttribute('href');
     if (href === `#/${slug}`) a.classList.add('is-active');
@@ -68,6 +69,17 @@ async function renderPage() {
     outlet.innerHTML = await res.text();
     // Permite que páginas carregadas também usem includes
     await includeHTML();
+    
+    // Inicializa modal se a função existir (do noticias.js)
+    if (typeof window.initModal === 'function') {
+      window.initModal();
+    }
+    
+    // Inicializa comportamento do footer
+    if (typeof window.initFooterBehavior === 'function') {
+      window.initFooterBehavior();
+    }
+    
     window.scrollTo({ top: 0, behavior: 'smooth' });
   } catch (e) {
     outlet.innerHTML = `<div style="color:red; padding:16px">${e.message}</div>`;

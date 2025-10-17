@@ -1,8 +1,12 @@
 header {
     width: 100%;
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
     background: var(--header-bg);
     border-bottom: 1px solid var(--border);
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .toolbar {

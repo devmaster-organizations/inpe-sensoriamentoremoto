@@ -1,13 +1,9 @@
 //===========================
 //Módulo de Modal informativo
 //===========================
-//===========================
 
 // Objeto com textos que serão exibidos no modal
-
-const fetch = require('node-fetch');
-
-const textosInfo= {
+const textosInfo = {
     monitoramento:`<h3>Monitoramento e Mapeamento Agrícola</h3>
     <p>O AgriRS realiza o monitoramento e o mapeamento das principais culturas agrícolas cultivadas no 
     Brasil utilizando dados de sensoriamento remoto. As classificações são feitas utilizando imagens de 
@@ -45,32 +41,82 @@ const textosInfo= {
     //+ Adicione os demais textos aqui
 };
 
-// Seleciona elementos do HTML para manipular
-//document.getElementById() seleciona o primeiro elemento que tenha um ID específico, retornando o elemento com aquele ID ou null se não o encontrar. Já document.querySelector() é mais versátil, podendo selecionar um elemento usando qualquer seletor CSS (como ID, classe ou nome da tag) e também retorna apenas o primeiro elemento que corresponde ao seletor.
-
-const modal = document.getElementById('modalInfo');
-const modalTexto = document.getElementById('modal-texto');
-const modalClose = document.querySelector('.modal-close');
-
-// Adiciona evento de clique a todos os botões "Saiba mais"
-document.querySelectorAll('.ver-mais').forEach(link => {link.addEventListener('click', e => {e.preventDefault();
-    const chave = link.getAttribute('data-info');
-    modalTexto.innerHTML = textosInfo[chave] || '<p>Conteúdo não encontrado.</p>';
-    modal.style.display = 'block';
-});
-});
-
-//Fechar modal ao clicar no X
-modalClose.addEventListener('click', () => {
-    modal.style.display ='none';
-});
-
-//Fechar ao clicar fora da caixa
-window.addEventListener('click',(e) => {
-    if (e.target === modal) {
-    modal.style.display ='none';
+// Função para inicializar o modal (chamada após o DOM carregar)
+function initModal() {
+    // Verifica se os elementos existem antes de tentar usá-los
+    const modal = document.getElementById('modalInfo');
+    const modalTexto = document.getElementById('modal-texto');
+    const modalClose = document.querySelector('.modal-close');
+    
+    // Se não existir modal na página atual, não faz nada
+    if (!modal || !modalTexto || !modalClose) {
+        return;
     }
-});
+    
+    // Adiciona evento de clique a todos os botões "Saiba mais"
+    document.querySelectorAll('.ver-mais').forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            const chave = link.getAttribute('data-info');
+            modalTexto.innerHTML = textosInfo[chave] || '<p>Conteúdo não encontrado.</p>';
+            modal.style.display = 'block';
+        });
+    });
+    
+    // Fechar modal ao clicar no X
+    modalClose.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+    
+    // Fechar ao clicar fora da caixa
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+}
+
+// Função para gerenciar o footer inteligente
+function initFooterBehavior() {
+    const footer = document.querySelector('footer');
+    if (!footer) return;
+    
+    // Detecta scroll para mostrar/esconder footer
+    let ticking = false;
+    
+    function updateFooter() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+        const scrollPercentage = (scrollTop + windowHeight) / documentHeight;
+        
+        // Mostra footer completo quando chegar a 90% da página
+        if (scrollPercentage >= 0.9) {
+            footer.classList.add('show-full');
+        } else {
+            footer.classList.remove('show-full');
+        }
+        
+        ticking = false;
+    }
+    
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(updateFooter);
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', requestTick);
+    window.addEventListener('resize', requestTick);
+    
+    // Verifica posição inicial
+    updateFooter();
+}
+
+// Expor funções globalmente para serem chamadas pelo components.js
+window.initModal = initModal;
+window.initFooterBehavior = initFooterBehavior;
 
 
 

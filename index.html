@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="componentes/layouts/header/header.css" />
     <link rel="stylesheet" href="componentes/layouts/carrossel/carrossel.css" />
     <link rel="stylesheet" href="componentes/page/noticias/noticias.css">
+    <link rel="stylesheet" href="componentes/layouts/footer/footer.css">
 
         <script src="scripts/components.js" defer></script>
         <script src="scripts/noticias.js" defer></script>
@@ -20,8 +21,12 @@
     <!-- Header at the very top -->
     <div include-html="componentes/layouts/header/header.html"></div>
 
-    <main class="container" style="padding: 24px 0;">
+    <main class="container">
         <div id="app" data-router-outlet></div>
     </main>
+
+    <!-- Footer at the very bottom -->
+    <div include-html="componentes/layouts/footer/footer.html"></div>
+
 </body>
 </html>
