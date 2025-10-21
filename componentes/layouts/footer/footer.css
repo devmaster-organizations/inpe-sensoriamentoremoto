@@ -9,7 +9,7 @@
 footer{
     width: 100vw; /* Ocupa toda a largura da viewport */
     height: 220px;
-    background-color: #5999ed;
+    background-color: var(--color-footer);
     position: fixed; /* Fixo para aparecer um pouco */
     bottom: -180px; /* Esconde a maior parte, mostra só 40px */
     left: 0;

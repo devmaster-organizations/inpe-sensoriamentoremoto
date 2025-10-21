@@ -4,13 +4,20 @@
     box-sizing: border-box;
 } /* Reset de estilos padrão */
 
-body {
-    font-family: Arial, sans-serif; /* Fonte geral */
-    background-color: #f4f8f2; /* Cor de fundo */
-    display: flex; /* Centraliza conteúdo */
-    flex-direction: column; /* Centraliza conteúdo */
-    align-items: center; /* Centraliza conteúdo */
-    padding: 40px 20px; /* Espaçamento interno */
+/*. Remove body styling that centers everything */
+/* body { ... } - remove this block */
+
+.noticias {
+    padding: 40px 20px;
+    width: 100%;
+    max-width: none; /* remove max-width restriction */
+}
+
+.noticias h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    color: #333;
 }
 
 .secao-cards-areapesquisa h2 {
@@ -24,7 +31,7 @@ body {
     display: grid; /*Elemento Container de grade - Organização em linhas e colunas*/
     grid-template-columns: repeat(3, 1fr);  /* 3 colunas de cards ocupando uma fração igual do espaço disponível*/
     gap: 20px; /*Espaçamento da coluna e linha*/
-    max-width: 1200px;/*Tamanho do container*/
+    max-width: none;
     margin: 0 auto; /*Centralizar o container automaticamente*/
     width: 100%; /*Ocupa 100% da largura disponível*/
     padding: 20px; /* Espaçamento interno da borda do container e conteúdo*/

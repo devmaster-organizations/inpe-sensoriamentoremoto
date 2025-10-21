@@ -1,0 +1,150 @@
+/* reset simples: box-sizing ajuda a largura/padding se comportarem bem */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+
+/* container central que limita largura máxima para telas grandes */
+.contatos-page .container {
+  width: 100%;
+  max-width: 1400px; /* aumenta a largura máxima */
+  margin: 32px auto 0 auto; /* centraliza horizontalmente e afasta do topo */
+  background: var(--bg-cl-bd);
+  padding: 18px;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(10,10,20,0.04);
+}
+
+
+h1 {
+  text-align: center;
+  margin-bottom: 12px;
+  font-size: 1.5rem;
+}
+.subtitulo {
+  margin-top: 12px;
+  margin-bottom: 8px;
+  font-size: 1.05rem;
+  text-align: left;
+}
+
+/* ===== Grid principal =====
+   Em mobile: coluna única (form acima, info abaixo).
+   Em desktop: duas colunas (form + info lateral).
+*/
+.contact-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 1fr; /* 1 coluna no mobile */
+  align-items: start;
+}
+
+/* ========= Formulário ========= */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+/* labels com destaque */
+.contact-form label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* inputs & textarea ocupam 100% do espaço do form */
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d0d0d8;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #fff;
+}
+
+/* foco acessível */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(90,121,255,0.12);
+  border-color: #5a79ff;
+}
+
+/* botão primário */
+.btn {
+  padding: 12px;
+  font-weight: 700;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: linear-gradient(90deg,#65d381,#97f0b4);
+  color: #fff;
+  margin-top: 4px;
+}
+
+/* efeito hover no botão */
+.btn:hover { transform: translateY(-2px); }
+
+/* ========= Info lateral (mapa + redes) ========= */
+.info-area {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* map-wrapper deixa o iframe responsivo mantendo proporção */
+.map-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; 
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #eee;
+  background: #fafafa;
+}
+
+/* iframe ocupa todo o wrapper (tornando-o responsivo) */
+.map-wrapper iframe {
+  position: absolute;
+  inset: 0; /* top:0; right:0; bottom:0; left:0; */
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* redes sociais: em linha no mobile (adapta conforme o design) */
+.redes-sociais {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* tamanho das imagens de redes sociais */
+.redes-sociais img {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  transition: transform 0.18s ease;
+}
+
+/* efeito hover */
+.redes-sociais img:hover { transform: scale(1.08); }
+
+
+
+/* A partir de 768px (tablet/desktops pequenos), usar 2 colunas: formulário + coluna lateral */
+@media (min-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr 380px; /* formulário flexível + coluna fixa para info */
+    gap: 24px;
+  }
+  h1 { font-size: 1.9rem; }
+  .subtitulo { text-align: left; }
+  .redes-sociais { flex-direction: column; gap: 16px; align-items: center; }
+}
+
+/* Para telas muito grandes, aumentar o padding do container */
+@media (min-width: 1200px) {
+  .container { padding: 32px; }
+}

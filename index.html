@@ -5,28 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AgriRSLab</title>
   
-    <!-- Global/base styles first -->
+    <!-- Styles -->
     <link rel="stylesheet" href="global.css" />
-  
-    <!-- Component styles -->
     <link rel="stylesheet" href="componentes/layouts/header/header.css" />
     <link rel="stylesheet" href="componentes/layouts/carrossel/carrossel.css" />
-    <link rel="stylesheet" href="componentes/page/noticias/noticias.css">
-    <link rel="stylesheet" href="componentes/layouts/footer/footer.css">
+    <link rel="stylesheet" href="componentes/page/area-pesquisa/area-pesquisa.css" />
+    <link rel="stylesheet" href="componentes/layouts/footer/footer.css" />
+    <link rel="stylesheet" href="componentes/page/contatos/contatos.css" />
 
-        <script src="scripts/components.js" defer></script>
-        <script src="scripts/noticias.js" defer></script>
+    <!-- Scripts -->
+    <script src="scripts/components.js" defer></script>
+    <script src="scripts/noticias.js" defer></script>
 </head>
 <body>
-    <!-- Header at the very top -->
     <div include-html="componentes/layouts/header/header.html"></div>
 
-    <main class="container">
+    <main>
         <div id="app" data-router-outlet></div>
     </main>
 
-    <!-- Footer at the very bottom -->
     <div include-html="componentes/layouts/footer/footer.html"></div>
-
 </body>
 </html>

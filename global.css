@@ -10,13 +10,15 @@ button { cursor: pointer; }
   --muted: #555555;
   --border: #e9e9e9;
   --accent: #0B5ED7;
+  --bg-cl-bd: #f0fdf4;
+  --color-footer: #426459a4;
 }
 
 body {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial,
                "Noto Sans", "Liberation Sans", sans-serif;
   color: var(--text-color);
-  background: #ffffff;
+  background: var(--bg-cl-bd);
   line-height: 1.5;
   min-height: 100vh;
 }
