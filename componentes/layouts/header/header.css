@@ -1,57 +1,56 @@
 header {
     width: 100%;
+    height: var(--header-height);
     position: fixed;
     top: 0;
     left: 0;
-    background: var(--header-bg);
+    background: var(--header-bg); /* usa cor do header */
     border-bottom: 1px solid var(--border);
     z-index: 1000;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .toolbar {
-    min-height: 96px;
+    height: 100%;
     display: flex;
     align-items: center;
-}
-
-/* Use the global .container to center header content */
-.toolbar.container {
     justify-content: space-between;
-    gap: 24px;
+    padding: 0 24px;
+    flex-wrap: nowrap;
 }
 
+/* Logo section */
 #logo {
     display: flex;
     align-items: center;
     gap: 12px;
+    flex-shrink: 0;
 }
 
 #imglogo {
-    height: 64px;
-    width: 64px;
-}
-
-.txtbar {
-    display: flex;
-    flex-direction: column;
+    height: 48px;
+    width: 48px;
 }
 
 .txtbar h2 {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    white-space: nowrap;
 }
 
 .txtbar p {
     margin: 0;
     color: var(--muted);
-    font-size: 0.95rem;
+    font-size: 0.85rem;
+    white-space: nowrap;
 }
 
+/* Navigation buttons */
 .fullbtn {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 8px;
+    flex-wrap: nowrap;
 }
 
 .btnpadrao {
@@ -60,13 +59,15 @@ header {
     justify-content: center;
     text-decoration: none;
     color: inherit;
-    border-radius: 12px;
-    min-width: 120px;
-    height: 40px;
-    font-size: 1rem;
-    padding: 8px 16px;
+    border-radius: 8px;
+    min-width: 70px;
+    height: 32px;
+    font-size: 0.8rem;
+    padding: 4px 8px;
     border: 1px solid var(--border);
     background: #fff;
+    white-space: nowrap;
+    transition: border-color 0.2s;
 }
 
 .btnpadrao:hover {
@@ -76,4 +77,40 @@ header {
 .btnpadrao.is-active {
     border-color: var(--accent);
     box-shadow: 0 0 0 2px color-mix(in oklab, var(--accent) 20%, transparent);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .toolbar {
+        padding: 0 16px;
+    }
+    
+    .btnpadrao {
+        min-width: 60px;
+        font-size: 0.75rem;
+        padding: 3px 6px;
+    }
+    
+    .fullbtn {
+        gap: 4px;
+    }
+}
+
+@media (max-width: 768px) {
+    .toolbar {
+        padding: 0 12px;
+    }
+    
+    .txtbar h2 {
+        font-size: 1.1rem;
+    }
+    
+    .txtbar p {
+        font-size: 0.75rem;
+    }
+    
+    #imglogo {
+        height: 40px;
+        width: 40px;
+    }
 }
