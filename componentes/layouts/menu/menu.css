@@ -1,3 +1,4 @@
+/* Seção que cobre todos os botões */
 .sectMenu{
     display: flex;
     max-width: 1200px;
@@ -7,47 +8,62 @@
     margin-top: 80px;
 }
 
+/* Reune os botões e os organiza */
 .btnMenu{
     display: flex;
     justify-content: center;
-    gap: 60px;
-    flex-wrap: wrap;
+    gap: 60px; /* Cria espaço entre os botões */
+    flex-wrap: wrap; /* Faz os botões ficarem responsiveis em telas menores */
 }
 
-.btnMenu button{
+/* Um link tranformado em botão */
+.btnMenu a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 160px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(250, 250, 250);
     height: 70px;
     border-radius: 15px;
     border: 1px solid #AFAFAF;
     box-shadow: 1px 1px 4px rgb(182, 182, 182);
-    transition: 0.4s;
-}
-
-.btnMenu button:hover{
-    background-color: #9DFFAF;
-    cursor: pointer;
-    transition: 0.4s;
-}
-
-a{
     text-decoration: none;
     color: #4E4949;
     font-family: poppins, sans-serif;
     font-weight: 450;
     font-size: 20px;
+    transition: all 0.6s ease; /* Garante que qualquer transição seja feito durante aquele tempo de maneira fluida */
+    text-align: center;
+    padding: 10px 20px;
+}
+
+/* Animação dos botões */
+.btnMenu a:hover,
+.btnMenu a:focus{
+    background-color: #9DFFAF;
+    cursor: pointer;
+    transform: scale(1.04) translateY(-6px); /* Faz os botões aumentarem de tamanho e irem levemente para cima */
+}
+
+/* Cria uma borda para sinalizar quando está selecionado com TAB */
+.btnMenu a:focus{
+    outline: 3px dotted #74d385 ;
+    outline-offset: 3px;
 }
 
 /* RESPONSIVIDADE */
 
-/* Tablets (até 768px) */
-@media (max-width: 768px) {
+/* Tablets (até 900px) */
+@media (max-width: 900px) {
     .btnMenu {
         gap: 20px; /* menos espaço entre botões */
     }
 
-    .btnMenu button {
+    .btnMenu a {
         width: 45%;   /* dois botões por linha */
+    }
+    .sectMenu{
+        margin-top: 40px;
     }
 }
 
@@ -57,11 +73,14 @@ a{
         gap: 10px;
     }
 
-    .btnMenu button {
-        width: 60%;  /* botão ocupa largura inteira */
+    .btnMenu a {
+        width: 60%;  /* botão diminui em telas menores */
     }
 
     a {
         font-size: 16px; /* reduz a fonte */
+    }
+    .sectMenu{
+        margin-top: 20px;
     }
 }
