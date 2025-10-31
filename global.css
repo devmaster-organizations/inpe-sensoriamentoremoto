@@ -12,10 +12,12 @@ button { cursor: pointer; }
   --accent: #0B5ED7;
   --bg-cl-bd: #f0fdf4;
   --color-footer: #426459a4;
+  --fonte-family: Poppins;
+  --fonte-size-title: 2rem;
 }
 
 body {
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial,
+  font-family: var(--fonte-family), system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial,
                "Noto Sans", "Liberation Sans", sans-serif;
   color: var(--text-color);
   background: var(--bg-cl-bd);

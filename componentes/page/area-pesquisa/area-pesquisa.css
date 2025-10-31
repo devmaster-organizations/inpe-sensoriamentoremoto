@@ -22,7 +22,7 @@
 
 .secao-cards-areapesquisa h2 {
     margin-bottom: 30px;
-    font-size: 2rem;
+    font-size: var(--fonte-size-title);
     color: #333;
 }
 

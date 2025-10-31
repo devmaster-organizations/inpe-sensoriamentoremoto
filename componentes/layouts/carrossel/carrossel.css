@@ -1,35 +1,57 @@
+/* É a seção que cobre todo o carrossel */
 .carrossel{
     max-width: 1200px; 
     margin: 0 auto;
-    padding: 0 16px;
-}
-
-.carrossel div{
+    padding: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
 }
 
-.carrossel img {
+/* Reune as imagens do carrossel e as centraliza */
+.imagens{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    overflow-x: auto; /* cria a barra de rolagem caso necessário */
+    gap: 0;
+    scroll-snap-type: x mandatory; /* trava a imagem no centro, impedindo que o scroll fique preso entre imagens */
+    -webkit-overflow-scrolling: touch; /* Deixa o scroll mais fluido no sistema da apple */
+}
+
+/* É os card da imagem do carrossel */
+.card{
+    flex: 0 0 100%;
+    min-width: 100%;
+    box-sizing: border-box;
+    scroll-snap-align: center; /* Centraliza as imagens no scroll */
+    padding: 0 8px;
+}
+
+/* O link que engloba a imagem e faz com que elas ocupem todo o espaço do card */
+.card a {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+/* A imagem que serve de conteudo para o link */
+.card img {
+    display: block;
     width: 100%;
     height: auto;
-    border-radius: 10px;
+    max-height: 60vh; /* Faz com que a altura máxima da imagem seja ate 60% da tela */
+    object-fit: cover;
+    border-radius: 16px;
+    border: 1px solid gray;
 }
 
-.voltar,
-.avancar {
-    background: rgba(0,0,0,0.5);
-    color: white;
-    border: none;
-    font-size: 2rem;
-    cursor: pointer;
-    padding: 10px 15px;
-    border-radius: 50%;
-    transition: 0.3s;
-}
+/* RESPONSIVIDADE */
 
-.voltar:hover,
-.avancar:hover {
-    background: rgba(0,0,0,0.8); /* destaque ao passar o mouse */
+/* Tablets (até 900px) */
+
+@media (max-width: 900px){
+    .card{
+        width: 80%; /* Faz com que o card tenha um tamanho reduzido em telas menores */
+    }
 }

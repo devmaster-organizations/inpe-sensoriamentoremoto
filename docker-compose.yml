@@ -1,0 +1,13 @@
+services:
+  agrirslab-app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: agrirslab-app
+    ports:
+      - "3021:3021"
+    environment:
+      - PORT=3021
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+

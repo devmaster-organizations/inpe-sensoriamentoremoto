@@ -7,23 +7,28 @@
   
     <!-- Styles -->
     <link rel="stylesheet" href="global.css" />
+    <link rel="stylesheet" href="componentes/page/sobre/sobre.css">
     <link rel="stylesheet" href="componentes/layouts/header/header.css" />
     <link rel="stylesheet" href="componentes/layouts/carrossel/carrossel.css" />
     <link rel="stylesheet" href="componentes/page/area-pesquisa/area-pesquisa.css" />
     <link rel="stylesheet" href="componentes/layouts/footer/footer.css" />
     <link rel="stylesheet" href="componentes/page/contatos/contatos.css" />
+    <link rel="stylesheet" href="componentes/layouts/menu/menu.css">
 
     <!-- Scripts -->
     <script src="scripts/components.js" defer></script>
     <script src="scripts/noticias.js" defer></script>
+    <script src="scripts/api/noticias.js" defer></script>
 </head>
 <body>
     <div include-html="componentes/layouts/header/header.html"></div>
 
+    
     <main>
         <div id="app" data-router-outlet></div>
     </main>
 
     <div include-html="componentes/layouts/footer/footer.html"></div>
+
 </body>
 </html>
