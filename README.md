@@ -136,37 +136,49 @@ cd inpe-sensoriamentoremoto
 # Abra o index.html no navegador
 ```
 
+## 🚀 Estrutura Reorganizada do Projeto
+
+```
+├── frontend/              # Interface web (HTML, CSS, JS, SPA)
+│   ├── componentes/       # Componentes da interface
+│   ├── data/             # Dados estáticos (JSON)  
+│   ├── img/              # Imagens e assets
+│   ├── scripts/          # JavaScript (SPA router, APIs)
+│   ├── global.css        # Estilos globais
+│   ├── index.html        # Página principal
+│   ├── server.js         # Servidor estático com proxy
+│   └── Dockerfile        # Container do frontend
+├── backend/              # API Express + Postgres
+│   ├── src/              # Código fonte do backend
+│   ├── package.json      # Dependências do Node.js
+│   └── Dockerfile        # Container do backend
+└── docker-compose.yml    # Orquestração dos serviços
+```
+
 ### Subir tudo com Docker (frontend + backend + Postgres)
 
-Com um único comando você sobe o site, a API e o banco de dados:
-
 ```bash
-docker compose up -d --build
+# Subir todos os serviços
+docker compose up --build
+
+# Subir apenas o frontend (desenvolvimento)
+docker compose up frontend --build
+
+# Subir apenas o backend
+docker compose up server postgres --build
 ```
 
-URLs úteis:
-- Frontend: http://localhost:3021
-- API (backend): http://localhost:3013/api
-- Imagens enviadas: http://localhost:3013/uploads
+### Acessos
+- **Frontend**: http://localhost:3021
+- **Backend API**: http://localhost:3013
+- **PostgreSQL**: localhost:5432
+- **PgAdmin**: http://localhost:5050 (fatec@example.com / fatec)
 
-Detalhes rápidos:
-- O frontend é servido por um Node estático e faz proxy para a API em `/api/noticias`.
-- A API usa Postgres com os dados persistidos em volume.
-- O schema inicial é criado automaticamente a partir de `server/src/controllers/db.sql` (apenas no primeiro start do banco).
+### Arquitetura
+- **Frontend**: SPA simples com proxy para API (evita CORS), apenas GET
+- **Backend**: Express.js + PostgreSQL com CRUD completo
+- **Banco**: Inicialização automática via `backend/src/controllers/db.sql`
 
-### Estrutura do Projeto
-```
-inpe-sensoriamentoremoto/
-├── 📁 componentes/          # Componentes reutilizáveis
-│   ├── 📁 layouts/         # Header, footer, menu
-│   └── 📁 page/           # Páginas do site
-├── 📁 img/                # Imagens e assets
-├── 📁 scripts/            # JavaScript
-├── 📄 index.html          # Página principal
-├── 🎨 global.css          # Estilos globais 
-├── 📋 REQUISITOS.md      # Requisitos do projeto
-├── 📋 ATIVIDADES.md     # Atas das reuniões
-└── 📋 README.md          # Este arquivo
-```
+
 
 

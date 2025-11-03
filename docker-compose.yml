@@ -7,8 +7,8 @@ networks:
 services:
   frontend:
     build:
-      context: .
-      dockerfile: docker/Dockerfile
+      context: ./frontend
+      dockerfile: Dockerfile
     container_name: agrirslab-frontend
     environment:
       - PORT=3021
@@ -25,7 +25,7 @@ services:
 
   server:
     build:
-      context: ./server
+      context: ./backend
       dockerfile: Dockerfile
     container_name: agrirslab-server
     environment:
@@ -55,7 +55,7 @@ services:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
-      - ./server/src/controllers/db.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+      - ./backend/src/controllers/db.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
     networks:
       - fatec-network
 
