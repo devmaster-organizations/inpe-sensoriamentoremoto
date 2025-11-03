@@ -5,6 +5,7 @@ async function createNoticia(req, res) {
   const { titulo, link, postagem, exibir } = req.body;
   const image = req.file ? `/uploads/${req.file.filename}` : null;
 
+  
   try {
     const result = await pool.query(
       `INSERT INTO noticias (titulo, link, postagem, exibir, image)

@@ -74,6 +74,7 @@ services:
     networks:
       - fatec-network
 
+  
 volumes:
   pgdata:
   uploads:
