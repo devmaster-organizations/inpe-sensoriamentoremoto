@@ -5,22 +5,22 @@
 }
 
 .page-publicacoes * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
     font-family: var(--font);
 }
-.page-publicacoes h2{
-    display: flex;
-    justify-content: center;
-    font-size: 40px;
+/* Título da página: usar apenas o ID para não afetar h2 internos dos cards */
+.page-publicacoes #titulo{
+    margin-top: 0;                 /* deixa o respiro com o global (.page-scope > *:first-child) */
+    margin-bottom: 24px;           /* consistente com outras páginas (ex.: Colaboradores) */
+    text-align: center;
+    font-size: 36px;
 }
 .page-publicacoes #buttons{
     display: flex;              /* coloca os cards lado a lado */
     flex-wrap: wrap;            /* quebra a linha automaticamente */
     justify-content: center;    /* centraliza os cards na linha */
     gap: 45px;                  /* espaçamento entre os cards */
-    margin: 24px auto;          /* usa o padrão global e um pouco de respiro */
+    margin: 0 auto 24px;        /* sem topo (já vem do título), espaço inferior padrão */
     width: 100%;                /* ocupa toda a largura do page-scope */
 }
 
@@ -30,7 +30,7 @@
     flex-wrap: wrap;            /* quebra a linha automaticamente */
     justify-content: center;    /* centraliza os cards na linha */
     gap: 45px;                  /* espaçamento entre os cards */
-    margin: 24px auto;          /* segue padrão global */
+    margin: 0 auto 24px;        /* segue padrão global, sem topo */
     width: 100%;                /* ocupa toda a largura do page-scope */
 }
 .page-publicacoes .search{
@@ -157,11 +157,7 @@
     font-size: 14px;
     color: #666;
 }
-.page-publicacoes #titulo{
-    font-size: 36px;
-    margin-top: 35px;
-    margin-bottom: 20px;
-}
+/*h2 internos dos cards já têm regra própria em .card-body h2 */
 
 /* Desabilitar a borda preta do select */
 .page-publicacoes #filterSelect:focus {
