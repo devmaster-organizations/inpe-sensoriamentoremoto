@@ -32,6 +32,28 @@ app.get('/api/noticias', async (_req, res) => {
   }
 });
 
+// Proxy para arquivos servidos pelo backend em /uploads (somente GET)
+// Usa RegExp para compatibilidade total com path-to-regexp (captura tudo após /uploads/)
+app.get(/^\/uploads\/(.*)$/, async (req, res) => {
+  const subpath = req.params[0];
+  const API_BASE_URL = process.env.API_BASE_URL || 'http://server:3013';
+  const targetUrl = `${API_BASE_URL}/uploads/${subpath}`;
+  try {
+    console.log(`🖼️  Proxy uploads: requisitando ${targetUrl}`);
+    const response = await fetch(targetUrl);
+    if (!response.ok) {
+      return res.status(response.status).end();
+    }
+    const contentType = response.headers.get('content-type') || 'application/octet-stream';
+    const buffer = Buffer.from(await response.arrayBuffer());
+    res.set('Content-Type', contentType);
+    return res.send(buffer);
+  } catch (error) {
+    console.error('❌ Erro no proxy de uploads:', error.message);
+    res.status(502).send('Erro ao obter arquivo');
+  }
+});
+
 // Serve arquivos estáticos (HTML, CSS, JS, imagens)
 app.use(express.static(path.join(__dirname)));
 

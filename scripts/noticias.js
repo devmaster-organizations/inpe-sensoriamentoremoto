@@ -128,4 +128,75 @@ window.initModal = initModal;
 window.initFooterBehavior = initFooterBehavior;
 
 
+// ===========================
+// Página: Notícias (somente GET)
+// ===========================
+// Renderiza as notícias vindas do backend sem quebrar o layout atual.
+// Usa o proxy /api/noticias definido no servidor do frontend (server.js).
+window.initNoticias = async function initNoticias() {
+    const root = document.querySelector('.page-noticias');
+    if (!root) return;
+
+    const grid = root.querySelector('#page-btn');
+    const searchInput = root.querySelector('#searchinput');
+
+    if (!grid) return;
+
+    // Limpa conteúdo estático e prepara o container
+    grid.innerHTML = '';
+
+    try {
+        const noticias = await (window.getNoticias ? window.getNoticias() : fetch('/api/noticias').then(r => r.json()));
+
+        // Helper para criar um card no formato atual do layout
+        function criarCard(n) {
+            const card = document.createElement('div');
+            card.className = 'page-card';
+
+            const header = document.createElement('div');
+            header.className = 'page-card-header';
+
+            const link = document.createElement('a');
+            link.href = n.link || '#';
+            link.target = '_blank';
+
+            const img = document.createElement('img');
+            img.loading = 'lazy';
+            img.alt = n.titulo || 'Notícia';
+            img.src = n.image || '/img/Imagem1.png'; // fallback simples
+
+            link.appendChild(img);
+            header.appendChild(link);
+
+            const body = document.createElement('div');
+            body.className = 'page-card-body';
+
+            const h2 = document.createElement('h2');
+            h2.textContent = n.titulo || 'Sem título';
+            body.appendChild(h2);
+
+            card.appendChild(header);
+            card.appendChild(body);
+            return card;
+        }
+
+        // Adiciona cards (ordenados já chegam do backend)
+        noticias.forEach(n => grid.appendChild(criarCard(n)));
+
+        // Busca por título (não quebra layout)
+        if (searchInput) {
+            searchInput.addEventListener('input', () => {
+                const q = searchInput.value.trim().toLowerCase();
+                grid.querySelectorAll('.page-card').forEach(card => {
+                    const title = card.querySelector('h2')?.textContent?.toLowerCase() || '';
+                    card.style.display = title.includes(q) ? '' : 'none';
+                });
+            });
+        }
+    } catch (err) {
+        grid.innerHTML = `<p style="color:red">Falha ao carregar notícias: ${err.message}</p>`;
+    }
+};
+
+
 

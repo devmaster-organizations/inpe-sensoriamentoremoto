@@ -108,6 +108,16 @@ async function renderPage() {
     if (typeof window.initEquipe === 'function' && slug === 'equipe') {
       window.initEquipe();
     }
+    // Inicializa página Notícias quando ativa (somente GET a partir do backend)
+    if (slug === 'noticias') {
+      if (typeof window.initNoticias === 'function') {
+        window.initNoticias();
+      } else {
+        setTimeout(() => {
+          if (typeof window.initNoticias === 'function') window.initNoticias();
+        }, 0);
+      }
+    }
     
     window.scrollTo({ top: 0, behavior: 'smooth' });
   } catch (e) {

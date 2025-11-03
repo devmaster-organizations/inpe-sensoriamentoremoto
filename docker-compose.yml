@@ -1,3 +1,9 @@
+
+
+networks:
+  fatec-network:
+    driver: bridge
+
 services:
   frontend:
     build:
@@ -13,6 +19,9 @@ services:
       - server
     extra_hosts:
       - "host.docker.internal:host-gateway"
+
+    networks:
+      - fatec-network
 
   server:
     build:
@@ -32,6 +41,8 @@ services:
       - postgres
     volumes:
       - uploads:/app/src/uploads
+    networks:
+      - fatec-network
 
   postgres:
     image: postgres:16
@@ -45,8 +56,26 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
       - ./server/src/controllers/db.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+    networks:
+      - fatec-network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: fatec@example.com
+      PGADMIN_DEFAULT_PASSWORD: fatec
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    networks:
+      - fatec-network
 
 volumes:
   pgdata:
   uploads:
+  pgadmin_data:
 
