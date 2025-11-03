@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --font: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font);
+}
+h2{
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+}
+#botoes{
+    display: flex;              /* coloca os cards lado a lado */
+    flex-wrap: wrap;            /* quebra a linha automaticamente */
+    justify-content: center;    /* centraliza os cards na linha */
+    gap: 45px;                  /* espaçamento entre os cards */
+    margin: 40px auto;          /* centraliza o container */
+    width: 90%;                 /* ocupa 90% da largura da tela */
+    max-width: 1200px;          /* largura máxima */
+}
+.search{
+   display: flex ; 
+   align-items: center;
+   border: 1px solid #ccc;
+   background-color: white;
+   width: 380px;
+   margin: 20px auto;
+   border-radius: 20px;
+   padding: 5px 10px;
+   color: #4b4b4b;
+}
+.filter {
+    position: relative; /* Ensure dropdown content is positioned correctly */
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    background-color: white;
+    width: 123px;
+    margin: 20px auto;
+    border-radius: 20px;
+    padding: 5px 10px;
+    color: #4b4b4b;
+}
+/* Estilizando o select */
+#filterSelect {
+    padding: 8px;
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    outline: none;
+    appearance: none;  /* Remove a aparência padrão */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+#filterSelect:focus {
+    outline: none;  /* Remove o outline de foco */
+}
+
+/* Estilo para a seta (fa-sort-down) */
+.filter label {
+    pointer-events: none;
+    position: absolute;
+    right: 10px;
+    font-size: 16px;
+}
+
+/* Customizando o select para não aparecer borda preta */
+#filterSelect {
+    border: 1px solid transparent;
+    padding-right: 20px;  /* Para dar espaço para a seta */
+}
+
+/* Mostrar opções no hover do filtro */
+.filter:hover #filterSelect {
+    border: 1px solid #ccc;
+}
+
+/* Customização do botão de filtro */
+.filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+    padding: 5px 10px;
+    background-color: white;
+}
+
+#searchimput{
+    padding: 8px;
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    outline: none;
+}
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+  
+.card.hide {
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
+}  
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.card-header {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+}
+
+.card-header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-body h2 {
+    font-size: 18px;
+    margin: 0 0 10px;
+    color: #333;
+}
+
+.card-body p {
+    font-size: 14px;
+    color: #666;
+}
+#titulo{
+    font-size: 45px;
+    margin-top: 35px;
+    margin-bottom: 20px;
+}
+
+/* Desabilitar a borda preta do select */
+#filterSelect:focus {
+    outline: none;  /* Remove qualquer borda de foco */
+}
