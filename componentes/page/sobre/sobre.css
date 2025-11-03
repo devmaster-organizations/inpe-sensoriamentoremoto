@@ -1,4 +1,4 @@
-.titulo {
+.page-sobre .titulo {
   display: flex;
   width: 100%;
   padding:  10px 0;
@@ -6,13 +6,13 @@
   justify-content: center;
 }
 
-.titulo h1 {
+.page-sobre .titulo h1 {
   font-size: 2.5rem;
   color: #333;
   text-align: center;
 }
 
-.sobre-nos {
+.page-sobre .sobre-nos {
   font-family:"poppins";
   display: flex;
   justify-content: space-between;
@@ -23,12 +23,12 @@
   margin: 28px auto;
 }
 
-.texto {
+.page-sobre .texto {
   flex: 1;
   padding-right: 40px;
 }
 
-.cards {
+.page-sobre .cards {
   flex: 1;
   display: flex;
   flex-wrap: wrap;
@@ -36,7 +36,7 @@
   justify-content: center;
 }
 
-.card {
+.page-sobre .card {
   background: rgba(245, 245, 245, 0.973);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -46,13 +46,13 @@
   transition:all 0.3s ease;
   border: 1px solid #afafaf;
 }
-.card:hover{
+.page-sobre .card:hover{
 cursor: pointer;
 transform:scale(1.04) translateY(-5px);
 background-color: #9dffaf;
 
 }
-.card-icon {
+.page-sobre .card-icon {
   font-size: 32px;
   color: green;
   margin-bottom: 10px;

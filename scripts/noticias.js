@@ -43,18 +43,25 @@ const textosInfo = {
 
 // Função para inicializar o modal (chamada após o DOM carregar)
 function initModal() {
-    // Verifica se os elementos existem antes de tentar usá-los
-    const modal = document.getElementById('modalInfo');
-    const modalTexto = document.getElementById('modal-texto');
-    const modalClose = document.querySelector('.modal-close');
-    
+    // Procura o container da página atual renderizada pelo router
+    const outlet = document.querySelector('#app, [data-router-outlet]');
+    const page = outlet?.querySelector('.page-scope.page-area-pesquisa') || outlet?.querySelector('.page-scope');
+    if (!page) return;
+
+    // Evita registrar listeners duplicados em re-renders
+    if (page.dataset.modalBound === '1') return;
+
+    const modal = page.querySelector('#modalInfo');
+    const modalTexto = page.querySelector('#modal-texto');
+    const modalClose = page.querySelector('.modal-close');
+
     // Se não existir modal na página atual, não faz nada
     if (!modal || !modalTexto || !modalClose) {
         return;
     }
-    
-    // Adiciona evento de clique a todos os botões "Saiba mais"
-    document.querySelectorAll('.ver-mais').forEach(link => {
+
+    // Adiciona evento de clique a todos os botões "Saiba mais" dentro da página
+    page.querySelectorAll('.ver-mais').forEach(link => {
         link.addEventListener('click', e => {
             e.preventDefault();
             const chave = link.getAttribute('data-info');
@@ -62,18 +69,20 @@ function initModal() {
             modal.style.display = 'block';
         });
     });
-    
+
     // Fechar modal ao clicar no X
     modalClose.addEventListener('click', () => {
         modal.style.display = 'none';
     });
-    
+
     // Fechar ao clicar fora da caixa
     window.addEventListener('click', (e) => {
         if (e.target === modal) {
             modal.style.display = 'none';
         }
     });
+
+    page.dataset.modalBound = '1';
 }
 
 // Função para gerenciar o footer inteligente

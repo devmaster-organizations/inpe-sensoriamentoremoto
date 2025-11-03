@@ -6,6 +6,21 @@ const DEFAULT_ROUTE = 'home';
 const NOTFOUND_ROTER = 'notfound'
 const PAGES_DIR = 'componentes/page';
 const OUTLET_SELECTOR = '#app, [data-router-outlet]';
+const PAGE_STYLE_ID = 'page-style';
+
+// carrega CSS da página atual dinamicamente e remove o anterior
+function setPageStyle(slug) {
+  const href = `${PAGES_DIR}/${slug}/${slug}.css?v=${Date.now()}`; // cache-bust to avoid stale CSS
+  // remove style anterior, se houver
+  const prev = document.getElementById(PAGE_STYLE_ID);
+  if (prev) prev.remove();
+  // cria novo link
+  const link = document.createElement('link');
+  link.id = PAGE_STYLE_ID;
+  link.rel = 'stylesheet';
+  link.href = href;
+  document.head.appendChild(link);
+}
 
 // Inclui trechos HTML onde houver o atributo include-html
 async function includeHTML() {
@@ -66,7 +81,17 @@ async function renderPage() {
       url = resolvePagePath(NOTFOUND_ROTER);
       res = await fetch(url);
     }
-    outlet.innerHTML = await res.text();
+  const html = await res.text();
+    // adiciona classe/atributo para facilitar escopo de CSS
+    outlet.setAttribute('data-page', slug);
+    // limpa classes page-* anteriores do outlet para evitar conflitos (legado)
+    Array.from(outlet.classList)
+      .filter(c => c.startsWith('page-') || c === 'page-scope')
+      .forEach(c => outlet.classList.remove(c));
+    // aplica o escopo apenas no wrapper interno
+  outlet.innerHTML = `<div class="page-scope page-${slug}">${html}</div>`;
+  // carrega css da página
+  setPageStyle(slug);
     // Permite que páginas carregadas também usem includes
     await includeHTML();
     

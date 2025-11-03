@@ -14,6 +14,10 @@ button { cursor: pointer; }
   --color-footer: #426459a4;
   --fonte-family: Poppins;
   --fonte-size-title: 2rem;
+  /* Layout globals (fáceis de ajustar) */
+  --page-width-percent: 96%;      /* largura relativa do conteúdo */
+  --page-max-width: 1400px;       /* largura máxima em telas grandes */
+  --page-top-gap: 24px;           /* margem superior padrão entre header e conteúdo */
 }
 
 body {
@@ -54,6 +58,13 @@ main {
 /* Remove margem do primeiro elemento para não duplicar */
 #app > *:first-child {
   margin-top: 0;
+}
+
+/* Padrão de largura e centralização para todas as páginas renderizadas pelo router */
+.page-scope {
+  width: var(--page-width-percent);
+  max-width: var(--page-max-width);
+  margin: var(--page-top-gap) auto; /* topo padronizado e centralizado lateralmente */
 }
 
 /* Utilitário para páginas que precisam de mais espaço */

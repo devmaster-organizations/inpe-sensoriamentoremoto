@@ -4,27 +4,36 @@
     --font: 'Poppins', sans-serif;
 }
 
-* {
+.page-publicacoes * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: var(--font);
 }
-h2{
+.page-publicacoes h2{
     display: flex;
     justify-content: center;
     font-size: 40px;
 }
-#botoes{
+.page-publicacoes #buttons{
     display: flex;              /* coloca os cards lado a lado */
     flex-wrap: wrap;            /* quebra a linha automaticamente */
     justify-content: center;    /* centraliza os cards na linha */
     gap: 45px;                  /* espaçamento entre os cards */
-    margin: 40px auto;          /* centraliza o container */
-    width: 90%;                 /* ocupa 90% da largura da tela */
-    max-width: 1200px;          /* largura máxima */
+    margin: 24px auto;          /* usa o padrão global e um pouco de respiro */
+    width: 100%;                /* ocupa toda a largura do page-scope */
 }
-.search{
+
+/* Container correto dos cards */
+.page-publicacoes #botoes{
+    display: flex;              /* coloca os cards lado a lado */
+    flex-wrap: wrap;            /* quebra a linha automaticamente */
+    justify-content: center;    /* centraliza os cards na linha */
+    gap: 45px;                  /* espaçamento entre os cards */
+    margin: 24px auto;          /* segue padrão global */
+    width: 100%;                /* ocupa toda a largura do page-scope */
+}
+.page-publicacoes .search{
    display: flex ; 
    align-items: center;
    border: 1px solid #ccc;
@@ -35,7 +44,7 @@ h2{
    padding: 5px 10px;
    color: #4b4b4b;
 }
-.filter {
+.page-publicacoes .filter {
     position: relative; /* Ensure dropdown content is positioned correctly */
     display: flex;
     align-items: center;
@@ -48,7 +57,7 @@ h2{
     color: #4b4b4b;
 }
 /* Estilizando o select */
-#filterSelect {
+.page-publicacoes #filterSelect {
     padding: 8px;
     border: none;
     background-color: transparent;
@@ -59,12 +68,12 @@ h2{
     -moz-appearance: none;
 }
 
-#filterSelect:focus {
+.page-publicacoes #filterSelect:focus {
     outline: none;  /* Remove o outline de foco */
 }
 
 /* Estilo para a seta (fa-sort-down) */
-.filter label {
+.page-publicacoes .filter label {
     pointer-events: none;
     position: absolute;
     right: 10px;
@@ -72,18 +81,18 @@ h2{
 }
 
 /* Customizando o select para não aparecer borda preta */
-#filterSelect {
+.page-publicacoes #filterSelect {
     border: 1px solid transparent;
     padding-right: 20px;  /* Para dar espaço para a seta */
 }
 
 /* Mostrar opções no hover do filtro */
-.filter:hover #filterSelect {
+.page-publicacoes .filter:hover #filterSelect {
     border: 1px solid #ccc;
 }
 
 /* Customização do botão de filtro */
-.filter {
+.page-publicacoes .filter {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -92,14 +101,14 @@ h2{
     background-color: white;
 }
 
-#searchimput{
+.page-publicacoes #searchimput{
     padding: 8px;
     border: none;
     background-color: transparent;
     width: 100%;
     outline: none;
 }
-.card {
+.page-publicacoes .card-publicacoes {
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -111,50 +120,50 @@ h2{
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
   
-.card.hide {
+.page-publicacoes .card-publicacoes.hide {
     opacity: 0;
     transform: scale(0.95);
     pointer-events: none;
 }  
 
-.card:hover {
+.page-publicacoes .card-publicacoes:hover {
     transform: translateY(-8px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
-.card-header {
+.page-publicacoes .card-header {
     position: relative;
     width: 100%;
     height: 150px;
     overflow: hidden;
 }
 
-.card-header img {
+.page-publicacoes .card-header img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.card-body {
+.page-publicacoes .card-body {
     padding: 15px;
 }
 
-.card-body h2 {
+.page-publicacoes .card-body h2 {
     font-size: 18px;
     margin: 0 0 10px;
     color: #333;
 }
 
-.card-body p {
+.page-publicacoes .card-body p {
     font-size: 14px;
     color: #666;
 }
-#titulo{
+.page-publicacoes #titulo{
     font-size: 45px;
     margin-top: 35px;
     margin-bottom: 20px;
 }
 
 /* Desabilitar a borda preta do select */
-#filterSelect:focus {
+.page-publicacoes #filterSelect:focus {
     outline: none;  /* Remove qualquer borda de foco */
 }
