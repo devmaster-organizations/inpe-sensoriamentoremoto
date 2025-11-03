@@ -1,0 +1,38 @@
+### Listar as notícias
+GET http://localhost:3000/api/oportunidades
+
+### Criar uma oportunidade
+POST http://localhost:3000/api/oportunidades
+Content-Type: application/json
+
+{
+ "titulo":"Bolsista de IC",
+ "descricao":"Contratação de bolsista para auxiliar na análise e preparação de dados",
+ "validade": "2025-11-01",
+ "exibir": "true"
+}
+
+### Criar uma oportunidade
+POST http://localhost:3000/api/oportunidades
+Content-Type: application/json
+
+{
+ "titulo":"Bolsista de desenvolvimento",
+ "descricao":"Contratação de bolsista para codificar scripts Python",
+ "validade": "2025-10-21",
+ "exibir": "true"
+}
+
+### Atualizar uma oportunidade
+PUT http://localhost:3000/api/oportunidades/1
+Content-Type: application/json
+
+{
+ "titulo":"BOLSISTA de desenvolvimento",
+ "descricao":"Contratação de bolsista para codificar scripts Python",
+ "validade": "2025-10-21",
+ "exibir": "true"
+}
+
+### Atualizar uma oportunidade
+DELETE http://localhost:3000/api/oportunidades/3

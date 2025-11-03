@@ -136,6 +136,24 @@ cd inpe-sensoriamentoremoto
 # Abra o index.html no navegador
 ```
 
+### Subir tudo com Docker (frontend + backend + Postgres)
+
+Com um único comando você sobe o site, a API e o banco de dados:
+
+```bash
+docker compose up -d --build
+```
+
+URLs úteis:
+- Frontend: http://localhost:3021
+- API (backend): http://localhost:3013/api
+- Imagens enviadas: http://localhost:3013/uploads
+
+Detalhes rápidos:
+- O frontend é servido por um Node estático e faz proxy para a API em `/api/noticias`.
+- A API usa Postgres com os dados persistidos em volume.
+- O schema inicial é criado automaticamente a partir de `server/src/controllers/db.sql` (apenas no primeiro start do banco).
+
 ### Estrutura do Projeto
 ```
 inpe-sensoriamentoremoto/

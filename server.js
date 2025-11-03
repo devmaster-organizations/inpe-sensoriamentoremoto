@@ -11,39 +11,18 @@ app.use(cors());
 app.use(express.json());
 
 // Rota proxy para a API de notícias (contorna CORS)
-app.get('/api/noticias', async (req, res) => {
+app.get('/api/noticias', async (_req, res) => {
+  const API_BASE_URL = process.env.API_BASE_URL || 'http://server:3013';
+  const targetUrl = `${API_BASE_URL}/api/noticias`;
   try {
-    console.log('🔄 Proxy: Fazendo requisição para API externa...');
-    
-    // Tenta diferentes endpoints (IP da máquina host)
-    const apiUrls = [
-      'http://192.168.18.140:3013/api/noticias',
-      'http://host.docker.internal:3013/api/noticias',
-      'http://victor-Latitude-3420:3013/api/noticias'
-    ];
-    
-    let lastError;
-    for (const url of apiUrls) {
-      try {
-        console.log(`Tentando: ${url}`);
-        const response = await fetch(url);
-        
-        if (response.ok) {
-          const data = await response.json();
-          console.log('✅ Dados obtidos da API externa');
-          return res.json(data);
-        }
-        
-        throw new Error(`HTTP ${response.status}`);
-      } catch (error) {
-        console.log(`❌ Falha em ${url}: ${error.message}`);
-        lastError = error;
-        continue;
-      }
+    console.log(`🔄 Proxy: requisitando ${targetUrl}`);
+    const response = await fetch(targetUrl);
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
     }
-    
-    throw lastError || new Error('Nenhuma API disponível');
-    
+    const data = await response.json();
+    console.log('✅ Dados obtidos da API externa');
+    return res.json(data);
   } catch (error) {
     console.error('❌ Erro no proxy:', error.message);
     res.status(500).json({ 
