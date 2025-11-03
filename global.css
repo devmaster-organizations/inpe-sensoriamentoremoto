@@ -18,6 +18,7 @@ button { cursor: pointer; }
   --page-width-percent: 96%;      /* largura relativa do conteúdo */
   --page-max-width: 1400px;       /* largura máxima em telas grandes */
   --page-top-gap: 24px;           /* margem superior padrão entre header e conteúdo */
+  --page-content-top-gap: 16px;   /* respiro interno no topo do conteúdo da página */
 }
 
 body {
@@ -65,6 +66,11 @@ main {
   width: var(--page-width-percent);
   max-width: var(--page-max-width);
   margin: var(--page-top-gap) auto; /* topo padronizado e centralizado lateralmente */
+}
+
+/* Dá um respiro ao primeiro elemento dentro do conteúdo da página */
+.page-scope > *:first-child {
+  margin-top: var(--page-content-top-gap);
 }
 
 /* Utilitário para páginas que precisam de mais espaço */

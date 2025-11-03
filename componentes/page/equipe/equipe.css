@@ -1,0 +1,100 @@
+/* Equipe page styles scoped to .page-equipe */
+.page-equipe .categoria {
+  /* Usa a largura do .page-scope; evita largura interna menor */
+  margin: var(--page-top-gap) 0 24px 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+.page-equipe .categoria h2 {
+  border-bottom: 2px solid #48c26c;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.page-equipe .cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-start;
+}
+
+/* Respiro do topo agora é global via .page-scope > *:first-child */
+
+.page-equipe .card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  width: 180px;
+  text-align: center;
+  padding: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.page-equipe .card:hover {
+  transform: scale(1.05);
+  background-color: #48c26c;
+}
+
+.page-equipe .card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.page-equipe .card h3 {
+  margin: 0.5rem 0;
+}
+
+.page-equipe .modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(3px);
+}
+
+.page-equipe .modal-content {
+  background: #F0FDF4;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  position: relative;
+}
+
+.page-equipe .close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  color: #000;
+  cursor: pointer;
+}
+
+.page-equipe .close:hover {
+  background-color: #48c26c;
+}
+
+/* Ajuste do tamanho da imagem dentro do modal */
+.page-equipe .modal-content img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.page-equipe #modal-lattes {
+  display: inline-block;
+  color: #000;
+}

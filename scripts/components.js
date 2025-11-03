@@ -104,6 +104,10 @@ async function renderPage() {
     if (typeof window.initFooterBehavior === 'function') {
       window.initFooterBehavior();
     }
+    // Inicializa página Equipe quando ativa
+    if (typeof window.initEquipe === 'function' && slug === 'equipe') {
+      window.initEquipe();
+    }
     
     window.scrollTo({ top: 0, behavior: 'smooth' });
   } catch (e) {

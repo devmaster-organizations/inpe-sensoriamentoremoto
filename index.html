@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AgriRSLab</title>
-  
+
     <!-- Styles -->
     <link rel="stylesheet" href="global.css" />
     <!-- Layout styles (globais) -->
@@ -19,12 +20,15 @@
     <script src="scripts/noticias.js" defer></script>
     <script src="scripts/api/noticias.js" defer></script>
     <script src="scripts/api/publicacoes.js" defer></script>
+    <script src="scripts/equipe.js" defer></script>
+
 
 </head>
+
 <body>
     <div include-html="componentes/layouts/header/header.html"></div>
 
-    
+
     <main>
         <div id="app" data-router-outlet></div>
     </main>
@@ -32,4 +36,5 @@
     <div include-html="componentes/layouts/footer/footer.html"></div>
 
 </body>
+
 </html>
