@@ -1,7 +1,7 @@
 const { Pool } = require("pg");
 const dotenv = require("dotenv");
-// Carrega  as variáveis de ambiente definidas no arquivo .env
-dotenv.config();
+// Carrega  as variáveis de ambiente definidas no arquivo .env.dev
+dotenv.config({ path: '.env.dev' });
 
 const pool = new Pool({
   host: process.env.POSTGRES_HOST,

@@ -4,8 +4,8 @@ const rotas = require("./routes");
 const path = require('path');
 const dotenv = require("dotenv");
 
-// Carrega as variáveis de ambiente definidas no arquivo .env
-dotenv.config();
+// Carrega as variáveis de ambiente definidas no arquivo .env.dev
+dotenv.config({ path: '.env.dev' });
 
 // Cria uma instância do aplicativo Express
 const app = express();

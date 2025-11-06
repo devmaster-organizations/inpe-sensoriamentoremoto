@@ -121,19 +121,32 @@ Desenvolver um **website institucional moderno e responsivo** para o **Laborató
 
 ## 🚀 Como Executar o Projeto
 
-### Pré-requisitos
-- Navegador web moderno
-- Servidor local (opcional para desenvolvimento)
+### Desenvolvimento Local (Recomendado para a equipe)
 
-### Instalação
+**Pré-requisitos:** Node.js 18+ e PostgreSQL local
+
 ```bash
-# Clone o repositório
-git clone https://github.com/devmaster-organizations/inpe-sensoriamentoremoto.git
+# Setup rápido (script automático)
+node dev-start.js
 
-# Entre no diretório
-cd inpe-sensoriamentoremoto
+# OU manual em 2 terminais:
+cd backend && npm install && npm run dev    # Terminal 1
+cd frontend && npm install && npm run dev   # Terminal 2
+```
 
-# Abra o index.html no navegador
+📖 **Guia completo**: [DEV-LOCAL.md](./DEV-LOCAL.md)
+
+### Docker (Produção/CI)
+
+```bash
+# Subir todos os serviços
+docker compose up --build
+
+# Subir apenas o frontend (desenvolvimento)
+docker compose up frontend --build
+
+# Subir apenas o backend
+docker compose up server postgres --build
 ```
 
 ## 🚀 Estrutura Reorganizada do Projeto
