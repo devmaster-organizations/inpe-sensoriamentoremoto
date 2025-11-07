@@ -8,8 +8,9 @@
     "dev": "nodemon server.js || node server.js"
   },
   "dependencies": {
-    "express": "^4.18.2",
     "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^4.18.2",
     "serve-static": "^1.15.0"
   },
   "devDependencies": {

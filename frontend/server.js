@@ -1,3 +1,6 @@
+// Carrega variáveis de ambiente do arquivo .env.dev
+require('dotenv').config({ path: '.env.dev' });
+
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
@@ -16,6 +19,8 @@ app.get('/api/noticias', async (_req, res) => {
   const targetUrl = `${API_BASE_URL}/api/noticias`;
   try {
     console.log(`🔄 Proxy: requisitando ${targetUrl}`);
+    console.log(`📌 API_BASE_URL configurada: ${process.env.API_BASE_URL}`);
+    
     const response = await fetch(targetUrl);
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}`);
@@ -25,6 +30,7 @@ app.get('/api/noticias', async (_req, res) => {
     return res.json(data);
   } catch (error) {
     console.error('❌ Erro no proxy:', error.message);
+    console.error('🔍 Detalhes do erro:', error);
     res.status(500).json({ 
       error: 'API não disponível', 
       message: error.message 
@@ -62,4 +68,5 @@ const PORT = process.env.PORT || 3021;
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
   console.log(`📱 Projeto disponível em http://localhost:${PORT}`);
+  console.log(`🔗 API_BASE_URL: ${process.env.API_BASE_URL || 'http://server:3013'}`);
 });
