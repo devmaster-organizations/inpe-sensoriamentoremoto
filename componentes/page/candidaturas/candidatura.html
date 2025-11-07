@@ -1,0 +1,52 @@
+<div class="form-container">
+    <h1>Formulário de Candidatura a Emprego</h1>
+
+    <form id="jobForm">
+      <!-- Nome -->
+      <label>Nome</label>
+      <div class="row">
+        <div class="col">
+          <input type="text" placeholder="Primeiro nome" name="primeiro_nome" required>
+        </div>
+        <div class="col">
+          <input type="text" placeholder="Último nome" name="ultimo_nome" required>
+        </div>
+      </div>
+
+      <!-- Data de nascimento -->
+      <label>Data de nascimento</label>
+      <div class="icon-input">
+        <i class="far fa-calendar-alt"></i>
+        <input type="date" name="nascimento" required>
+      </div>
+
+      <!-- Telefone -->
+      <label>Número de telefone</label>
+      <div class="icon-input">
+        <i class="fas fa-phone"></i>
+        <input type="tel" placeholder="+55 (XX) XXXXX-XXXX" name="telefone" required>
+      </div>
+
+      <!-- E-mail -->
+      <label>E-mail</label>
+      <div class="icon-input">
+        <i class="far fa-envelope"></i>
+        <input type="email" placeholder="seuemail@exemplo.com" name="email" required>
+      </div>
+
+      <!-- Cargo -->
+      <label>Cargo ou área de interesse</label>
+      <input type="text" placeholder="Ex: Analista de Marketing" name="cargo" required>
+
+      <!-- Carta -->
+      <label>Carta de Apresentação</label>
+      <textarea placeholder="Fale brevemente sobre você e por que deseja esta vaga..." name="carta"></textarea>
+
+      <!-- Currículo -->
+      <label>Anexar Currículo</label>
+      <input type="file" name="curriculo" accept=".pdf,.doc,.docx">
+
+      <button type="submit">Enviar Candidatura</button>
+      <div class="success" id="successMsg">✅ Sua candidatura foi enviada com sucesso!</div>
+    </form>
+</div>
