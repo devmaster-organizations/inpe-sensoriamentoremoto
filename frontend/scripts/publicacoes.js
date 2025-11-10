@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.querySelector(".search input"); // Campo de busca
     const cards = document.querySelectorAll(".card"); // Todos os cards

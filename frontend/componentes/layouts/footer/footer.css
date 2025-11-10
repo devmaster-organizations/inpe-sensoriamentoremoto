@@ -34,34 +34,33 @@ footer:hover {
     justify-content: space-between;
     align-items: center;
 }
-#nome p{
+#nome{
     display: flex;
     padding: 0%;
     margin: 0%;
-    margin-left: 180px;
+    flex: 1;
     color: white;
     font-size: 45px;
     font-weight: bold;
     font-family: var(--fonte-devmaster);
+    justify-content: center;
 }
 #redes{
-    display: block;
-    width: 1100px;
+    display: flex;
+    flex: 2;
     justify-content: space-around;
 }
-#redes i{
+.links i{
     height: 45px;
     color: white;
 }
-#redes a{
+.links a{
     text-decoration: none;
     color: black;
-    margin-top: 100px;
-    margin-right: 180px;
     font-size: 27px;
     font-family: var(--fonte-devmaster);
 }
-#redes a:hover{
+.links a:hover{
     color: white;
 }
 i.fa-brands{
@@ -70,4 +69,37 @@ i.fa-brands{
 i.fa-solid{
     margin-right: 3px;
     font-size: 37px;
+}
+.links{
+    display: block;
+}
+
+@media (max-width: 900px){
+    #nome{
+        font-size: 32px;
+    }
+    .links a{
+        font-size: 20px;
+    }
+    .links i{
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 548px){
+    #redes{
+        flex-direction: column;
+    }
+    #rodape{
+        flex-direction: column;
+    }
+    #nome{
+        font-size: 24px;
+    }
+    .links a{
+        font-size: 16px;
+    }
+    .links i{
+        font-size: 24px;
+    }
 }

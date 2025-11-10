@@ -1,6 +1,6 @@
 header {
     width: 100%;
-    height: var(--header-height);
+    height: 12dvh;
     position: fixed;
     top: 0;
     left: 0;
@@ -114,3 +114,112 @@ header {
         width: 40px;
     }
 }
+
+/* ------------- HAMBURGER (integração ao seu visual) ------------- */
+.hamburger {
+  display: none; /* fica escondido em desktop */
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 6px;
+  width: 44px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* caixa das linhas */
+.hamburger__box {
+  display: inline-block;
+  position: relative;
+  width: 20px;
+  height: 14px;
+}
+
+/* as 3 linhas */
+.hamburger__line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #222; /* mantém identidade (cor do texto) */
+  border-radius: 2px;
+  transition: transform .25s ease, opacity .25s ease;
+}
+.hamburger__line:nth-child(1) { top: 0; }
+.hamburger__line:nth-child(2) { top: 6px; }
+.hamburger__line:nth-child(3) { bottom: 0; }
+
+/* quando o header tem classe .is-open, transforma linhas em X */
+header.is-open .hamburger__line:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+header.is-open .hamburger__line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+header.is-open .hamburger__line:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* ---------- comportamento responsivo do menu ---------- */
+/* em desktop mantemos a aparência atual; em mobile escondemos os links inline e mostramos o botão */
+@media (max-width: 946px) {
+  .hamburger {
+    display: inline-flex;
+    background: #fff;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  }
+
+  /* esconda a versão horizontal dos botões (no desktop .fullbtn era flex row) */
+  .fullbtn {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--border);
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: transform .22s cubic-bezier(.2,.9,.3,1), opacity .22s;
+    opacity: 0;
+    padding: 8px 12px;
+    gap: 8px;
+    flex-direction: column;
+    align-items: stretch;
+    z-index: 999;
+  }
+
+  /* quando aberto (classe que o JS aplica) mostramos o menu */
+  header.is-open .fullbtn {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+
+  /* ajuste visual dos links no dropdown mobile */
+  .fullbtn .btnpadrao {
+    display: block;
+    width: 100%;
+    height: 44px;
+    min-width: auto;
+    border-radius: 8px;
+    text-align: left;
+    padding: 10px 14px;
+    background: #fff;
+    border: 1px solid var(--border);
+    margin: 6px 0;
+  }
+
+  /* opcional: destaque do item ativo em mobile */
+  .fullbtn .btnpadrao.is-active {
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 14%, transparent);
+  }
+
+  /* adapte logo area se necessário: encolher espaços */
+  .toolbar { padding: 0 12px; }
+}
+
+/* keyboard focus visible (mantém identidade de foco) */
+.hamburger:focus { outline: 3px solid rgba(0,150,0,0.14); outline-offset: 3px; border-radius: 8px; }

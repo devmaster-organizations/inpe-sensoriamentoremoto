@@ -31,7 +31,7 @@ body {
 }
 
 main {
-  padding-top: 120px; /* Espaço maior para o header fixo + margem */
+  padding-top: 16px; /* Espaço maior para o header fixo + margem */
   min-height: calc(100vh + 200px); /* Altura mínima maior para garantir scroll */
   padding-bottom: 60px; /* Espaço para ver o footer parcial */
 }
