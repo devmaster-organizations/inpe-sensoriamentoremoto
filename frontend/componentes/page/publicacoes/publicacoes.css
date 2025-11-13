@@ -163,3 +163,49 @@
 .page-publicacoes #filterSelect:focus {
     outline: none;  /* Remove qualquer borda de foco */
 }
+
+
+/* ============================
+   Animação/Transição dos cards
+   (compatível com .card-publicacoes existente)
+   ============================ */
+
+.page-publicacoes .card-publicacoes {
+  /* garante que a transição exista */
+  transition: opacity 320ms ease, transform 320ms ease, box-shadow 320ms ease;
+  will-change: opacity, transform;
+  /* manter display flex como padrão (JS controla display:none) */
+  display: flex;
+}
+
+/* classe usada para iniciar a animação de sumir */
+.page-publicacoes .card-publicacoes.hidden,
+.page-publicacoes .card-publicacoes.hide {
+  opacity: 0;
+  transform: scale(0.96);
+  pointer-events: none;
+}
+
+/* quando estiver visível (padrão), restauramos */
+.page-publicacoes .card-publicacoes:not(.hidden):not(.hide) {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+/* para garantir que o layout não pule, o JS remove display:none apenas depois da transição */
+/* foco acessível mantém visibilidade */
+.page-publicacoes .card-publicacoes:focus-within {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.18);
+  z-index: 1;
+}
+
+/* ajuste pequenininho: quando estivermos escondidos via display:none, o gap da grid permanece consistente */
+.page-publicacoes #botoes { align-items: start; }
+
+/* (opcional) suaviza a entrada imediata quando a página carrega */
+.page-publicacoes .card-publicacoes[data-initial-hidden="true"] {
+  opacity: 0;
+  transform: scale(0.96);
+}

@@ -1,57 +1,112 @@
-/* É a seção que cobre todo o carrossel */
-.carrossel{
-    max-width: 1200px; 
-    margin: 0 auto;
-    padding: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* ---------- estilo base ---------- */
+.carousel {
+  max-width: 1200px;
+  margin: 28px auto;
+  position: relative;
+  padding: 0 12px;
 }
 
-/* Reune as imagens do carrossel e as centraliza */
-.imagens{
-    display: flex;
-    align-items: center;
-    width: 100%;
-    overflow-x: auto; /* cria a barra de rolagem caso necessário */
-    gap: 0;
-    scroll-snap-type: x mandatory; /* trava a imagem no centro, impedindo que o scroll fique preso entre imagens */
-    -webkit-overflow-scrolling: touch; /* Deixa o scroll mais fluido no sistema da apple */
+/* viewport: área visível */
+.carousel__viewport {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #dbecc4;
 }
 
-/* É os card da imagem do carrossel */
-.card{
-    flex: 0 0 100%;
-    min-width: 100%;
-    box-sizing: border-box;
-    scroll-snap-align: center; /* Centraliza as imagens no scroll */
-    padding: 0 8px;
+/* slides empilhados (fade) */
+.carousel__viewport .slide {
+  position: absolute;
+  inset: 0;                    /* topo:0; direita:0; bottom:0; left:0 */
+  opacity: 0;
+  width: 100%;
+  transform: translateZ(0);
+  transition: opacity 600ms cubic-bezier(.2,.9,.3,1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: stretch;
+  text-align: left;
+  padding: 12px;
 }
 
-/* O link que engloba a imagem e faz com que elas ocupem todo o espaço do card */
-.card a {
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
-
-/* A imagem que serve de conteudo para o link */
-.card img {
-    display: block;
-    width: 100%;
-    height: auto;
-    max-height: 60vh; /* Faz com que a altura máxima da imagem seja ate 60% da tela */
-    object-fit: cover;
-    border-radius: 16px;
-    border: 1px solid gray;
+/* slide ativo */
+.carousel__viewport .slide.is-active {
+  opacity: 1;
+  position: relative;         /* bring to flow so its link is reachable */
 }
 
-/* RESPONSIVIDADE */
+/* imagem */
+.slide img {
+  width: 100%;
+  height: clamp(180px, 45vh, 520px);
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+}
 
-/* Tablets (até 900px) */
+/* título sobre a imagem/abaixo (personalize) */
+.slide__title {
+  margin-top: 10px;
+  font-family: "Poppins", system-ui, sans-serif;
+  font-size: 1.1rem;
+  color: #111;
+}
 
-@media (max-width: 900px){
-    .card{
-        width: 80%; /* Faz com que o card tenha um tamanho reduzido em telas menores */
-    }
+/* botões prev/next */
+.carousel__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  cursor: pointer;
+  font-weight: 700;
+}
+.carousel__prev { left: 8px; }
+.carousel__next { right: 8px; }
+.carousel__btn:focus { outline: 3px solid rgba(0,150,0,0.14); outline-offset: 2px; }
+
+/* dots (bolinhas) */
+.carousel__dots {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 12px;
+}
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.12);
+  background: rgba(255,255,255,0.25);
+  transition: background .18s ease, transform .12s ease, box-shadow .12s;
+  cursor: pointer;
+}
+.dot[aria-selected="true"] {
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+  transform: scale(1.15);
+}
+
+/* oculto para leitores de tela */
+.sr-only {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* responsivo: ajustar botões em mobile */
+@media (max-width: 520px) {
+  .carousel__btn { width: 40px; height: 40px; }
+  .dot { width: 14px; height: 14px; }
 }
