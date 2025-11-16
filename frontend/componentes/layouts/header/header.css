@@ -1,116 +1,259 @@
+/* ======================================================
+   HEADER + HAMBURGER (com menu rolável em mobile/landscape)
+   ====================================================== */
+
+/* ---------- Header base ---------- */
 header {
-    width: 100%;
-    height: var(--header-height);
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: var(--header-bg); /* usa cor do header */
-    border-bottom: 1px solid var(--border);
-    z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  width: 100%;
+  height: 12dvh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: var(--header-bg); /* usa cor do header */
+  border-bottom: 1px solid var(--border);
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+/* toolbar (container interno) */
 .toolbar {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 24px;
-    flex-wrap: nowrap;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  flex-wrap: nowrap;
 }
 
 /* Logo section */
 #logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
 }
 
 #imglogo {
-    height: 48px;
-    width: 48px;
+  height: 48px;
+  width: 48px;
 }
 
 .txtbar h2 {
-    margin: 0;
-    font-size: 1.3rem;
-    white-space: nowrap;
+  margin: 0;
+  font-size: 1.3rem;
+  white-space: nowrap;
 }
 
 .txtbar p {
-    margin: 0;
-    color: var(--muted);
-    font-size: 0.85rem;
-    white-space: nowrap;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+  white-space: nowrap;
 }
 
-/* Navigation buttons */
+/* Navigation buttons (desktop inline) */
 .fullbtn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
 }
 
 .btnpadrao {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    color: inherit;
-    border-radius: 8px;
-    min-width: 70px;
-    height: 32px;
-    font-size: 0.8rem;
-    padding: 4px 8px;
-    border: 1px solid var(--border);
-    background: #fff;
-    white-space: nowrap;
-    transition: border-color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 8px;
+  min-width: 70px;
+  height: 32px;
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  background: #fff;
+  white-space: nowrap;
+  transition: border-color 0.2s, box-shadow 0.15s;
 }
 
 .btnpadrao:hover {
-    border-color: var(--accent);
+  border-color: var(--accent);
 }
 
 .btnpadrao.is-active {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 2px color-mix(in oklab, var(--accent) 20%, transparent);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--accent) 20%, transparent);
 }
 
-/* Responsive */
+/* ---------- Responsive tweaks (general) ---------- */
 @media (max-width: 992px) {
-    .toolbar {
-        padding: 0 16px;
-    }
-    
-    .btnpadrao {
-        min-width: 60px;
-        font-size: 0.75rem;
-        padding: 3px 6px;
-    }
-    
-    .fullbtn {
-        gap: 4px;
-    }
+  .toolbar { padding: 0 16px; }
+
+  .btnpadrao {
+    min-width: 60px;
+    font-size: 0.75rem;
+    padding: 3px 6px;
+  }
+
+  .fullbtn { gap: 4px; }
 }
 
 @media (max-width: 768px) {
-    .toolbar {
-        padding: 0 12px;
-    }
-    
-    .txtbar h2 {
-        font-size: 1.1rem;
-    }
-    
-    .txtbar p {
-        font-size: 0.75rem;
-    }
-    
-    #imglogo {
-        height: 40px;
-        width: 40px;
-    }
+  .toolbar { padding: 0 12px; }
+
+  .txtbar h2 { font-size: 1.1rem; }
+  .txtbar p { font-size: 0.75rem; }
+
+  #imglogo { height: 40px; width: 40px; }
 }
+
+@media (max-width: 410px) {
+  .txtbar p { font-size: 0.67rem; }
+}
+
+/* ---------- HAMBURGER (integração visual) ---------- */
+.hamburger {
+  display: none; /* fica escondido em desktop */
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 6px;
+  width: 44px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* caixa das linhas */
+.hamburger__box {
+  display: inline-block;
+  position: relative;
+  width: 20px;
+  height: 14px;
+}
+
+/* as 3 linhas */
+.hamburger__line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #222; /* mantém identidade (cor do texto) */
+  border-radius: 2px;
+  transition: transform .25s ease, opacity .25s ease;
+}
+.hamburger__line:nth-child(1) { top: 0; }
+.hamburger__line:nth-child(2) { top: 6px; }
+.hamburger__line:nth-child(3) { bottom: 0; }
+
+/* quando o header tem classe .is-open, transforma linhas em X */
+header.is-open .hamburger__line:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+header.is-open .hamburger__line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+header.is-open .hamburger__line:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* keyboard focus visible */
+.hamburger:focus {
+  outline: 3px solid rgba(0,150,0,0.14);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* ---------- comportamento responsivo do menu (mobile) ---------- */
+/* em desktop mantemos a aparência atual; em mobile escondemos os links inline e mostramos o botão */
+@media (max-width: 946px) {
+  .hamburger {
+    display: inline-flex;
+    background: #fff;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  }
+
+  /* transformamos a .fullbtn em dropdown vertical, inicialmente escondida */
+  .fullbtn {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--border);
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: transform .22s cubic-bezier(.2,.9,.3,1), opacity .22s;
+    opacity: 0;
+    padding: 8px 12px;
+    gap: 8px;
+    flex-direction: column;
+    align-items: stretch;
+    z-index: 999;
+    /* torne rolável internamente (melhora em landscape e long lists) */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+    /* max-height será calculado dinamicamente pelo JS para caber na viewport */
+    max-height: none;
+  }
+
+  /* quando aberto (classe que o JS aplica) mostramos o menu */
+  header.is-open .fullbtn {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+
+  /* ajuste visual dos links no dropdown mobile */
+  .fullbtn .btnpadrao {
+    display: block;
+    width: 100%;
+    height: 44px;
+    min-width: auto;
+    border-radius: 8px;
+    text-align: left;
+    padding: 10px 14px;
+    background: #fff;
+    border: 1px solid var(--border);
+    margin: 6px 0;
+  }
+
+  /* destaque do item ativo em mobile */
+  .fullbtn .btnpadrao.is-active {
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 14%, transparent);
+  }
+
+  /* reduzir padding do toolbar no mobile para equilibrar */
+  .toolbar { padding: 0 12px; }
+}
+
+/* melhora a rolagem interna em telas muito baixas/landscape */
+@media (max-height: 420px) and (orientation: landscape) {
+  .fullbtn {
+    padding: 8px 10px;
+  }
+}
+
+/* permite scroll vertical natural da página (evita conflito no mobile) */
+.carousel { touch-action: pan-y; }
+
+/* ------------------------------------------------------
+   Ajustes opcionais / utilitários (mantidos para consistência)
+   ------------------------------------------------------ */
+
+/* pequenas sombras e transições para links */
+.btnpadrao {
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.12s;
+}
+
+/* ao focar em links no menu, manter visibilidade */
+.btnpadrao:focus {
+  outline: 3px solid rgba(0,150,0,0.12);
+  outline-offset: 3px;
+}
+
+/* garante que header fique acima de elementos (quando menu aberto) */
+header.is-open { z-index: 1200; }

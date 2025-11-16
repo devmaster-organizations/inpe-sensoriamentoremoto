@@ -7,7 +7,18 @@
                 <p>Agricultural Remote Sensing Laboratory - INPE</p>
             </div>
         </div>
-        <div class="fullbtn">
+
+        <!-- botão hambúrguer (visível só em telas pequenas) -->
+        <button id="hamburgerBtn" class="hamburger" aria-controls="mainNav" aria-expanded="false" aria-label="Abrir menu">
+            <span class="hamburger__box">
+                <span class="hamburger__line"></span>
+                <span class="hamburger__line"></span>
+                <span class="hamburger__line"></span>
+            </span>
+        </button>
+
+        <!-- Nav: reutiliza sua .fullbtn mas agora é um <nav> com id -->
+        <nav id="mainNav" class="fullbtn" aria-hidden="true">
             <a class="btnpadrao" href="#/home">Início</a>
             <a class="btnpadrao" href="#/sobre">Sobre</a>
             <a class="btnpadrao" href="#/noticias">Notícias</a>
@@ -16,8 +27,6 @@
             <a class="btnpadrao" href="#/publicacoes">Publicação</a>
             <a class="btnpadrao" href="#/area-pesquisa">Área de Pesquisa</a>
             <a class="btnpadrao" href="#/contatos">Contatos</a>
-            <a href="btnpadrao" href="#/linknovo"></a>
-        </div>
-
+        </nav>
     </div>
 </header>
