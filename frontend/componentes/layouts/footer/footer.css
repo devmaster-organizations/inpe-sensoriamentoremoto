@@ -6,27 +6,37 @@
     border: 0;
     padding: 0;
 }
+/* Footer fixo, invisível por padrão; mostrado via classe .is-visible controlada por JS */
 footer{
     width: 100vw; /* Ocupa toda a largura da viewport */
     height: 220px;
     background-color: var(--color-footer);
-    position: fixed; /* Fixo para aparecer um pouco */
-    bottom: -180px; /* Esconde a maior parte, mostra só 40px */
+    position: fixed;
     left: 0;
     right: 0;
+    bottom: 0;
     box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
     z-index: 998; /* Abaixo do header */
-    transition: bottom 0.3s ease; /* Animação suave */
+    /* Esconde totalmente fora da tela e desabilita interação */
+    transform: translateY(100%);
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform 0.28s ease, visibility 0s linear 0.28s;
 }
 
-/* Quando o usuário chega no final da página */
-footer.show-full {
-    bottom: 0; /* Mostra o footer completo */
+/* Quando visível, desliza para dentro e permite interação */
+footer.is-visible {
+    transform: translateY(0);
+    visibility: visible;
+    pointer-events: auto;
+    transition: transform 0.28s ease, visibility 0s linear 0s;
 }
 
-/* Hover no footer para mostrar completo */
-footer:hover {
-    bottom: 0;
+/* Quando o footer estiver visível, empurra o conteúdo para cima um pouco
+   (o JS define --footer-height com a altura real do footer) */
+body.has-footer-visible {
+    padding-bottom: var(--footer-height, 220px);
+    transition: padding-bottom 0.2s ease;
 }
 #rodape{
     display: flex;
