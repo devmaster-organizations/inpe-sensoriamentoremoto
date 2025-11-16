@@ -29,6 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // clique no botão
   btn.addEventListener('click', (e) => {
+    console.log("Click aconteceu!");
+    
     e.stopPropagation();
     toggleMenu();
   });

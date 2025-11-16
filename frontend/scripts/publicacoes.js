@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 });
+
+
 if (searchValue === "" || title.includes(searchValue)) {
       card.style.display = "flex";
 } else {
