@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+a{
+    text-decoration: none;
+}
+
+#page-title{
+    display: flex;
+    justify-content: center;
+    font-size: clamp(28px, 6vw, 45px); /* responsivo */;
+    margin: 35px 0 20px;
+}
+
+#page-btn-search{
+    display: flex;
+    justify-content:center; 
+    padding: 0 12px; 
+}
+
+#page-btn{
+    display: flex;              /* coloca os cards lado a lado */
+    flex-wrap: wrap;            /* quebra a linha automaticamente */
+    justify-content: center;    /* centraliza os cards na linha */
+    gap: 45px;                  /* espaçamento entre os cards */
+    margin: 40px auto;          /* centraliza o container */
+    width: 90%;                 /* ocupa 90% da largura da tela */
+    max-width: 1200px;          /* largura máxima */
+}
+
+.btn-search{
+    display:flex;
+    align-items:center;
+    border: 1px solid #ccc;
+    background-color: white;
+    width: 100%;
+    max-width: 420px;   /* permitimos que cresça até 420px */
+    border-radius: 20px;
+    padding: 6px 12px;
+    color: #4b4b4b;
+    transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+/* muda a cor da borda e adiciona foco visível quando input (ou qualquer filho) estiver focado
+   funciona com clique e com tab graças ao :focus-within */
+.btn-search:focus-within {
+    border-color: #2b6cb0;
+    box-shadow: 0 0 0 6px rgba(43,108,176,0.14);
+}
+
+/* input sem outline padrão — ainda temos ring no container via focus-within */
+#searchinput-vagas{
+    padding: 8px;
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    outline: none;
+    font-size: 15px;
+}
+
+/* --- GRID responsivo para cards --- */
+#page-btn{
+    display: grid;
+    gap: 28px;
+    margin: 30px auto;
+    width: 92%;
+    max-width: 1200px;
+    grid-template-columns: repeat( auto-fit, minmax(260px, 1fr) );
+    align-items: start;
+}
+
+/* card - agora mais flexível (remova width fixa) */
+.page-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: opacity 300ms ease, transform 300ms ease, box-shadow 300ms ease;
+    opacity: 1;
+    transform: scale(1);
+    min-height: 220px; /* garante altura mínima agradável */
+    /* para evitar que o foco se perca atrás de outros elementos quando animado */
+    will-change: transform, box-shadow;
+}
+  
+  /* estado "sumido" — ainda presente no DOM até o JS definir display:none */
+.page-card.hidden {
+    opacity: 0;
+    transform: scale(0.96);
+    pointer-events: none;
+}
+
+
+/* hover original */
+.page-card:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.18);
+    z-index: 1;
+}
+
+/* ===========================
+   Acessibilidade por teclado
+   ===========================
+   Quando qualquer elemento dentro do card (ex: o <a>) estiver focado, :focus-within
+   aplica a mesma animação do hover — assim tabbing mostra a animação.
+*/
+.page-card:focus-within {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.18);
+    z-index: 1;
+}
+
+/* mantém o foco visível (anel) sem remover a acessibilidade do elemento interno */
+.page-card:focus-within {
+    outline: none; /* removemos outline do container porque usamos box-shadow como ring */
+}
+
+/* Mantém um outline para links focados caso queira (opcional) */
+/* .page-card a:focus { outline: 2px dashed var(--accent); outline-offset: 4px; } */
+
+
+.page-card-header {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+}
+
+.page-card-header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.page-card-body {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:16px;
+    text-align:center;
+    gap: 8px;
+    flex: 1 1 auto;
+}
+
+.page-card-body h2 {
+    font-size: 18px;
+    color:#333;
+    line-height:1.25;
+}
+
+/* pequenos ajustes para telas bem pequenas */
+@media (max-width: 420px) {
+    .page-card-header { height: 140px; }
+    .page-card-body h2 { font-size: 16px; padding: 0 6px; }
+    #page-btn { gap: 18px; width: 96%; }
+}

@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS publicacoes, oportunidades, noticias;
+DROP TABLE IF EXISTS publicacoes, oportunidades, noticias, vagas;
 
 CREATE TABLE noticias (
   idnoticia SERIAL,
@@ -27,5 +27,15 @@ CREATE TABLE publicacoes (
   doi VARCHAR(250) NULL,
   image VARCHAR NULL,
   PRIMARY KEY(idpublicacao)
+);
+
+CREATE TABLE vagas (
+  idvaga SERIAL,
+  titulo VARCHAR(250) NULL,
+  link VARCHAR(250) NULL,
+  postagem DATE NULL,
+  exibir BOOL NULL,
+  image VARCHAR NULL,
+  PRIMARY KEY(idvaga)
 );
 

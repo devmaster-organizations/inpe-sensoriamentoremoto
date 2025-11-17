@@ -118,6 +118,26 @@ async function renderPage() {
         }, 0);
       }
     }
+    // Inicializa página Publicações quando ativa (GET + POST com upload)
+    if (slug === 'publicacoes') {
+      if (typeof window.initPublicacoes === 'function') {
+        window.initPublicacoes();
+      } else {
+        setTimeout(() => {
+          if (typeof window.initPublicacoes === 'function') window.initPublicacoes();
+        }, 0);
+      }
+    }
+    // Inicializa página Vagas quando ativa (GET + POST com upload)
+    if (slug === 'vagas') {
+      if (typeof window.initVagas === 'function') {
+        window.initVagas();
+      } else {
+        setTimeout(() => {
+          if (typeof window.initVagas === 'function') window.initVagas();
+        }, 0);
+      }
+    }
     
     window.scrollTo({ top: 0, behavior: 'smooth' });
   } catch (e) {

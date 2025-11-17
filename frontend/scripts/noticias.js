@@ -85,47 +85,12 @@ function initModal() {
     page.dataset.modalBound = '1';
 }
 
-// Função para gerenciar o footer inteligente
-function initFooterBehavior() {
-    const footer = document.querySelector('footer');
-    if (!footer) return;
-    
-    // Detecta scroll para mostrar/esconder footer
-    let ticking = false;
-    
-    function updateFooter() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const windowHeight = window.innerHeight;
-        const documentHeight = document.documentElement.scrollHeight;
-        const scrollPercentage = (scrollTop + windowHeight) / documentHeight;
-        
-        // Mostra footer completo quando chegar a 90% da página
-        if (scrollPercentage >= 0.9) {
-            footer.classList.add('show-full');
-        } else {
-            footer.classList.remove('show-full');
-        }
-        
-        ticking = false;
-    }
-    
-    function requestTick() {
-        if (!ticking) {
-            requestAnimationFrame(updateFooter);
-            ticking = true;
-        }
-    }
-    
-    window.addEventListener('scroll', requestTick);
-    window.addEventListener('resize', requestTick);
-    
-    // Verifica posição inicial
-    updateFooter();
-}
-
 // Expor funções globalmente para serem chamadas pelo components.js
 window.initModal = initModal;
-window.initFooterBehavior = initFooterBehavior;
+// Não sobrescreve o comportamento do footer se já existir (definido em footer-anim.js)
+if (!window.initFooterBehavior) {
+  window.initFooterBehavior = function(){};
+}
 
 
 // ===========================
@@ -139,6 +104,8 @@ window.initNoticias = async function initNoticias() {
 
     const grid = root.querySelector('#page-btn');
     const searchInput = root.querySelector('#searchinput');
+    const form = root.querySelector('#form-noticia');
+    const msg = root.querySelector('.form-msg');
 
     if (!grid) return;
 
@@ -181,7 +148,7 @@ window.initNoticias = async function initNoticias() {
         }
 
         // Adiciona cards (ordenados já chegam do backend)
-        noticias.forEach(n => grid.appendChild(criarCard(n)));
+    noticias.forEach(n => grid.appendChild(criarCard(n)));
 
         // Busca por título (não quebra layout)
         if (searchInput) {
@@ -191,6 +158,29 @@ window.initNoticias = async function initNoticias() {
                     const title = card.querySelector('h2')?.textContent?.toLowerCase() || '';
                     card.style.display = title.includes(q) ? '' : 'none';
                 });
+            });
+        }
+        // Upload de nova notícia (opcional)
+        if (form) {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                if (msg) { msg.textContent = 'Enviando...'; msg.style.color = ''; }
+                try {
+                    const fd = new FormData(form);
+                    // Checkbox exibir vira 'true'/'false'
+                    if (!fd.has('exibir')) fd.append('exibir', 'false');
+                    else fd.set('exibir', 'true');
+                    const resp = await (window.postNoticia ? window.postNoticia(fd) : fetch('/api/noticias', { method: 'POST', body: fd }).then(r=>r.json()));
+                    if (msg) { msg.textContent = 'Salvo com sucesso!'; msg.style.color = 'green'; }
+                    // Recarrega a lista
+                    const novas = await (window.getNoticias ? window.getNoticias() : fetch('/api/noticias').then(r => r.json()));
+                    grid.innerHTML = '';
+                    novas.forEach(n => grid.appendChild(criarCard(n)));
+                    // Limpa form
+                    form.reset();
+                } catch (e) {
+                    if (msg) { msg.textContent = 'Erro ao enviar: ' + (e.message || e); msg.style.color = 'red'; }
+                }
             });
         }
     } catch (err) {

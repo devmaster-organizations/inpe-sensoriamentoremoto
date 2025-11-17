@@ -1,5 +1,6 @@
 const express = require('express');
 const multer = require("multer");
+const path = require('path');
 const router = express.Router();
 const noticiaController = require('../controllers/noticia.controller');
 
@@ -26,7 +27,19 @@ const storage = multer.diskStorage({
   });
 
 // Rotas para o CRUD de notícias
-router.post('/', upload.single('imagem'), noticiaController.createNoticia);
+// Aceita o campo de arquivo como 'imagem' (preferido) ou 'image' (alias) para evitar erros Multer "Unexpected field"
+const uploadMiddleware = upload.fields([
+  { name: 'imagem', maxCount: 1 },
+  { name: 'image', maxCount: 1 },
+]);
+
+router.post('/', uploadMiddleware, (req, _res, next) => {
+  // Normaliza para req.file para manter o controller atual compatível
+  if (!req.file && req.files) {
+    req.file = (req.files.imagem && req.files.imagem[0]) || (req.files.image && req.files.image[0]);
+  }
+  next();
+}, noticiaController.createNoticia);
 router.get('/', noticiaController.getAllNoticias);
 router.put('/:id', noticiaController.updateNoticia);
 router.delete('/:id', noticiaController.deleteNoticia);

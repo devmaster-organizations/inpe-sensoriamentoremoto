@@ -3,11 +3,12 @@ const pool = require('./db');
 // Criar uma nova publicação
 async function createPublicacao(req, res) {
   const { texto, ano, link, doi } = req.body;
+  const image = req.file ? `/uploads/${req.file.filename}` : null;
   
   try {
     const result = await pool.query(
-      'INSERT INTO publicacoes (texto, ano, link, doi) VALUES ($1, $2, $3, $4) RETURNING *',
-      [texto, ano, link, doi]
+      'INSERT INTO publicacoes (texto, ano, link, doi, image) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+      [texto, ano, link, doi, image]
     );
     
     const publicacao = result.rows[0];
@@ -16,7 +17,7 @@ async function createPublicacao(req, res) {
       publicacao
     });
   } catch (error) {
-    console.error(error);
+    console.error('Erro ao criar publicação:', error);
     res.status(500).json({ error: 'Erro ao criar publicação' });
   }
 }

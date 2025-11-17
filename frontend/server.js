@@ -13,7 +13,7 @@ app.use(cors());
 // Middleware para parsing JSON
 app.use(express.json());
 
-// Rota proxy para a API de notícias (contorna CORS)
+// Rota proxy para a API de notícias (contorna CORS) - GET
 app.get('/api/noticias', async (_req, res) => {
   const API_BASE_URL = process.env.API_BASE_URL || 'http://server:3013';
   const targetUrl = `${API_BASE_URL}/api/noticias`;
@@ -31,6 +31,28 @@ app.get('/api/noticias', async (_req, res) => {
   } catch (error) {
     console.error('❌ Erro no proxy:', error.message);
     console.error('🔍 Detalhes do erro:', error);
+    res.status(500).json({ 
+      error: 'API não disponível', 
+      message: error.message 
+    });
+  }
+});
+
+// Rota proxy para a API de publicações (contorna CORS) - GET
+app.get('/api/publicacoes', async (_req, res) => {
+  const API_BASE_URL = process.env.API_BASE_URL || 'http://server:3013';
+  const targetUrl = `${API_BASE_URL}/api/publicacoes`;
+  try {
+    console.log(`🔄 Proxy: requisitando ${targetUrl}`);
+    const response = await fetch(targetUrl);
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+    const data = await response.json();
+    console.log('✅ Publicações obtidas da API externa');
+    return res.json(data);
+  } catch (error) {
+    console.error('❌ Erro no proxy /api/publicacoes:', error.message);
     res.status(500).json({ 
       error: 'API não disponível', 
       message: error.message 
