@@ -1,0 +1,87 @@
+/* Resetando estilos padrões */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-image: url('../images/bela-natureza-retro-com-campo.jpg');
+    background-repeat: no-repeat; /* Impede que a imagem se repita */
+    background-size: cover; /* Redimensiona a imagem para cobrir toda a área, mantendo a proporção */
+    background-position: center; /* Centraliza a imagem na área do elemento */
+    background-attachment: fixed; /* Opcional: mantém a imagem fixa ao rolar a página */
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  /* Container principal */
+  .container {
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  /* Estilos do cabeçalho */
+  .header h1 {
+    color: #333;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  /* Container dos botões */
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .btn {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Cores específicas para cada botão */
+  #noticias {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  #publicacoes {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  #oportunidades {
+    background-color: #2196F3;
+    color: white;
+  }
+  
+  .sair-btn {
+    background-color: #9E9E9E;
+    color: white;
+  }
+  
+  .sair-btn:hover {
+    background-color: #757575;
+  }
+  

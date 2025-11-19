@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gestão de Publicações</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    /* ======== ESTILO GLOBAL ======== */
+    body {
+      font-family: "Inter", Arial, sans-serif;
+      margin: 40px auto;
+      max-width: 900px;
+      background: #f4f6f9;
+      color: #333;
+    }
+
+    /* ======== CABEÇALHO ======== */
+    .site-header {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .site-header h1 {
+      font-weight: 600;
+      color: #1f2937;
+      font-size: 28px;
+    }
+
+    .subtitle {
+      color: #6b7280;
+      margin-top: 5px;
+    }
+
+    /* ======== BOTÃO PRINCIPAL ======== */
+    #btn-mostrar-form {
+      background: #2563eb;
+      color: #fff;
+      padding: 12px 22px;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    #btn-mostrar-form:hover {
+      background: #1d4ed8;
+    }
+
+    /* ======== FORMULÁRIO ======== */
+    #form-section {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      margin-bottom: 35px;
+    }
+
+    #form-section h3 {
+      margin-bottom: 15px;
+      color: #111827;
+    }
+
+    #form-publicacao {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    #form-publicacao input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+      background: #f9fafb;
+      transition: 0.2s;
+    }
+
+    #form-publicacao input:focus {
+      border-color: #2563eb;
+      outline: none;
+      background: #fff;
+    }
+
+    #form-publicacao button {
+      background-color: #16a34a;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 18px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    #form-publicacao button:hover {
+      background-color: #15803d;
+    }
+
+    /* ======== TABELA ======== */
+    #tabela-section h3 {
+      margin-bottom: 12px;
+      color: #111827;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    thead {
+      background: #2563eb;
+      color: white;
+    }
+
+    thead th {
+      padding: 12px 10px;
+      text-align: left;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    tbody tr:hover {
+      background: #f3f4f6;
+    }
+
+    tbody td {
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    /* ======== LINKS ======== */
+    table a {
+      color: #2563eb;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    table a:hover {
+      text-decoration: underline;
+    }
+
+    /* ======== AÇÕES (botões editar/excluir) ======== */
+    .action-btn {
+      padding: 6px 10px;
+      font-size: 13px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn-edit {
+      background: #3b82f6;
+      color: white;
+    }
+
+    .btn-edit:hover {
+      background: #1d4ed8;
+    }
+
+    .btn-delete {
+      background: #dc2626;
+      color: white;
+    }
+
+    .btn-delete:hover {
+      background: #b91c1c;
+    }
+
+    /* ======== MENSAGEM ======== */
+    #mensagem {
+      margin-top: 10px;
+      font-weight: 600;
+      color: #16a34a;
+    }
+
+    td.acoes {
+      display: flex;
+      gap: 6px;
+      /* espaço entre os botões */
+      align-items: center;
+    }
+  </style>
+
+</head>
+
+<body>
+  <header class="site-header">
+    <h1>AgriLab - Adicionar, Alterar ou Excluir Publicações</h1>
+    <p class="subtitle">Últimas publicações do laboratório</p>
+  </header>
+
+    <!-- Botão para mostrar o formulário -->
+  <section id="botao-section">
+    <button id="btn-mostrar-form">📰 Cadastrar nova publicação</button>
+  </section> <br>
+
+    <!-- 🆕 Formulário de inclusão -->
+  <section id="form-section" style="display: none;">
+    <h3>Adicionar nova publicação</h3>
+    <form id="form-publicacao">
+      <input type="text" id="texto" placeholder="Texto da publicação" required>
+      <input type="text" id="ano" placeholder="Ano da publicação" required>
+      <input type="url" id="link" placeholder="Link da publicação" required>
+      <input type="text" id="doi" placeholder="Doi da publicação" required>
+      <input type="url" id="filePath" placeholder="Link da imagem" required>
+      <button type="submit">Salvar</button>
+    </form>
+    <p id="mensagem"></p>
+  </section>
+
+  <!-- Tabela de publicação -->
+  <section id="tabela-section">
+    <h3>Lista de Publicações</h3>
+    <table border="1" width="100%">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Texto</th>
+          <th>Ano</th>
+          <th>link da publicacao</th>
+          <th>Doi</th>
+          <th>filePath</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="lista-publicacoes">
+        <!-- As notícias serão inseridas aqui via JavaScript -->
+      </tbody>
+    </table>
+  </section>
+
+  <script src="/js/publicacoes-manage.js"></script>
+
+
+</body>
+
+</html>

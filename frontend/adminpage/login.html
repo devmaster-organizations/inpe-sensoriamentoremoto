@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Login</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <div class="container">
+        <div id="imginicial">
+            <!-- Logo centralizado sobre a imagem -->
+            <div class="logo">
+                <span>AGRIRSLAB</span>
+            </div>
+            <img src="/images/vista-aerea-de-terras-agricolas-verdes-vibrantes-mostrando-culturas-plantadas-em-fileiras-ao-lado-de-um-campo-gramado-com-arvores.jpg" alt="Img AgriRsLab">
+        </div>
+
+        <div class="login-container">
+            <h2>Seja Bem-vindo de volta!</h2>
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="mail">E-mail:</label>
+                    <input type="text" id="mail" name="mail" placeholder="Digite seu e-mail" required value="root@inpe.br">
+                </div>
+                <div class="input-group">
+                    <label for="password">Senha:</label>
+                    <input type="password" id="senha" name="senha" placeholder="Digite sua senha"  minlength="6" required value="123456">
+                </div>
+                <button type="submit" class="btn-login">Entrar</button>
+                <div id="error-message" class="error-message"></div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/js/login.js"></script>
+</body>
+</html>

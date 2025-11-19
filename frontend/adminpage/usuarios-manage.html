@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gestão de Usuários</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <style>
+      body {
+        background: #f9fafb;
+      }
+      .wrap {
+        max-width: 960px;
+        margin: 3vh auto;
+        padding: 1.5rem;
+      }
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      .logout-btn {
+        border: 1px solid #dc2626;
+        background: #dc2626;
+        color: #fff;
+        padding: 0.45rem 0.9rem;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      .logout-btn:hover {
+        background: #b91c1c;
+        border-color: #b91c1c;
+      }
+      .manage-nav {
+        margin-top: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        padding: 0.75rem 1rem;
+        border: 1px solid #dde3ea;
+        border-radius: 8px;
+        background: #fff;
+      }
+      .manage-nav a {
+        text-decoration: none;
+        color: #2563eb;
+        font-weight: 500;
+      }
+      .manage-nav a.active {
+        color: #111827;
+        text-decoration: underline;
+        font-weight: 600;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+      }
+      th,
+      td {
+        padding: 0.65rem;
+        border-bottom: 1px solid #dde3ea;
+        text-align: left;
+      }
+      th {
+        background: #eef2f7;
+        font-weight: 600;
+      }
+      .actions {
+        display: flex;
+        gap: 0.5rem;
+      }
+      .actions button {
+        border: none;
+        border-radius: 4px;
+        padding: 0.4rem 0.8rem;
+        background: #dc2626;
+        color: #fff;
+        cursor: pointer;
+      }
+      .actions button:hover {
+        background: #b91c1c;
+      }
+      .card {
+        background: #fff;
+        border: 1px solid #dde3ea;
+        border-radius: 8px;
+        padding: 1rem;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+      }
+      .forms-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.25rem;
+        margin-top: 2rem;
+      }
+      form label {
+        display: block;
+        margin-top: 0.75rem;
+        font-size: 0.95rem;
+      }
+      form input {
+        width: 100%;
+        padding: 0.5rem;
+        margin-top: 0.3rem;
+        border-radius: 4px;
+        border: 1px solid #cfd8e3;
+      }
+      form button {
+        margin-top: 1rem;
+        padding: 0.6rem 1rem;
+        border: none;
+        border-radius: 4px;
+        background: #2563eb;
+        color: #fff;
+        cursor: pointer;
+      }
+      form button:hover {
+        background: #1d4ed8;
+      }
+      #btn-reload {
+        border-radius: 4px;
+        border: 1px solid #2563eb;
+        padding: 0.45rem 1rem;
+        background: #fff;
+        color: #2563eb;
+        cursor: pointer;
+      }
+      #btn-reload:hover {
+        background: #dbeafe;
+      }
+      .msg {
+        margin-top: 1rem;
+        padding: 0.8rem 1rem;
+        border-radius: 6px;
+        display: none;
+      }
+      .msg.success {
+        background: #ecfdf5;
+        color: #065f46;
+        border: 1px solid #34d399;
+        display: block;
+      }
+      .msg.error {
+        background: #fef2f2;
+        color: #991b1b;
+        border: 1px solid #fca5a5;
+        display: block;
+      }
+      .empty {
+        text-align: center;
+        padding: 1rem;
+        color: #6b7280;
+      }
+      .modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.55);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 20;
+      }
+      .modal.open {
+        display: flex;
+      }
+      .modal-box {
+        background: #fff;
+        padding: 1.5rem;
+        border-radius: 10px;
+        width: min(90vw, 360px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+      .modal-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.75rem;
+        margin-top: 1.25rem;
+      }
+      .modal-actions button {
+        border: none;
+        border-radius: 4px;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+      }
+      .modal-actions .danger {
+        background: #dc2626;
+        color: #fff;
+      }
+      .modal-actions .secondary {
+        background: #e5e7eb;
+        color: #111827;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="topbar">
+        <h1>Gestão de Usuários</h1>
+        <button id="btn-logout" type="button" class="logout-btn">Sair</button>
+      </div>
+      <nav class="manage-nav" aria-label="Páginas de gestão">
+        <a href="/admin/usuarios" class="active">Usuários</a>
+        <a href="/admin/noticias">Notícias</a>
+        <a href="/admin/publicacoes">Publicações</a>
+        <a href="/admin/oportunidades">Oportunidades</a>
+      </nav>
+
+      <div id="flash" class="msg" role="alert"></div>
+
+      <section class="card">
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+          "
+        >
+          <h2>Usuários cadastrados</h2>
+          <button id="btn-reload" type="button">Recarregar lista</button>
+        </div>
+        <table aria-live="polite">
+          <thead>
+            <tr>
+              <th style="width: 15%">ID</th>
+              <th style="width: 65%">E-mail</th>
+              <th style="width: 20%">Ações</th>
+            </tr>
+          </thead>
+          <tbody id="users-body">
+            <tr>
+              <td class="empty" colspan="3">Carregando...</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="forms-grid">
+        <div class="card">
+          <h3>Cadastrar novo usuário</h3>
+          <form id="form-create">
+            <label for="create-mail">E-mail</label>
+            <input
+              type="email"
+              id="create-mail"
+              name="mail"
+              required
+              placeholder="usuario@exemplo.com"
+            />
+
+            <label for="create-senha">Senha (mín. 6 caracteres)</label>
+            <input
+              type="password"
+              id="create-senha"
+              name="senha"
+              minlength="6"
+              required
+            />
+
+            <button type="submit">Cadastrar</button>
+          </form>
+        </div>
+        <div class="card">
+          <h3>Atualizar meus dados</h3>
+          <p style="margin: 0; font-size: 0.9rem; color: #6b7280">
+            Preencha pelo menos um campo para atualizar.
+          </p>
+          <form id="form-update">
+            <label for="update-mail">Novo e-mail</label>
+            <input
+              type="email"
+              id="update-mail"
+              name="mail"
+              placeholder="meu-email@exemplo.com"
+            />
+
+            <label for="update-senha">Nova senha (mín. 6 caracteres)</label>
+            <input
+              type="password"
+              id="update-senha"
+              name="senha"
+              minlength="6"
+            />
+
+            <button type="submit">Salvar alterações</button>
+          </form>
+        </div>
+      </section>
+    </div>
+
+    <div
+      id="confirm-modal"
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="confirm-text"
+    >
+      <div class="modal-box">
+        <p id="confirm-text"></p>
+        <div class="modal-actions">
+          <button id="confirm-cancel" type="button" class="secondary">
+            Cancelar
+          </button>
+          <button id="confirm-accept" type="button" class="danger">
+            Excluir
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/usuarios-manage.js"></script>
+  </body>
+</html>
