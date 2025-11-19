@@ -1,7 +1,7 @@
 /* ---------- estilo base ---------- */
 .carousel {
   max-width: 1200px;
-  margin: 28px auto;
+  margin: 72px auto 28px; /* empurra para baixo do header */
   position: relative;
   padding: 0 12px;
 }
@@ -10,14 +10,14 @@
 .carousel__viewport {
   position: relative;
   overflow: hidden;
-  border-radius: 10px;
-  background: #dbecc4;
+  border-radius: 12px;
+  background: transparent; /* remove fundo preto */
 }
 
 /* slides empilhados (fade) */
 .carousel__viewport .slide {
   position: absolute;
-  inset: 0;                    /* topo:0; direita:0; bottom:0; left:0 */
+  inset: 0;
   opacity: 0;
   width: 100%;
   transform: translateZ(0);
@@ -27,7 +27,7 @@
   justify-content: flex-end;
   align-items: stretch;
   text-align: left;
-  padding: 12px;
+  padding: 0; /* elimina faixa/borda em volta da imagem */
 }
 
 /* slide ativo */
@@ -39,10 +39,11 @@
 /* imagem */
 .slide img {
   width: 100%;
-  height: clamp(180px, 45vh, 520px);
+  height: clamp(220px, 48vh, 520px);
   object-fit: cover;
   display: block;
-  border-radius: 10px;
+  border-radius: 12px; /* volta arredondado sem cor de fundo */
+  background: transparent;
 }
 
 /* título sobre a imagem/abaixo (personalize) */
