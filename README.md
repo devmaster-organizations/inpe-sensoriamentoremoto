@@ -192,6 +192,28 @@ docker compose up server postgres --build
 - **Backend**: Express.js + PostgreSQL com CRUD completo
 - **Banco**: Inicialização automática via `backend/src/controllers/db.sql`
 
+## 🔐 Área Administrativa e Autenticação
+
+O site público (todas as páginas acessadas pelo SPA em `frontend/`) permanece totalmente aberto: qualquer pessoa pode listar e enviar conteúdo pelas telas disponíveis sem autenticação. A autenticação (login) destina‑se somente às páginas da **Área Administrativa** acessadas via botão "Área Administrativa" na página inicial.
+
+### Como funciona o login
+1. O administrador acessa `/adminpage/login.html`.
+2. Insere suas credenciais (usuário definido na tabela `usuarios`).
+3. Recebe um **JWT** retornado pelo backend (`/api/auth/login`).
+4. O token é armazenado em `localStorage` e enviado automaticamente (header `Authorization: Bearer <token>`) pelos scripts de gerenciamento.
+
+### Escopo atual
+No momento, as rotas de criação/edição/remoção estão abertas (sem middleware de validação) para manter o fluxo público conforme solicitado. Os arquivos JS da área administrativa já enviam o token quando existente, permitindo reativar a proteção rapidamente adicionando novamente o middleware `authGuard` nas rotas do backend.
+
+### Futuro (opcional)
+Para restringir somente a administração mantendo o site público aberto, recomenda‑se:
+* Criar rotas segregadas ` /api/admin/* ` protegidas com `authGuard`.
+* Manter rotas públicas para leitura e, se desejado, apenas submissões básicas.
+* Adicionar expiração e refresh de token.
+
+### Segurança
+Como o site público aceita POST sem autenticação, aplique validações rígidas de entrada (sanitização) e, em produção, considere limitar tipos/mime de upload, tamanho máximo e eventualmente introduzir moderação.
+
 
 
 

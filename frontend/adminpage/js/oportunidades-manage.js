@@ -1,7 +1,9 @@
 /*substitui o oprtunidades-manage.js do arley pelo o meu */
 
-// URL da API
-const API_URL = "http://localhost:3000/api/oportunidades";
+// Base via proxy
+const API_URL = "/api/oportunidades";
+
+function getToken(){ return localStorage.getItem('token'); }
 
 // Função para buscar e exibir as oportunidades
 async function carregarOportunidades() {
@@ -72,9 +74,11 @@ async function adicionarOportunidade(event) {
   mensagem.style.color = "black";
 
   try {
+    const headers = { "Content-Type": "application/json" };
+    const token = getToken(); if(token){ headers['Authorization'] = `Bearer ${token}`; }
     const resposta = await fetch(url, {
       method: metodo,
-      headers: { "Content-Type": "application/json" },
+      headers,
       body: JSON.stringify({ titulo, descricao, validade, exibir }),
     });
 
@@ -106,8 +110,10 @@ async function excluirOportunidade(id) {
   if (!confirm("Deseja realmente excluir esta Oportunidade/Vaga?")) return;
 
   try {
+    const headers = {}; const token = getToken(); if(token){ headers['Authorization'] = `Bearer ${token}`; }
     const response = await fetch(`${API_URL}/${id}`, {
       method: "DELETE",
+      headers,
     });
 
     const data = await response.json();

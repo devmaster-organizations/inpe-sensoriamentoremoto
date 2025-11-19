@@ -1,8 +1,12 @@
 /*substitui o noticias-manage.js do arley pelo o meu */
 
 
-// URL da API
-const API_URL = "http://localhost:3000/api/noticias";
+// Base da API via proxy do frontend (evita problemas de porta)
+const API_URL = "/api/noticias";
+
+function getToken(){
+  return localStorage.getItem('token');
+}
 
 
 // Função para buscar e exibir as notícias
@@ -71,9 +75,13 @@ async function adicionarNoticia(event) {
   mensagem.style.color = "black";
 
   try {
+    const headers = { "Content-Type": "application/json" };
+    const token = getToken();
+    if(token){ headers['Authorization'] = `Bearer ${token}`; }
+
     const resposta = await fetch(url, {
       method: metodo,
-      headers: { "Content-Type": "application/json" },
+      headers,
       body: JSON.stringify({ titulo, link, postagem, exibir }),
     });
 
@@ -105,8 +113,10 @@ async function excluirNoticia(id) {
   if (!confirm("Deseja realmente excluir esta notícia?")) return;
 
   try {
+    const headers = {}; const token = getToken(); if(token){ headers['Authorization'] = `Bearer ${token}`; }
     const response = await fetch(`${API_URL}/${id}`, {
       method: "DELETE",
+      headers,
     });
 
     const data = await response.json();

@@ -37,7 +37,7 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
     document.cookie = `token=${encodeURIComponent(token)}; path=/; max-age=7200`;
     setMessage("Login realizado com sucesso. Redirecionando...", "success");
     setTimeout(() => {
-      window.location.href = "/admin/manage";
+      window.location.href = "/adminpage/manage.html";
     }, 600);
   } catch (err) {
     setMessage(err.message, "error");

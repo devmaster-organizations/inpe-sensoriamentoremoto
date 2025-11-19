@@ -1,5 +1,9 @@
-// URL da API
-const API_URL = "http://localhost:3000/api/publicacoes";
+// Base da API via proxy do frontend
+const API_URL = "/api/publicacoes";
+
+function getToken(){
+  return localStorage.getItem('token');
+}
 
 // Função para buscar e exibir as publicações
 async function carregarPublicacoes() {
@@ -44,6 +48,7 @@ async function carregarPublicacoes() {
 async function adicionarPublicacao(event) {
   event.preventDefault(); // evita recarregar a página
 
+  const mensagem = document.getElementById("mensagem");
   const texto = document.getElementById("texto").value.trim();
   const ano = document.getElementById("ano").value.trim();
   const link = document.getElementById("link").value.trim();
@@ -68,9 +73,13 @@ async function adicionarPublicacao(event) {
   mensagem.style.color = "black";
 
   try {
+    const headers = { "Content-Type": "application/json" };
+    const token = getToken();
+    if(token){ headers['Authorization'] = `Bearer ${token}`; }
+
     const resposta = await fetch(url, {
       method: metodo,
-      headers: { "Content-Type": "application/json" },
+      headers,
       body: JSON.stringify({ texto, ano, link, doi, filePath }),
     });
 
@@ -102,8 +111,10 @@ async function excluirPublicacao(id) {
   if (!confirm("Deseja realmente excluir esta publicação?")) return;
 
   try {
+    const headers = {}; const token = getToken(); if(token){ headers['Authorization'] = `Bearer ${token}`; }
     const response = await fetch(`${API_URL}/${id}`, {
       method: "DELETE",
+      headers,
     });
 
     const data = await response.json();
@@ -119,32 +130,25 @@ async function excluirPublicacao(id) {
 // Função para EDITAR uma publicação
 async function editarPublicacao(id) {
   try {
-    // Busca a notícia específica na API
     const resposta = await fetch(`${API_URL}/${id}`);
     if (!resposta.ok) throw new Error("Erro ao buscar publicação para edição.");
+    const publicacao = await resposta.json();
 
-    const noticia = await resposta.json();
-
-    // Torna o formulário visível (caso esteja oculto)
     formSection.style.display = "block";
     botaoMostrarForm.textContent = "❌ Fechar formulário";
 
-    // Preenche os campos do formulário com os dados da notícia
-    document.getElementById("texto").value = publicacao.titulo;
-    document.getElementById("ano").value = publicacao.ano;
-    document.getElementById("link").value = publicacao.link;
-    document.getElementById("doi").value = publicacao.doi;
-    document.getElementById("filePath").value = publicacao.filePath;
+    document.getElementById("texto").value = publicacao.texto || "";
+    document.getElementById("ano").value = publicacao.ano || "";
+    document.getElementById("link").value = publicacao.link || "";
+    document.getElementById("doi").value = publicacao.doi || "";
+    document.getElementById("filePath").value = publicacao.filePath || "";
 
-    // Guarda o ID da notícia em edição (vamos usar depois no update)
-    document.getElementById("form-publicacao").dataset.editandoId = noticia.idpublicacao;
+    document.getElementById("form-publicacao").dataset.editandoId = publicacao.idpublicacao;
 
-    // Exibe mensagem temporária
     const mensagem = document.getElementById("mensagem");
-    mensagem.textContent = "✏️ Editando notícia ID " + publicacao.idpublicacao;
+    mensagem.textContent = "✏️ Editando publicação ID " + publicacao.idpublicacao;
     mensagem.style.color = "blue";
   } catch (erro) {
-    
     alert("Erro ao carregar publicação para edição.");
   }
 }

@@ -47,4 +47,4 @@ CREATE TABLE usuarios (
 );
 
 INSERT INTO usuarios (mail,senha)
-VALUES ('root@inpe.br','123456');
+VALUES ('root@inpe.br','123456'); -- senha em texto puro para seed inicial (login aceita texto ou hash)

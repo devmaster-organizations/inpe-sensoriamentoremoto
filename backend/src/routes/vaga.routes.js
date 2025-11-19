@@ -1,6 +1,7 @@
 const express = require('express');
 const multer = require("multer");
 const path = require('path');
+const authGuard = require('../util/authGuard');
 const router = express.Router();
 const vagaController = require('../controllers/vaga.controller');
 
@@ -33,6 +34,7 @@ const uploadMiddleware = upload.fields([
   { name: 'image', maxCount: 1 },
 ]);
 
+// Public site must remain open: remove authGuard from mutation routes.
 router.post('/', uploadMiddleware, (req, _res, next) => {
   // Normaliza para req.file para manter o controller atual compatível
   if (!req.file && req.files) {
