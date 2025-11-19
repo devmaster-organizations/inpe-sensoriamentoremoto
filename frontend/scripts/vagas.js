@@ -19,27 +19,17 @@ window.initVagas = async function initVagas() {
   grid.innerHTML = '';
 
   try {
-    const vagas = await (window.getVagas ? window.getVagas() : fetch('/api/vagas').then(r => r.json()));
+  const vagas = await (window.getVagas ? window.getVagas() : fetch('/api/oportunidades').then(r => r.json()));
 
     // Helper para criar um card no formato atual do layout
     function criarCard(v) {
       const card = document.createElement('div');
       card.className = 'page-card';
 
+      // Mantém header vazio para preservar o layout, mas sem imagem
       const header = document.createElement('div');
       header.className = 'page-card-header';
-
-      const link = document.createElement('a');
-      link.href = v.link || '#';
-      link.target = '_blank';
-
-      const img = document.createElement('img');
-      img.loading = 'lazy';
-      img.alt = v.titulo || 'Vaga';
-      img.src = v.image || '/img/Imagem1.png'; // fallback simples
-
-      link.appendChild(img);
-      header.appendChild(link);
+      card.appendChild(header);
 
       const body = document.createElement('div');
       body.className = 'page-card-body';
@@ -48,7 +38,15 @@ window.initVagas = async function initVagas() {
       h2.textContent = v.titulo || 'Sem título';
       body.appendChild(h2);
 
-      card.appendChild(header);
+      // Se houver link da vaga, mostra link textual
+      if (v.link) {
+        const a = document.createElement('a');
+        a.href = v.link;
+        a.target = '_blank';
+        a.textContent = 'Acessar';
+        body.appendChild(a);
+      }
+
       card.appendChild(body);
       return card;
     }
@@ -77,10 +75,10 @@ window.initVagas = async function initVagas() {
           // Checkbox exibir vira 'true'/'false'
           if (!fd.has('exibir')) fd.append('exibir', 'false');
           else fd.set('exibir', 'true');
-          const resp = await (window.postVaga ? window.postVaga(fd) : fetch('/api/vagas', { method: 'POST', body: fd }).then(r=>r.json()));
+          const resp = await (window.postVaga ? window.postVaga(fd) : fetch('/api/oportunidades', { method: 'POST', body: fd }).then(r=>r.json()));
           if (msg) { msg.textContent = 'Salvo com sucesso!'; msg.style.color = 'green'; }
           // Recarrega a lista
-          const novas = await (window.getVagas ? window.getVagas() : fetch('/api/vagas').then(r => r.json()));
+          const novas = await (window.getVagas ? window.getVagas() : fetch('/api/oportunidades').then(r => r.json()));
           grid.innerHTML = '';
           novas.forEach(v => grid.appendChild(criarCard(v)));
           // Limpa form

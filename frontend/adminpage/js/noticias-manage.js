@@ -12,39 +12,44 @@ function getToken(){
 // Função para buscar e exibir as notícias
 async function carregarNoticias() {
   try {
-    const resposta = await fetch(API_URL);
+    // Cache bust para evitar 304 Not Modified mantendo 'Salvando...' preso
+    const resposta = await fetch(`${API_URL}?_=${Date.now()}`, { cache: 'no-store' });
+    if (resposta.status === 304) {
+      // Força nova tentativa sem cache
+      const segunda = await fetch(`${API_URL}?force=1&_=${Date.now()}`, { cache: 'no-store' });
+      if (!segunda.ok) throw new Error('Falha ao recarregar notícias (304)');
+      return renderNoticias(await segunda.json());
+    }
     const noticias = await resposta.json();
-
-    const tabela = document.getElementById("lista-noticias");
-    tabela.innerHTML = ""; // limpa antes de inserir
-
-    noticias.forEach(noticia => {
-      const linha = document.createElement("tr");
-
-      linha.innerHTML = `
-        <td>${noticia.idnoticia}</td>
-        <td>${noticia.titulo}</td>
-        <td><a href="${noticia.link}" target="_blank">Acessar</a></td>
-        <td>${new Date(noticia.postagem).toLocaleDateString()}</td>
-        <td>${noticia.exibir ? "Sim" : "Não"}</td>
-        <td class="acoes">
-          <button class="action-btn btn-edit" onclick="editarNoticia(${noticia.idnoticia})">
-            <i class="fa-solid fa-pen-to-square"></i>
-          </button>
-
-          <button class="action-btn btn-delete" onclick="excluirNoticia(${noticia.idnoticia})">
-            <i class="fa-solid fa-trash"></i>
-          </button>
-        </td>
-            `;
-
-      tabela.appendChild(linha);
-    });
+    renderNoticias(noticias);
   } catch (erro) {
     
     document.getElementById("lista-noticias").innerHTML =
       `<tr><td colspan="6">Erro ao carregar notícias.</td></tr>`;
   }
+}
+
+function renderNoticias(noticias){
+  const tabela = document.getElementById("lista-noticias");
+  tabela.innerHTML = "";
+  noticias.forEach(noticia => {
+    const linha = document.createElement("tr");
+    linha.innerHTML = `
+      <td>${noticia.idnoticia}</td>
+      <td>${noticia.titulo}</td>
+      <td><a href="${noticia.link}" target="_blank">Acessar</a></td>
+      <td>${new Date(noticia.postagem).toLocaleDateString()}</td>
+      <td>${noticia.exibir ? "Sim" : "Não"}</td>
+      <td class="acoes">
+        <button class="action-btn btn-edit" onclick="editarNoticia(${noticia.idnoticia})">
+          <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+        <button class="action-btn btn-delete" onclick="excluirNoticia(${noticia.idnoticia})">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </td>`;
+    tabela.appendChild(linha);
+  });
 }
 
 // 🔹 Adicionar ou atualizar notícia (POST ou PUT)
@@ -97,7 +102,7 @@ async function adicionarNoticia(event) {
     document.getElementById("form-noticia").reset();
     delete document.getElementById("form-noticia").dataset.editandoId; // limpa modo edição
 
-    carregarNoticias(); // recarrega lista
+    carregarNoticias(); // recarrega lista para remover estado "Salvando..."
   } catch (erro) {
     
     mensagem.textContent = "❌ Erro ao salvar notícia.";

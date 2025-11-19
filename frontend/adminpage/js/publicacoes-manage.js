@@ -8,40 +8,44 @@ function getToken(){
 // Função para buscar e exibir as publicações
 async function carregarPublicacoes() {
   try {
-    const resposta = await fetch(API_URL);
+    const resposta = await fetch(`${API_URL}?_=${Date.now()}`, { cache: 'no-store' });
+    if (resposta.status === 304) {
+      const r2 = await fetch(`${API_URL}?force=1&_=${Date.now()}`, { cache: 'no-store' });
+      if (!r2.ok) throw new Error('Falha ao recarregar publicações (304)');
+      return renderPublicacoes(await r2.json());
+    }
     const publicacoes = await resposta.json();
 
-    const tabela = document.getElementById("lista-publicacoes");
-    tabela.innerHTML = ""; // limpa antes de inserir
-
-    publicacoes.forEach(publicacao => {
-      const linha = document.createElement("tr");
-
-      linha.innerHTML = `
-        <td>${publicacao.idpublicacao}</td>
-        <td>${publicacao.texto}</td>
-        <td>${publicacao.ano}</td>
-        <td><a href="${publicacao.link}" target="_blank">Acessar</a></td>
-        <td>${publicacao.doi}</td>
-        <td><a href="${publicacao.filePath}" target="_blank">Acessar</a></td>
-        <td class="acoes">
-          <button class="action-btn btn-edit" onclick="editarPublicacao(${publicacao.idpublicacao})">
-            <i class="fa-solid fa-pen-to-square"></i>
-          </button>
-
-          <button class="action-btn btn-delete" onclick="excluirPublicacao(${publicacao.idpublicacao})">
-            <i class="fa-solid fa-trash"></i>
-          </button>
-        </td>
-            `;
-
-      tabela.appendChild(linha);
-    });
+    renderPublicacoes(publicacoes);
   } catch (erro) {
     
     document.getElementById("lista-publicacoes").innerHTML =
       `<tr><td colspan="6">Erro ao carregar publicações.</td></tr>`;
   }
+}
+
+function renderPublicacoes(publicacoes){
+  const tabela = document.getElementById("lista-publicacoes");
+  tabela.innerHTML = "";
+  publicacoes.forEach(publicacao => {
+    const linha = document.createElement("tr");
+    linha.innerHTML = `
+      <td>${publicacao.idpublicacao}</td>
+      <td>${publicacao.texto}</td>
+      <td>${publicacao.ano}</td>
+      <td><a href="${publicacao.link}" target="_blank">Acessar</a></td>
+      <td>${publicacao.doi}</td>
+      <td><a href="${publicacao.filePath}" target="_blank">Acessar</a></td>
+      <td class="acoes">
+        <button class="action-btn btn-edit" onclick="editarPublicacao(${publicacao.idpublicacao})">
+          <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+        <button class="action-btn btn-delete" onclick="excluirPublicacao(${publicacao.idpublicacao})">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </td>`;
+    tabela.appendChild(linha);
+  });
 }
 
 // 🔹 Adicionar ou atualizar notícia (POST ou PUT)

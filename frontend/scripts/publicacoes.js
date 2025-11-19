@@ -29,14 +29,18 @@ window.initPublicacoes = async function initPublicacoes() {
       const header = document.createElement('div');
       header.className = 'card-header';
 
-      const link = document.createElement('a');
-      link.href = p.link || p.doi ? `https://doi.org/${p.doi}` : '#';
-      link.target = '_blank';
+  const link = document.createElement('a');
+  // Preferir link direto; se não houver, usar DOI; senão, '#'
+  if (p.link) link.href = p.link;
+  else if (p.doi) link.href = `https://doi.org/${p.doi}`;
+  else link.href = '#';
+  link.target = '_blank';
 
       const img = document.createElement('img');
       img.loading = 'lazy';
       img.alt = p.texto ? p.texto.substring(0, 50) : 'Publicação';
-      img.src = p.image || '/img/Imagem1.png'; // fallback
+  // Imagem vem por URL salvo no banco: prioriza filePath (alias), depois image
+  img.src = p.filePath || p.image || '/img/Imagem1.png';
 
       link.appendChild(img);
       header.appendChild(link);

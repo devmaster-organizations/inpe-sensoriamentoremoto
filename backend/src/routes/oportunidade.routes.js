@@ -7,6 +7,7 @@ const authGuard = require('../util/authGuard');
 // Public site must remain open: remove authGuard from mutation routes.
 router.post("/", oportunidadeController.createOportunidade);
 router.get("/", oportunidadeController.getAllOportunidades);
+router.get("/:id", oportunidadeController.getOportunidadeById);
 router.put("/:id", oportunidadeController.updateOportunidade);
 router.delete("/:id", oportunidadeController.deleteOportunidade);
 

@@ -1,7 +1,8 @@
 // API para vagas
 
 function getVagas() {
-  return fetch('/api/vagas')
+  // Padronizado para oportunidades (vagas == oportunidades)
+  return fetch('/api/oportunidades')
     .then(response => {
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
@@ -20,7 +21,7 @@ function getVagas() {
 
 // Cria uma nova vaga com upload de imagem (FormData com campo 'imagem')
 function postVaga(formData) {
-  return fetch('/api/vagas', {
+  return fetch('/api/oportunidades', {
     method: 'POST',
     body: formData,
   })

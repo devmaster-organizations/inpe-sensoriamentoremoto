@@ -34,6 +34,21 @@ async function getAllOportunidades(req, res) {
   }
 }
 
+// Obter oportunidade por ID
+async function getOportunidadeById(req, res) {
+  const { id } = req.params;
+  try {
+    const result = await pool.query('SELECT * FROM oportunidades WHERE idoportunidade = $1', [id]);
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Oportunidade não encontrada' });
+    }
+    res.status(200).json(result.rows[0]);
+  } catch (error) {
+    console.error('Erro ao buscar oportunidade por ID:', error);
+    res.status(500).json({ error: 'Erro ao buscar oportunidade' });
+  }
+}
+
 // Atualizar uma oportunidade existente
 async function updateOportunidade(req,res) {
   const { id } = req.params;
@@ -86,6 +101,7 @@ async function deleteOportunidade(req, res) {
 module.exports = {
   createOportunidade,
   getAllOportunidades,
+  getOportunidadeById,
   updateOportunidade,
   deleteOportunidade
 };

@@ -8,40 +8,47 @@ function getToken(){ return localStorage.getItem('token'); }
 // Função para buscar e exibir as oportunidades
 async function carregarOportunidades() {
   try {
-    const resposta = await fetch(API_URL);
+    const resposta = await fetch(`${API_URL}?_=${Date.now()}`, { cache: 'no-store' });
+    if (resposta.status === 304) {
+      const r2 = await fetch(`${API_URL}?force=1&_=${Date.now()}`, { cache: 'no-store' });
+      if (!r2.ok) throw new Error('Falha ao recarregar oportunidades (304)');
+      return renderOportunidades(await r2.json());
+    }
     const oportunidades = await resposta.json();
 
     const tabela = document.getElementById("lista-oportunidades");
                                             
     tabela.innerHTML = ""; // limpa antes de inserir
 
-    oportunidades.forEach(oportunidade => {
-      const linha = document.createElement("tr");
-
-      linha.innerHTML = `
-        <td>${oportunidade.idoportunidade}</td>
-        <td>${oportunidade.titulo}</td>
-        <td>${oportunidade.descricao}</td>
-        <td>${new Date(oportunidade.validade).toLocaleDateString()}</td>
-        <td>${oportunidade.exibir ? "Sim" : "Não"}</td>
-        <td class="acoes">
-          <button class="action-btn btn-edit" onclick="editarOportunidade(${oportunidade.idoportunidade})">
-            <i class="fa-solid fa-pen-to-square"></i>
-          </button>
-
-          <button class="action-btn btn-delete" onclick="excluirOportunidade(${oportunidade.idoportunidade})">
-            <i class="fa-solid fa-trash"></i>
-          </button>
-        </td>
-            `;
-
-      tabela.appendChild(linha);
-    });
+    renderOportunidades(oportunidades);
   } catch (erro) {
     
     document.getElementById("lista-oportunidades").innerHTML =
       `<tr><td colspan="6">Erro ao carregar notícias.</td></tr>`;
   }
+}
+
+function renderOportunidades(oportunidades){
+  const tabela = document.getElementById("lista-oportunidades");
+  tabela.innerHTML = "";
+  oportunidades.forEach(oportunidade => {
+    const linha = document.createElement("tr");
+    linha.innerHTML = `
+      <td>${oportunidade.idoportunidade}</td>
+      <td>${oportunidade.titulo}</td>
+      <td>${oportunidade.descricao}</td>
+      <td>${new Date(oportunidade.validade).toLocaleDateString()}</td>
+      <td>${oportunidade.exibir ? "Sim" : "Não"}</td>
+      <td class="acoes">
+        <button class="action-btn btn-edit" onclick="editarOportunidade(${oportunidade.idoportunidade})">
+          <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+        <button class="action-btn btn-delete" onclick="excluirOportunidade(${oportunidade.idoportunidade})">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </td>`;
+    tabela.appendChild(linha);
+  });
 }
 
 

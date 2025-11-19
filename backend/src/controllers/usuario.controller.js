@@ -17,9 +17,14 @@ async function login(req, res){
     return res.status(400).json({ error: 'Informe mail e senha' });
   }
   try {
+    const debug = process.env.DEBUG_AUTH === '1';
+    if (debug) {
+      console.log(`🔐 [LOGIN] tentativa mail=${mail}`);
+    }
     const nm = normMail(mail);
     const result = await pool.query('SELECT * FROM usuarios WHERE mail = $1 LIMIT 1', [nm]);
     if(result.rows.length === 0){
+      if (debug) console.log('🔐 [LOGIN] usuário não encontrado');
       return res.status(401).json({ error: 'Credenciais inválidas' });
     }
     const user = result.rows[0];
@@ -32,9 +37,11 @@ async function login(req, res){
       ok = senha === stored; // fallback para senha de seed simples
     }
     if(!ok){
+      if (debug) console.log('🔐 [LOGIN] senha inválida');
       return res.status(401).json({ error: 'Credenciais inválidas' });
     }
     const token = jwt.sign({ sub: user.idusuario, mail: user.mail }, JWT_SECRET, { expiresIn: TOKEN_EXP });
+    if (debug) console.log('🔐 [LOGIN] sucesso id=' + user.idusuario);
     return res.json({ token, usuario: { id: user.idusuario, mail: user.mail } });
   } catch (err){
     console.error('Erro login:', err);

@@ -44,6 +44,7 @@ router.post('/', uploadMiddleware, (req, _res, next) => {
   next();
 }, noticiaController.createNoticia);
 router.get('/', noticiaController.getAllNoticias);
+router.get('/:id', noticiaController.getNoticiaById);
 router.put('/:id', noticiaController.updateNoticia);
 router.delete('/:id', noticiaController.deleteNoticia);
 

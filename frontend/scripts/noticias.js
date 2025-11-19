@@ -120,20 +120,10 @@ window.initNoticias = async function initNoticias() {
             const card = document.createElement('div');
             card.className = 'page-card';
 
+            // Mantém o header para preservar o layout, mas sem imagem
             const header = document.createElement('div');
             header.className = 'page-card-header';
-
-            const link = document.createElement('a');
-            link.href = n.link || '#';
-            link.target = '_blank';
-
-            const img = document.createElement('img');
-            img.loading = 'lazy';
-            img.alt = n.titulo || 'Notícia';
-            img.src = n.image || '/img/Imagem1.png'; // fallback simples
-
-            link.appendChild(img);
-            header.appendChild(link);
+            card.appendChild(header);
 
             const body = document.createElement('div');
             body.className = 'page-card-body';
@@ -142,7 +132,15 @@ window.initNoticias = async function initNoticias() {
             h2.textContent = n.titulo || 'Sem título';
             body.appendChild(h2);
 
-            card.appendChild(header);
+            // Link "Acessar" (sem imagem)
+            if (n.link) {
+                const a = document.createElement('a');
+                a.href = n.link;
+                a.target = '_blank';
+                a.textContent = 'Acessar';
+                body.appendChild(a);
+            }
+
             card.appendChild(body);
             return card;
         }

@@ -3,7 +3,10 @@ const pool = require('./db');
 // Criar uma nova publicação
 async function createPublicacao(req, res) {
   const { texto, ano, link, doi } = req.body;
-  const image = req.file ? `/uploads/${req.file.filename}` : null;
+  // Aceita upload via multer (req.file) ou caminho vindo em JSON (req.body.filePath)
+  const image = req.file
+    ? `/uploads/${req.file.filename}`
+    : (req.body && req.body.filePath ? req.body.filePath : null);
   
   try {
     const result = await pool.query(
@@ -12,6 +15,8 @@ async function createPublicacao(req, res) {
     );
     
     const publicacao = result.rows[0];
+    // Alias para compatibilidade com o frontend admin (usa filePath)
+    publicacao.filePath = publicacao.image;
     res.status(201).json({
       message: 'Publicação criada com sucesso!',
       publicacao
@@ -26,22 +31,40 @@ async function createPublicacao(req, res) {
 async function getAllPublicacoes(req, res) {
   try {
     const result = await pool.query('SELECT * FROM publicacoes ORDER BY ano DESC');
-    res.status(200).json(result.rows);
+    const rows = result.rows.map(r => ({ ...r, filePath: r.image }));
+    res.status(200).json(rows);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Erro ao buscar publicações' });
   }
 }
 
+// Obter uma publicação por ID
+async function getPublicacaoById(req, res) {
+  const { id } = req.params;
+  try {
+    const result = await pool.query('SELECT * FROM publicacoes WHERE idpublicacao = $1', [id]);
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Publicação não encontrada' });
+    }
+    const row = result.rows[0];
+    row.filePath = row.image;
+    res.status(200).json(row);
+  } catch (error) {
+    console.error('Erro ao buscar publicação por ID:', error);
+    res.status(500).json({ error: 'Erro ao buscar publicação' });
+  }
+}
+
 // Atualizar uma publicação existente
 async function updatePublicacao(req, res) {
   const { id } = req.params;
-  const { texto, ano, link, doi } = req.body;
+  const { texto, ano, link, doi, filePath } = req.body;
 
   try {
     const result = await pool.query(
-      'UPDATE publicacoes SET texto = $1, ano = $2, link = $3, doi = $4 WHERE idpublicacao = $5 RETURNING *',
-      [texto, ano, link, doi, id]
+      'UPDATE publicacoes SET texto = $1, ano = $2, link = $3, doi = $4, image = COALESCE($5, image) WHERE idpublicacao = $6 RETURNING *',
+      [texto, ano, link, doi, filePath || null, id]
     );
     
     if (result.rows.length === 0) {
@@ -49,6 +72,7 @@ async function updatePublicacao(req, res) {
     }
 
     const updatedPublicacao = result.rows[0];
+    updatedPublicacao.filePath = updatedPublicacao.image;
     res.status(200).json({
       message: 'Publicação atualizada com sucesso!',
       publicacao: updatedPublicacao
@@ -80,6 +104,7 @@ async function deletePublicacao(req, res) {
 module.exports = {
   createPublicacao,
   getAllPublicacoes,
+  getPublicacaoById,
   updatePublicacao,
   deletePublicacao
 };
