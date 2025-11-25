@@ -31,8 +31,8 @@ async function getAllNoticias(req, res) {
     const result = await pool.query('SELECT * FROM noticias WHERE exibir = TRUE ORDER BY idnoticia DESC');
     res.status(200).json(result.rows);
   } catch (error) {
-    console.error('Erro ao buscar notícias:', error);
-    res.status(500).json({ error: 'Erro ao buscar notícias' });
+    console.error('Erro ao buscar notícias:', error.message, { stack: error.stack });
+    res.status(500).json({ error: 'Erro ao buscar notícias', detail: process.env.NODE_ENV === 'development' ? error.message : undefined });
   }
 };
 

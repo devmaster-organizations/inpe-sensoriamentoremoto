@@ -1,14 +1,25 @@
 const { Pool } = require("pg");
 const dotenv = require("dotenv");
-// Carrega  as variáveis de ambiente definidas no arquivo .env.dev
-dotenv.config({ path: '.env.dev' });
 
-const pool = new Pool({
+const envFile = process.env.NODE_ENV === 'production' ? '.env' : '.env.dev';
+dotenv.config({ path: envFile });
+
+const config = {
   host: process.env.POSTGRES_HOST,
   user: process.env.POSTGRES_USER,
   password: process.env.POSTGRES_PASSWORD,
   database: process.env.POSTGRES_DB,
-  port: process.env.POSTGRES_PORT
+  port: Number(process.env.POSTGRES_PORT) || 5432
+};
+
+if (process.env.POSTGRES_SSL === 'true') {
+  config.ssl = { rejectUnauthorized: false };
+}
+
+const pool = new Pool(config);
+
+pool.on('error', (err) => {
+  console.error('Erro inesperado no pool do Postgres:', err.message);
 });
 
 module.exports = pool;

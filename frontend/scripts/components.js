@@ -94,6 +94,11 @@ async function renderPage() {
   setPageStyle(slug);
     // Permite que páginas carregadas também usem includes
     await includeHTML();
+
+    // Reinicializa carrossel se existir no DOM (após includes)
+    if (typeof window.initCarousel === 'function') {
+      window.initCarousel();
+    }
     
     // Inicializa modal se a função existir (do noticias.js)
     if (typeof window.initModal === 'function') {
@@ -135,6 +140,16 @@ async function renderPage() {
       } else {
         setTimeout(() => {
           if (typeof window.initVagas === 'function') window.initVagas();
+        }, 0);
+      }
+    }
+    // Inicializa página Contatos
+    if (slug === 'contatos') {
+      if (typeof window.initContato === 'function') {
+        window.initContato();
+      } else {
+        setTimeout(() => {
+          if (typeof window.initContato === 'function') window.initContato();
         }, 0);
       }
     }

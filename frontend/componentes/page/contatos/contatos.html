@@ -8,7 +8,7 @@
       <section class="contact-grid">
 
         <!-- Formulário de contato (1) -->
-        <form class="contact-form" action="#" method="post" novalidate>
+        <form class="contact-form" action="#" method="post" novalidate data-contato-form>
           <!-- label vinculado ao input pelo for/id; melhora acessibilidade -->
           <label for="nome">Nome</label>
           <input type="text" id="nome" name="nome" required placeholder="Seu nome">
@@ -27,6 +27,7 @@
 
           
           <button type="submit" class="btn">Enviar</button>
+          <div class="form-feedback" aria-live="polite" style="margin-top:12px; font-size:14px;"></div>
         </form>
 
         <aside class="info-area">

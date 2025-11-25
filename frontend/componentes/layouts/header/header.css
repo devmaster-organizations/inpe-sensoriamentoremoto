@@ -168,7 +168,8 @@ header.is-open .hamburger__line:nth-child(3) {
 
 /* ---------- comportamento responsivo do menu (mobile) ---------- */
 /* em desktop mantemos a aparência atual; em mobile escondemos os links inline e mostramos o botão */
-@media (max-width: 946px) {
+/* BREAKPOINT DO MENU COLAPSADO (ajustado de 946px para 1080px para evitar sobreposição) */
+@media (max-width: 1280px) {
   .hamburger {
     display: inline-flex;
     background: #fff;

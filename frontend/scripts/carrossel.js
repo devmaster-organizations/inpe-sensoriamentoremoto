@@ -152,16 +152,23 @@
   }
 
   // Primeiro tenta inicializar logo (caso o elemento já esteja no DOM)
-  if (initCarouselOnce()) return;
+  if (initCarouselOnce()) {
+    // expõe função pública para reinicializar quando voltar à página
+    window.initCarousel = initCarouselOnce;
+    return;
+  }
 
   // Se não inicializou, observa o DOM até aparecer o elemento
   const obs = new MutationObserver(() => {
     if (initCarouselOnce()) {
-      obs.disconnect();
+      // mantém observador para futuros desmontes/montagens
     }
   });
   obs.observe(document.body, { childList: true, subtree: true });
 
   // Segurança extra: tenta novamente após um timeout (caso algo falhe)
   setTimeout(() => { initCarouselOnce(); }, 1500);
+
+  // função pública idempotente (também definida se inicialização vier depois)
+  window.initCarousel = initCarouselOnce;
 })();
