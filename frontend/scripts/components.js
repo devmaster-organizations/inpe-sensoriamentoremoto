@@ -153,6 +153,16 @@ async function renderPage() {
         }, 0);
       }
     }
+    // Inicializa página Projetos
+    if (slug === 'projeto') {
+      if (typeof window.initProjeto === 'function') {
+        window.initProjeto();
+      } else {
+        setTimeout(() => {
+          if (typeof window.initProjeto === 'function') window.initProjeto();
+        }, 0);
+      }
+    }
     
     window.scrollTo({ top: 0, behavior: 'smooth' });
   } catch (e) {
