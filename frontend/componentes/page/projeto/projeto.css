@@ -1,0 +1,249 @@
+/* -------------- TOPO E TÍTULO -------------- */
+.page-top {
+  display: flex;
+  width: 100%;
+  padding: 18px 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-title {
+  font-size: 36px;
+  text-align: center;
+  color: #08181a;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* -------------- CONTAINER PRINCIPAL -------------- */
+.site-container {
+  max-width: 1200px;
+  margin: 28px auto;
+  padding: 0 24px;
+}
+
+/* -------------- GRID DE PROJECTS -------------- */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+/* -------------- CARD -------------- */
+.project-card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  text-decoration: none;
+  transition: all 300ms ease;
+  background: #000;
+}
+
+/* Imagem responsiva, cobrindo a caixa */
+.project-card img {
+  display: block;
+  width: 100%;
+  height: 280px; /* altura base; muda em responsividade */
+  object-fit: cover; /* mantém o 'crop' natural */
+  transition: all 400ms ease;
+}
+
+/* Overlay com gradiente para legibilidade do texto */
+.card-overlay {
+  position: absolute;
+  inset: 0; /* cobre todo o card */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 28px;
+  color: white;
+  text-align: center;
+  background: linear-gradient( to bottom, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.5) );
+  transition: background 0.5s ease;
+}
+
+/* Texto do cartão */
+.card-overlay h2 {
+  text-align: center;
+  font-size: 20px;
+  line-height: 1.25;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+  margin: 0;
+  font-weight: 600;
+  transform: translateY(0);
+}
+
+.card-overlay span {
+  align-self: flex-start;
+  text-align: left;
+  margin-bottom: 6px;
+  opacity: 0;
+  font-size: 0px;
+   /* começa escondido e abaixo */
+}
+
+/* Area de navegação */
+.project-nav{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 18px 0 32px;
+  padding-left: 12px;
+  user-select: none;
+}
+
+/* Botes */
+.nav-btn{
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 28px;
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  color: #222;
+  transition: transform .14s ease, background .14s ease;
+}
+
+.nav-btn:hover, .nav-btn:focus { transform: translateY(-2px); background: #fafafa; }
+.nav-btn:active { transform: translateY(0); }
+.nav-btn:focus {
+  outline: 3px solid rgba(0,150,0,0.14);
+  outline-offset: 3px;
+}
+
+/* indicador (ex.: 1 / 4) */
+.page_info {
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  font-size: 15px;
+  color: #333;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.03);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  min-width: 68px;
+  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* estado desabilitado (usar aria-disabled="true" ou disabled attr) */
+.nav-btn[aria-disabled="true"],
+.nav-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  pointer-events: none;
+}
+
+.page-current { font-weight: 700; }
+.page-sep { opacity: .6; margin: 0 4px; }
+
+.card-overlay h2,
+.card-overlay span {
+  transition: all 0.6s ease;
+}
+
+/* Hover: leve zoom na imagem e realce do card */
+.project-card:hover,
+.project-card:focus {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+}
+.project-card:hover img,
+.project-card:focus img {
+  transform: scale(1.06);
+}
+
+/* Hover no overlay: escurece levemente para melhorar contraste */
+.project-card:hover .card-overlay,
+.project-card:focus .card-overlay {
+  background: linear-gradient( to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.6) );
+}
+.project-card:hover .card-overlay h2,
+.project-card:focus .card-overlay h2 {
+  transform: translateY(-50px);
+}
+.project-card:hover .card-overlay span,
+.project-card:focus .card-overlay span {
+  font-size: 16px;
+  opacity: 1;
+  transform: translateY(-20px); /* descrição sobe */
+  transition-delay: 0.1s; /* leve atraso pra parecer fluido */
+}
+/* -------------- Acessibilidade: foco visível -------------- */
+.project-card:focus {
+  outline: 3px solid rgba(0, 150, 0, 0.16);
+  outline-offset: 3px;
+}
+
+/* -------------- RESPONSIVIDADE (ajustar alturas e paddings) -------------- */
+@media (max-width: 900px) {
+  .projects {
+    grid-template-columns: 1fr;
+  }
+  .project-card img {
+    height: 240px;
+  }
+  .project-card:hover .card-overlay h2,
+  .project-card:focus .card-overlay h2 {
+    transform: translateY(-30px);
+  }
+  .project-card:hover .card-overlay span,
+  .project-card:focus .card-overlay span{
+    font-size: 16px;
+    opacity: 1;
+    transform: translateY(-10px); /* descrição sobe */
+    transition-delay: 0.1s;   /* leve atraso pra parecer fluido */
+  }
+}
+
+/* responsividade: centralizar em telas pequenas e aumentar clique área */
+@media (max-width: 520px) {
+  .project-nav {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-left: 0;
+  }
+  .nav-btn { width: 40px; height: 36px; font-size: 16px; }
+  .page_info { min-width: 80px; font-size: 16px; padding: 8px 12px; }
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 28px;
+  }
+  .project-card img {
+    height: 200px;
+  }
+  .card-overlay {
+    padding: 18px;
+  }
+  .card-overlay h2 {
+    font-size: 16px;
+  }
+  .site-container {
+    margin: 18px auto;
+  }
+  .project-card:hover .card-overlay h2,
+  .project-card:focus .card-overlay h2 {
+    transform: translateY(-20px);
+  }
+  .project-card:hover .card-overlay span,
+  .project-card:focus .card-overlay span{
+    font-size: 14px;
+    opacity: 1;
+    transform: translateY(-8px); /* descrição sobe */
+    transition-delay: 0.1s;   /* leve atraso pra parecer fluido */
+  }
+}
