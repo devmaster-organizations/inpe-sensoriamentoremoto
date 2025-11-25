@@ -42,6 +42,10 @@ SMTP_USER=usuario@seuprovedor.com
 SMTP_PASS=senha_aqui
 CONTACT_TO=destinatario@seusite.com   # opcional (cai no SMTP_USER se ausente)
 CONTACT_FROM=site@seusite.com         # opcional (cai no SMTP_USER se ausente)
+CONTACT_DEV_MODE=1                    # opcional: se definido, sobrescreve NODE_ENV (1=apenas loga; 0=envia)
 ```
 
-Se qualquer credencial SMTP essencial estiver ausente, o backend apenas registra os dados da mensagem no console e retorna status 202.
+Regras de envio:
+- Se `CONTACT_DEV_MODE` estiver definido, ele tem prioridade: `1` (não envia, só loga) ou `0` (envia normalmente).
+- Se `CONTACT_DEV_MODE` não estiver definido, usa `NODE_ENV`: somente envia em `NODE_ENV=production`.
+- Se credenciais SMTP estiverem ausentes, sempre faz log (202).

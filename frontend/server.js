@@ -476,6 +476,40 @@ app.post('/api/auth/login', async (req, res) => {
   }
 });
 
+// Proxy para envio de contato: POST /api/contatos (JSON)
+app.post('/api/contatos', async (req, res) => {
+  const API_BASE_URL = process.env.API_BASE_URL || 'http://server:3013';
+  const targetUrl = `${API_BASE_URL}/api/contatos`;
+  try {
+    const response = await fetch(targetUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req.body || {}),
+    });
+    const contentType = response.headers.get('content-type') || 'application/json';
+    const text = await response.text();
+    res.status(response.status).set('Content-Type', contentType).send(text);
+  } catch (error) {
+    console.error('❌ Erro no proxy /api/contatos:', error.message);
+    res.status(502).json({ error: 'API não disponível', message: error.message });
+  }
+});
+
+// Proxy para health do contato: GET /api/contatos/health
+app.get('/api/contatos/health', async (_req, res) => {
+  const API_BASE_URL = process.env.API_BASE_URL || 'http://server:3013';
+  const targetUrl = `${API_BASE_URL}/api/contatos/health`;
+  try {
+    const response = await fetch(targetUrl);
+    const contentType = response.headers.get('content-type') || 'application/json';
+    const text = await response.text();
+    res.status(response.status).set('Content-Type', contentType).send(text);
+  } catch (error) {
+    console.error('❌ Erro no proxy GET /api/contatos/health:', error.message);
+    res.status(502).json({ error: 'API não disponível', message: error.message });
+  }
+});
+
 // Serve arquivos estáticos (HTML, CSS, JS, imagens)
 app.use(express.static(path.join(__dirname)));
 
