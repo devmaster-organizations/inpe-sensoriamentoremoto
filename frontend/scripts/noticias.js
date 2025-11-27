@@ -4,39 +4,45 @@
 
 // Objeto com textos que serão exibidos no modal
 const textosInfo = {
-    monitoramento:`<h3>Monitoramento e Mapeamento Agrícola</h3>
+    monitoramento:`<div class="modal-image"><img src="../../../img/mma.png" alt="Monitoramento"></div>
+    <div class="modal-text"><h3>Monitoramento e Mapeamento Agrícola</h3>
     <p>O AgriRS realiza o monitoramento e o mapeamento das principais culturas agrícolas cultivadas no 
     Brasil utilizando dados de sensoriamento remoto. As classificações são feitas utilizando imagens de 
     satélite pré-processadas e algoritmos de classificação que visam  identificar áreas cultivadas com 
     diferentes culturas. Essa abordagem permite acompanhar a dinâmica espacial das lavouras ao longo das 
-    safras, contribuindo para o planejamento agrícola e para políticas públicas voltadas ao setor.</p></>`,
+    safras, contribuindo para o planejamento agrícola e para políticas públicas voltadas ao setor.</p></div>`,
 
     produtividade:
-    `<h3>Estimativas de Produtividade</h3>
+    `<div class="modal-image"><img src="../../../img/ep.png" alt="Produtividade"></div>
+    <div class="modal-text"><h3>Estimativas de Produtividade</h3>
     <p>Com base em séries temporais de imagens de satélite e dados meteorológicos, o AgriRS desenvolve 
     metodologias para estimar a produtividade das culturas e avaliar perdas causadas por eventos 
     extremos, como estiagens e geadas. Essas análises permitem identificar áreas com risco de quebra de 
     safra e fornecer informações estratégicas para órgãos de planejamento, assistência técnica e seguro 
-    agrícola.</p></>`,
+    agrícola.</p></div>`,
 
-    fenologia:`<h3>Fenologia de Culturas Agrícolas</h3>
+    fenologia:`<div class="modal-image"><img src="../../../img/fca.png" alt="Fenologia"></div>
+    <div class="modal-text"><h3>Fenologia de Culturas Agrícolas</h3>
     <p>No AgriRS, o acompanhamento da fenologia das culturas é realizado por meio de séries temporais 
     de índices espectrais derivados de imagens de satélite. Essa abordagem possibilita identificar 
     etapas importantes do ciclo das culturas, como datas de plantio, enchimento de grãos, 
-    florescimento e colheita. </p></>`,
+    florescimento e colheita. </p></div>`,
 
-    impactos:`<h3>Análise de Impactos Ambientais</h3>
+    impactos:`<div class="modal-image"><img src="../../../img/aia.png" alt="Impactos Ambientais"></div>
+    <div class="modal-text"><h3>Análise de Impactos Ambientais</h3>
     <p>O AgriRS aplica técnicas de sensoriamento remoto para detectar alterações no uso da terra, como 
     desmatamentos, expansão agrícola sobre áreas naturais e degradação da vegetação nativa. 
     Essas análises podem servir como subsídio para ações de fiscalização ambiental e gestão mais 
     sustentável dos recursos naturais. Isso contribui para a preservação dos biomas e para o 
-    desenvolvimento de práticas agrícolas mais sustentáveis.</p></>`,
+    desenvolvimento de práticas agrícolas mais sustentáveis.</p></div>`,
 
-    quebras:`<h3>Análise de Quebras de Safras</h3>
-    <p>Incluir texto (Não disponibilizado pelo INPE)...</p></>`,
+    quebras:`<div class="modal-image"><img src="../../../img/aqs.png" alt="Quebras de Safras"></div>
+    <div class="modal-text"><h3>Análise de Quebras de Safras</h3>
+    <p>Incluir texto (Não disponibilizado pelo INPE)...</p></div>`,
 
-    desmatamento:`<h3>Detecção de Desmatamento</h3>
-    <p>Incluir texto (Não disponibilizado pelo INPE)...</p></>`,
+    desmatamento:`<div class="modal-image"><img src="../../../img/dd.png" alt="Desmatamento"></div>
+    <div class="modal-text"><h3>Detecção de Desmatamento</h3>
+    <p>Incluir texto (Não disponibilizado pelo INPE)...</p></div>`,
 
     //+ Adicione os demais textos aqui
 };
@@ -60,10 +66,12 @@ function initModal() {
         return;
     }
 
-    // Adiciona evento de clique a todos os botões "Saiba mais" dentro da página
-    page.querySelectorAll('.ver-mais').forEach(link => {
-        link.addEventListener('click', e => {
+    // Adiciona evento de clique aos cards inteiros
+    page.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('click', e => {
             e.preventDefault();
+            const link = card.querySelector('.ver-mais');
+            if (!link) return;
             const chave = link.getAttribute('data-info');
             modalTexto.innerHTML = textosInfo[chave] || '<p>Conteúdo não encontrado.</p>';
             modal.style.display = 'block';

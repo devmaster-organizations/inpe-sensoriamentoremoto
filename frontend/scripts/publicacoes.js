@@ -39,8 +39,8 @@ window.initPublicacoes = async function initPublicacoes() {
       const img = document.createElement('img');
       img.loading = 'lazy';
       img.alt = p.texto ? p.texto.substring(0, 50) : 'Publicação';
-  // Imagem vem por URL salvo no banco: prioriza filePath (alias), depois image
-  img.src = p.filePath || p.image || '/img/Imagem1.png';
+  // Imagem vem por URL salvo no banco: prioriza filePath (alias), depois image, senão imagem padrão do INPE
+  img.src = p.filePath || p.image || 'img/inpe-logo.png';
 
       link.appendChild(img);
       header.appendChild(link);

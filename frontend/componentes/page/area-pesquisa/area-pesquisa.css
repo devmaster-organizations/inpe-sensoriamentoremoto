@@ -52,19 +52,20 @@
 }
 
 .card {
-    background-color: white; /*Fundo do card na cor Branco*/
-    border-radius: 8px; /*Arredonda os cantos do card*/
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /*Cria sombra externa (deslocamento x, deslocamento , desfoque, cor*/
-    overflow: hidden; /**/
-    cursor: pointer; /**/
-    transition: transform 0.2s ease,box-shadow 0.2s ease ; /*
-    transições do hover quando é apontado o mouse nos cards. Ease ==>Começa devagar,acelera no meio e desacelera no final. */
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease, background-color 0.2s ease;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
 }
 
 .card:hover {
-    transform: translateY(-5px); /* Sobe levemente o card */
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    background-color: #87F27D;  /* Muda cor ao passar o mouse */
+    background-color: #87F27D;
 }
 
 .card-photos  {
@@ -168,14 +169,47 @@ from { ... } → Estado inicial da animação./transform: translateY(-30px); →
     color: #87F27D; /*Botão X ==> Ao passar o cursor, o efeito hover irá para essa cor*/
 }
 
+#modal-texto {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+#modal-texto .modal-image {
+    flex: 0 0 200px;
+    max-width: 200px;
+}
+
+#modal-texto .modal-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+#modal-texto .modal-text {
+    flex: 1;
+}
+
 #modal-texto h3 {
     margin-top: 0;
     font-size: 1.4rem;
+    margin-bottom: 15px;
 }
 
 #modal-texto p {
-    line-height: 1.6;
+    line-height: 1.8;
     margin-top: 10px;
+    text-align: justify;
+}
+
+@media (max-width: 768px) {
+    #modal-texto {
+        flex-direction: column;
+    }
+    #modal-texto .modal-image {
+        flex: 0 0 auto;
+        max-width: 100%;
+    }
 }
 
 /* ===== Escopo compatível (sem @scope) para garantir 3 cards por linha ===== */
@@ -232,11 +266,13 @@ from { ... } → Estado inicial da animação./transform: translateY(-30px); →
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: box-shadow 0.2s ease, background-color 0.2s ease;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
 }
 
 .page-area-pesquisa .card:hover {
-    transform: translateY(-5px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     background-color: #87F27D;
 }
@@ -306,9 +342,9 @@ from { ... } → Estado inicial da animação./transform: translateY(-30px); →
 .page-area-pesquisa .modal-content {
     background-color: #fff;
     margin: 10% auto;
-    padding: 20px;
+    padding: 30px;
     border-radius: 8px;
-    max-width: 800px;
+    max-width: 1000px;
     width: 90%;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     animation: modalFade 0.3s ease;
@@ -326,12 +362,45 @@ from { ... } → Estado inicial da animação./transform: translateY(-30px); →
     color: #87F27D;
 }
 
+.page-area-pesquisa #modal-texto {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.page-area-pesquisa #modal-texto .modal-image {
+    flex: 0 0 200px;
+    max-width: 200px;
+}
+
+.page-area-pesquisa #modal-texto .modal-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.page-area-pesquisa #modal-texto .modal-text {
+    flex: 1;
+}
+
 .page-area-pesquisa #modal-texto h3 {
     margin-top: 0;
     font-size: 1.4rem;
+    margin-bottom: 15px;
 }
 
 .page-area-pesquisa #modal-texto p {
-    line-height: 1.6;
+    line-height: 1.8;
     margin-top: 10px;
+    text-align: justify;
+}
+
+@media (max-width: 768px) {
+    .page-area-pesquisa #modal-texto {
+        flex-direction: column;
+    }
+    .page-area-pesquisa #modal-texto .modal-image {
+        flex: 0 0 auto;
+        max-width: 100%;
+    }
 }

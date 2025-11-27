@@ -65,8 +65,8 @@ async function adicionarPublicacao(event) {
   const citacao = document.getElementById("citacao").value.trim();
   const exibir = document.getElementById("exibir").checked;
 
-  if (!texto || !ano || !link || !doi || !filePath) {
-    mensagem.textContent = "Preencha todos os campos!";
+  if (!texto || !ano) {
+    mensagem.textContent = "Preencha os campos obrigatórios (Texto e Ano)!";
     mensagem.style.color = "red";
     return;
   }
