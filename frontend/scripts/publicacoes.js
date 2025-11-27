@@ -55,7 +55,7 @@ window.initPublicacoes = async function initPublicacoes() {
       body.appendChild(h2);
 
       const citation = document.createElement('p');
-      citation.innerHTML = `<strong>Citação:</strong> ${p.texto || 'Sem citação disponível'}`;
+      citation.innerHTML = `<strong>Citação:</strong> ${p.citacao || p.texto || 'Sem citação disponível'}`;
       body.appendChild(citation);
 
       card.appendChild(header);

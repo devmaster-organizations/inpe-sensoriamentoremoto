@@ -2,8 +2,9 @@ const pool = require('./db');
 
 // Criar uma nova notícia
 async function createNoticia(req, res) {
-  const { titulo, link, postagem, exibir } = req.body;
-  const image = req.file ? `/uploads/${req.file.filename}` : null;
+  const { titulo, link, postagem, exibir, imagemUrl } = req.body;
+  // Prioriza imagemUrl (link externo) sobre upload de arquivo
+  const image = imagemUrl || (req.file ? `/uploads/${req.file.filename}` : null);
 
   
   try {
@@ -28,7 +29,13 @@ async function createNoticia(req, res) {
 // Obter todas as notícias
 async function getAllNoticias(req, res) {
   try {
-    const result = await pool.query('SELECT * FROM noticias WHERE exibir = TRUE ORDER BY idnoticia DESC');
+    // Se admin=true vier como query param, retorna todas (inclusive não exibidas)
+    const isAdmin = req.query.admin === 'true';
+    const query = isAdmin 
+      ? 'SELECT * FROM noticias ORDER BY idnoticia DESC'
+      : 'SELECT * FROM noticias WHERE exibir = TRUE ORDER BY idnoticia DESC';
+    
+    const result = await pool.query(query);
     res.status(200).json(result.rows);
   } catch (error) {
     console.error('Erro ao buscar notícias:', error.message, { stack: error.stack });
@@ -54,16 +61,22 @@ async function getNoticiaById(req, res) {
 // Atualizar uma notícia existente
 async function updateNoticia(req, res) {
   const { id } = req.params;
-  const { titulo, link, postagem, exibir } = req.body;
+  const { titulo, link, postagem, exibir, imagemUrl } = req.body;
+  // Se imagemUrl vier, usa; senão mantém a imagem atual (não sobrescreve com null)
+  const image = imagemUrl !== undefined ? imagemUrl : undefined;
 
   try {
-    const result = await pool.query(
-      `UPDATE noticias
-       SET titulo = $1, link = $2, postagem = $3, exibir = $4
-       WHERE idnoticia = $5
-       RETURNING *`,
-      [titulo, link, postagem, exibir, id]
-    );
+    // Monta query dinâmica para não sobrescrever imagem se não vier no body
+    let query = `UPDATE noticias SET titulo = $1, link = $2, postagem = $3, exibir = $4`;
+    let params = [titulo, link, postagem, exibir];
+    if (image !== undefined) {
+      query += `, image = $5 WHERE idnoticia = $6 RETURNING *`;
+      params.push(image, id);
+    } else {
+      query += ` WHERE idnoticia = $5 RETURNING *`;
+      params.push(id);
+    }
+    const result = await pool.query(query, params);
 
     if (result.rows.length === 0) {
       return res.status(404).json({ error: 'Notícia não encontrada para atualização' });

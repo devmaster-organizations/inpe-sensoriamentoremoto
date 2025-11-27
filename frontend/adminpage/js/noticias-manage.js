@@ -12,11 +12,12 @@ function getToken(){
 // Função para buscar e exibir as notícias
 async function carregarNoticias() {
   try {
+    // Adiciona admin=true para buscar TODAS as notícias (inclusive não exibidas)
     // Cache bust para evitar 304 Not Modified mantendo 'Salvando...' preso
-    const resposta = await fetch(`${API_URL}?_=${Date.now()}`, { cache: 'no-store' });
+    const resposta = await fetch(`${API_URL}?admin=true&_=${Date.now()}`, { cache: 'no-store' });
     if (resposta.status === 304) {
       // Força nova tentativa sem cache
-      const segunda = await fetch(`${API_URL}?force=1&_=${Date.now()}`, { cache: 'no-store' });
+      const segunda = await fetch(`${API_URL}?admin=true&force=1&_=${Date.now()}`, { cache: 'no-store' });
       if (!segunda.ok) throw new Error('Falha ao recarregar notícias (304)');
       return renderNoticias(await segunda.json());
     }
@@ -38,6 +39,7 @@ function renderNoticias(noticias){
       <td>${noticia.idnoticia}</td>
       <td>${noticia.titulo}</td>
       <td><a href="${noticia.link}" target="_blank">Acessar</a></td>
+      <td>${noticia.image ? '<a href="'+noticia.image+'" target="_blank">Ver</a>' : '-'}</td>
       <td>${new Date(noticia.postagem).toLocaleDateString()}</td>
       <td>${noticia.exibir ? "Sim" : "Não"}</td>
       <td class="acoes">
@@ -58,6 +60,7 @@ async function adicionarNoticia(event) {
 
   const titulo = document.getElementById("titulo").value.trim();
   const link = document.getElementById("link").value.trim();
+  const imagemUrl = document.getElementById("imagemUrl").value.trim();
   const postagem = document.getElementById("postagem").value;
   const mensagem = document.getElementById("mensagem");
   const exibir = document.getElementById("exibir").checked;
@@ -87,7 +90,7 @@ async function adicionarNoticia(event) {
     const resposta = await fetch(url, {
       method: metodo,
       headers,
-      body: JSON.stringify({ titulo, link, postagem, exibir }),
+      body: JSON.stringify({ titulo, link, postagem, exibir, imagemUrl }),
     });
 
     if (!resposta.ok) {
@@ -150,6 +153,7 @@ async function editarNoticia(id) {
     // Preenche os campos do formulário com os dados da notícia
     document.getElementById("titulo").value = noticia.titulo;
     document.getElementById("link").value = noticia.link;
+    document.getElementById("imagemUrl").value = noticia.image || '';
     document.getElementById("postagem").value = noticia.postagem.split("T")[0];
     document.getElementById("exibir").checked = noticia.exibir;
 

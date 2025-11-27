@@ -17,9 +17,11 @@ app.disable('etag');
 app.use(express.json());
 
 // Rota proxy para a API de notícias (contorna CORS) - GET
-app.get('/api/noticias', async (_req, res) => {
+app.get('/api/noticias', async (req, res) => {
   const API_BASE_URL = process.env.API_BASE_URL || 'http://server:3013';
-  const targetUrl = `${API_BASE_URL}/api/noticias`;
+  // Repassa os query parameters (ex: admin=true)
+  const queryString = new URLSearchParams(req.query).toString();
+  const targetUrl = `${API_BASE_URL}/api/noticias${queryString ? '?' + queryString : ''}`;
   try {
     console.log(`🔄 Proxy: requisitando ${targetUrl}`);
     console.log(`📌 API_BASE_URL configurada: ${process.env.API_BASE_URL}`);
@@ -42,9 +44,11 @@ app.get('/api/noticias', async (_req, res) => {
 });
 
 // Rota proxy para a API de publicações (contorna CORS) - GET
-app.get('/api/publicacoes', async (_req, res) => {
+app.get('/api/publicacoes', async (req, res) => {
   const API_BASE_URL = process.env.API_BASE_URL || 'http://server:3013';
-  const targetUrl = `${API_BASE_URL}/api/publicacoes`;
+  // Repassa os query parameters (ex: admin=true)
+  const queryString = new URLSearchParams(req.query).toString();
+  const targetUrl = `${API_BASE_URL}/api/publicacoes${queryString ? '?' + queryString : ''}`;
   try {
     console.log(`🔄 Proxy: requisitando ${targetUrl}`);
     const response = await fetch(targetUrl);
@@ -100,9 +104,11 @@ app.get('/api/vagas', async (_req, res) => {
 });
 
 // Rota proxy para a API de oportunidades (contorna CORS) - GET
-app.get('/api/oportunidades', async (_req, res) => {
+app.get('/api/oportunidades', async (req, res) => {
   const API_BASE_URL = process.env.API_BASE_URL || 'http://server:3013';
-  const targetUrl = `${API_BASE_URL}/api/oportunidades`;
+  // Repassa os query parameters (ex: admin=true)
+  const queryString = new URLSearchParams(req.query).toString();
+  const targetUrl = `${API_BASE_URL}/api/oportunidades${queryString ? '?' + queryString : ''}`;
   try {
     console.log(`🔄 Proxy: requisitando ${targetUrl}`);
     const response = await fetch(targetUrl);

@@ -16,6 +16,7 @@ CREATE TABLE oportunidades (
   descricao TEXT NULL,
   validade DATE NULL,
   exibir BOOL NULL,
+  image TEXT NULL,
   PRIMARY KEY(idoportunidade)
 );
 
@@ -26,6 +27,8 @@ CREATE TABLE publicacoes (
   link VARCHAR(250) NULL,
   doi VARCHAR(250) NULL,
   image VARCHAR NULL,
+  exibir BOOL DEFAULT TRUE,
+  citacao TEXT NULL,
   PRIMARY KEY(idpublicacao)
 );
 
@@ -47,4 +50,4 @@ CREATE TABLE usuarios (
 );
 
 INSERT INTO usuarios (mail,senha)
-VALUES ('root@inpe.br','123456'); -- senha em texto puro para seed inicial (login aceita texto ou hash)
+VALUES ('root@inpe.br','123'); -- senha em texto puro para seed inicial (login aceita texto ou hash)

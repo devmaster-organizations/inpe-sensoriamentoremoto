@@ -13,7 +13,7 @@
 		const footer = selectFooter();
 		if (!footer) return false;
 
-		const state = { visible: false };
+		const state = { visible: false, lastScrollY: 0 };
 
 		function setFooterHeightVar(){
 			const h = footer.offsetHeight || 0;
@@ -46,7 +46,16 @@
 			);
 			// Considera "próximo ao fim" quando faltam ~120px para o fim
 			const nearBottom = scrollY + winH >= docH - 120;
-			if (nearBottom) show();
+			
+			// Detecta direção do scroll
+			const scrollingUp = scrollY < state.lastScrollY;
+			state.lastScrollY = scrollY;
+			
+			if (nearBottom) {
+				show();
+			} else if (scrollingUp) {
+				hide();
+			}
 		}
 
 		function onResize(){

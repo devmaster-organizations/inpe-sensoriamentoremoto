@@ -102,6 +102,63 @@
       background-color: #15803d;
     }
 
+    /* Switch toggle */
+    .switch-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      white-space: nowrap;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: 0.3s;
+      border-radius: 24px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.3s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #2563eb;
+    }
+
+    input:focus + .slider {
+      box-shadow: 0 0 1px #2563eb;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+
     /* ======== TABELA ======== */
     #tabela-section h3 {
       margin-bottom: 12px;
@@ -211,14 +268,20 @@
   <!-- 🆕 Formulário de inclusão -->
   <section id="form-section" style="display: none;">
     <!--style display none faz com que o formulário fique oculto na inicialização-->
-    <h3>Adicionar nova notícia</h3>
+    <h3>Adicionar nova oportunidade</h3>
     <form id="form-oportunidade">
       <input type="text" id="titulo" placeholder="Titulo da oportunidade" required>
       <input type="text" id="descricao" placeholder="Descrição da oportunidade" required>
+      <input type="url" id="imagemUrl" placeholder="URL da imagem (opcional)">
       <label for="validade">Data de validade da vaga</label>
       <input type="date" id="validade" required>
-      <label for="exibir">Exibir Vaga</label>
-      <input type="checkbox" name="exibir" id="exibir">
+      <div class="switch-wrapper">
+        <label for="exibir">Exibir Vaga</label>
+        <label class="switch">
+          <input type="checkbox" id="exibir">
+          <span class="slider"></span>
+        </label>
+      </div>
       <button type="submit">Salvar</button>
     </form>
     <p id="mensagem"></p>
@@ -233,6 +296,7 @@
           <th>ID</th>
           <th>Título</th>
           <th>Descrição</th>
+          <th>Imagem</th>
           <th>Validade</th>
           <th>Exibir</th>
           <th>Ações</th>

@@ -2,7 +2,7 @@ const pool = require('./db');
 
 // Criar uma nova publicação
 async function createPublicacao(req, res) {
-  const { texto, ano, link, doi } = req.body;
+  const { texto, ano, link, doi, exibir, citacao } = req.body;
   // Aceita upload via multer (req.file) ou caminho vindo em JSON (req.body.filePath)
   const image = req.file
     ? `/uploads/${req.file.filename}`
@@ -10,8 +10,8 @@ async function createPublicacao(req, res) {
   
   try {
     const result = await pool.query(
-      'INSERT INTO publicacoes (texto, ano, link, doi, image) VALUES ($1, $2, $3, $4, $5) RETURNING *',
-      [texto, ano, link, doi, image]
+      'INSERT INTO publicacoes (texto, ano, link, doi, image, exibir, citacao) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
+      [texto, ano, link, doi, image, exibir !== undefined ? exibir : true, citacao]
     );
     
     const publicacao = result.rows[0];
@@ -30,7 +30,13 @@ async function createPublicacao(req, res) {
 // Obter todas as publicações
 async function getAllPublicacoes(req, res) {
   try {
-    const result = await pool.query('SELECT * FROM publicacoes ORDER BY ano DESC');
+    // Se admin=true vier como query param, retorna todas (inclusive não exibidas)
+    const isAdmin = req.query.admin === 'true';
+    const query = isAdmin 
+      ? 'SELECT * FROM publicacoes ORDER BY ano DESC'
+      : 'SELECT * FROM publicacoes WHERE exibir = true ORDER BY ano DESC';
+    
+    const result = await pool.query(query);
     const rows = result.rows.map(r => ({ ...r, filePath: r.image }));
     res.status(200).json(rows);
   } catch (error) {
@@ -59,12 +65,12 @@ async function getPublicacaoById(req, res) {
 // Atualizar uma publicação existente
 async function updatePublicacao(req, res) {
   const { id } = req.params;
-  const { texto, ano, link, doi, filePath } = req.body;
+  const { texto, ano, link, doi, filePath, exibir, citacao } = req.body;
 
   try {
     const result = await pool.query(
-      'UPDATE publicacoes SET texto = $1, ano = $2, link = $3, doi = $4, image = COALESCE($5, image) WHERE idpublicacao = $6 RETURNING *',
-      [texto, ano, link, doi, filePath || null, id]
+      'UPDATE publicacoes SET texto = $1, ano = $2, link = $3, doi = $4, image = COALESCE($5, image), exibir = $6, citacao = $7 WHERE idpublicacao = $8 RETURNING *',
+      [texto, ano, link, doi, filePath || null, exibir !== undefined ? exibir : true, citacao, id]
     );
     
     if (result.rows.length === 0) {

@@ -8,9 +8,10 @@ function getToken(){
 // Função para buscar e exibir as publicações
 async function carregarPublicacoes() {
   try {
-    const resposta = await fetch(`${API_URL}?_=${Date.now()}`, { cache: 'no-store' });
+    // Adiciona admin=true para buscar TODAS as publicações (inclusive não exibidas)
+    const resposta = await fetch(`${API_URL}?admin=true&_=${Date.now()}`, { cache: 'no-store' });
     if (resposta.status === 304) {
-      const r2 = await fetch(`${API_URL}?force=1&_=${Date.now()}`, { cache: 'no-store' });
+      const r2 = await fetch(`${API_URL}?admin=true&force=1&_=${Date.now()}`, { cache: 'no-store' });
       if (!r2.ok) throw new Error('Falha ao recarregar publicações (304)');
       return renderPublicacoes(await r2.json());
     }
@@ -20,7 +21,7 @@ async function carregarPublicacoes() {
   } catch (erro) {
     
     document.getElementById("lista-publicacoes").innerHTML =
-      `<tr><td colspan="6">Erro ao carregar publicações.</td></tr>`;
+      `<tr><td colspan="9">Erro ao carregar publicações.</td></tr>`;
   }
 }
 
@@ -29,6 +30,7 @@ function renderPublicacoes(publicacoes){
   tabela.innerHTML = "";
   publicacoes.forEach(publicacao => {
     const linha = document.createElement("tr");
+    const citacaoPreview = publicacao.citacao ? (publicacao.citacao.length > 50 ? publicacao.citacao.substring(0, 50) + '...' : publicacao.citacao) : '-';
     linha.innerHTML = `
       <td>${publicacao.idpublicacao}</td>
       <td>${publicacao.texto}</td>
@@ -36,6 +38,8 @@ function renderPublicacoes(publicacoes){
       <td><a href="${publicacao.link}" target="_blank">Acessar</a></td>
       <td>${publicacao.doi}</td>
       <td><a href="${publicacao.filePath}" target="_blank">Acessar</a></td>
+      <td title="${publicacao.citacao || ''}">${citacaoPreview}</td>
+      <td>${publicacao.exibir !== false ? "Sim" : "Não"}</td>
       <td class="acoes">
         <button class="action-btn btn-edit" onclick="editarPublicacao(${publicacao.idpublicacao})">
           <i class="fa-solid fa-pen-to-square"></i>
@@ -58,6 +62,8 @@ async function adicionarPublicacao(event) {
   const link = document.getElementById("link").value.trim();
   const doi = document.getElementById("doi").value.trim();
   const filePath = document.getElementById("filePath").value;
+  const citacao = document.getElementById("citacao").value.trim();
+  const exibir = document.getElementById("exibir").checked;
 
   if (!texto || !ano || !link || !doi || !filePath) {
     mensagem.textContent = "Preencha todos os campos!";
@@ -84,7 +90,7 @@ async function adicionarPublicacao(event) {
     const resposta = await fetch(url, {
       method: metodo,
       headers,
-      body: JSON.stringify({ texto, ano, link, doi, filePath }),
+      body: JSON.stringify({ texto, ano, link, doi, filePath, citacao, exibir }),
     });
 
     if (!resposta.ok) {
@@ -146,6 +152,8 @@ async function editarPublicacao(id) {
     document.getElementById("link").value = publicacao.link || "";
     document.getElementById("doi").value = publicacao.doi || "";
     document.getElementById("filePath").value = publicacao.filePath || "";
+    document.getElementById("citacao").value = publicacao.citacao || "";
+    document.getElementById("exibir").checked = publicacao.exibir !== false;
 
     document.getElementById("form-publicacao").dataset.editandoId = publicacao.idpublicacao;
 

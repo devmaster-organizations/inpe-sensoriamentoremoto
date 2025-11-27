@@ -1,94 +1,90 @@
 // ===========================
-// Página: Vagas (GET + POST com upload de imagem)
+// Página: Vagas/Oportunidades
 // ===========================
-// Renderiza as vagas vindas do backend, adiciona busca por palavra-chave no título,
-// e fornece formulário de upload para criar novas vagas.
+// Carrega e exibe as oportunidades/vagas com imagens, descrição e busca
 
 window.initVagas = async function initVagas() {
-  const root = document.querySelector('.page-vagas');
-  if (!root) return;
-
-  const grid = root.querySelector('#page-btn');
-  const searchInput = root.querySelector('#searchinput-vagas');
-  const form = root.querySelector('#form-vaga');
-  const msg = root.querySelector('.form-msg');
+  const grid = document.querySelector('#page-btn');
+  const searchInput = document.querySelector('#searchinput-vagas');
 
   if (!grid) return;
 
-  // Limpa conteúdo estático e prepara o container
-  grid.innerHTML = '';
+  // Limpa conteúdo
+  grid.innerHTML = '<p style="text-align:center; width:100%; padding:20px;">Carregando...</p>';
 
   try {
-  const vagas = await (window.getVagas ? window.getVagas() : fetch('/api/oportunidades').then(r => r.json()));
-
-    // Helper para criar um card no formato atual do layout
+    const response = await fetch('/api/oportunidades');
+    if (!response.ok) {
+      throw new Error('Erro ao carregar oportunidades');
+    }
+    const vagas = await response.json();
+    
+    grid.innerHTML = '';
+    
+    if (vagas.length === 0) {
+      grid.innerHTML = '<p style="text-align:center; width:100%; padding:40px;">Nenhuma vaga disponível no momento.</p>';
+      return;
+    }
+    
+    // Helper para criar um card
     function criarCard(v) {
       const card = document.createElement('div');
       card.className = 'page-card';
-
-      // Mantém header vazio para preservar o layout, mas sem imagem
-      const header = document.createElement('div');
-      header.className = 'page-card-header';
-      card.appendChild(header);
-
-      const body = document.createElement('div');
-      body.className = 'page-card-body';
-
-      const h2 = document.createElement('h2');
-      h2.textContent = v.titulo || 'Sem título';
-      body.appendChild(h2);
-
-      // Se houver link da vaga, mostra link textual
-      if (v.link) {
-        const a = document.createElement('a');
-        a.href = v.link;
-        a.target = '_blank';
-        a.textContent = 'Acessar';
-        body.appendChild(a);
-      }
-
-      card.appendChild(body);
+      card.dataset.titulo = (v.titulo || '').toLowerCase();
+      card.dataset.descricao = (v.descricao || '').toLowerCase();
+      
+      // Imagem padrão se não houver
+      const imagemUrl = v.image || 'img/inpe-logo.png';
+      
+      // Formata data de validade
+      const dataValidade = new Date(v.validade);
+      const dataFormatada = dataValidade.toLocaleDateString('pt-BR');
+      
+      // Trunca descrição para preview
+      const descricaoPreview = (v.descricao && v.descricao.length > 150)
+        ? v.descricao.substring(0, 150) + '...' 
+        : (v.descricao || 'Sem descrição');
+      
+      card.innerHTML = `
+        <div class="page-card-header">
+          <img src="${imagemUrl}" alt="${v.titulo || 'Vaga'}" loading="lazy">
+        </div>
+        <div class="page-card-body">
+          <h2>${v.titulo || 'Sem título'}</h2>
+          <p>${descricaoPreview}</p>
+          <p class="page-card-date">Validade: ${dataFormatada}</p>
+        </div>
+      `;
+      
       return card;
     }
 
-    // Adiciona cards (ordenados já chegam do backend)
+    // Adiciona cards
     vagas.forEach(v => grid.appendChild(criarCard(v)));
-
-    // Busca por título (não quebra layout)
+    
+    // Configura busca
     if (searchInput) {
-      searchInput.addEventListener('input', () => {
-        const q = searchInput.value.trim().toLowerCase();
-        grid.querySelectorAll('.page-card').forEach(card => {
-          const title = card.querySelector('h2')?.textContent?.toLowerCase() || '';
-          card.style.display = title.includes(q) ? '' : 'none';
+      searchInput.addEventListener('input', (e) => {
+        const termo = e.target.value.toLowerCase().trim();
+        const cards = document.querySelectorAll('.page-card');
+        
+        cards.forEach(card => {
+          const titulo = card.dataset.titulo || '';
+          const descricao = card.dataset.descricao || '';
+          const match = titulo.includes(termo) || descricao.includes(termo);
+          
+          if (match) {
+            card.classList.remove('hidden');
+            setTimeout(() => card.style.display = '', 10);
+          } else {
+            card.classList.add('hidden');
+            setTimeout(() => card.style.display = 'none', 300);
+          }
         });
       });
     }
-
-    // Upload de nova vaga
-    if (form) {
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        if (msg) { msg.textContent = 'Enviando...'; msg.style.color = ''; }
-        try {
-          const fd = new FormData(form);
-          // Checkbox exibir vira 'true'/'false'
-          if (!fd.has('exibir')) fd.append('exibir', 'false');
-          else fd.set('exibir', 'true');
-          const resp = await (window.postVaga ? window.postVaga(fd) : fetch('/api/oportunidades', { method: 'POST', body: fd }).then(r=>r.json()));
-          if (msg) { msg.textContent = 'Salvo com sucesso!'; msg.style.color = 'green'; }
-          // Recarrega a lista
-          const novas = await (window.getVagas ? window.getVagas() : fetch('/api/oportunidades').then(r => r.json()));
-          grid.innerHTML = '';
-          novas.forEach(v => grid.appendChild(criarCard(v)));
-          // Limpa form
-          form.reset();
-        } catch (e) {
-          if (msg) { msg.textContent = 'Erro ao enviar: ' + (e.message || e); msg.style.color = 'red'; }
-        }
-      });
-    }
   } catch (err) {
-    grid.innerHTML = `<p style="color:red">Falha ao carregar vagas: ${err.message}</p>`;
+    grid.innerHTML = `<p style="color:red; text-align:center; width:100%; padding:40px;">Erro ao carregar vagas: ${err.message}</p>`;
   }
 };
+

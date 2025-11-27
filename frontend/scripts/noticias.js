@@ -120,16 +120,14 @@ window.initNoticias = async function initNoticias() {
             const card = document.createElement('div');
             card.className = 'page-card';
 
-            // Mantém o header para preservar o layout, mas sem imagem
+            // Mantém o header para preservar o layout
             const header = document.createElement('div');
             header.className = 'page-card-header';
-            // Adiciona imagem genérica do INPE
+            // Usa imagem da notícia se existir, senão fallback para logo INPE
             const img = document.createElement('img');
-            img.src = 'img/inpe-logo.png';
-            img.alt = 'INPE';
+            img.src = n.image || 'img/inpe-logo.png';
+            img.alt = n.titulo || 'INPE';
             img.loading = 'lazy';
-            img.style.maxHeight = '70px';
-            img.style.objectFit = 'contain';
             header.appendChild(img);
             card.appendChild(header);
 

@@ -8,9 +8,10 @@ function getToken(){ return localStorage.getItem('token'); }
 // Função para buscar e exibir as oportunidades
 async function carregarOportunidades() {
   try {
-    const resposta = await fetch(`${API_URL}?_=${Date.now()}`, { cache: 'no-store' });
+    // Adiciona admin=true para buscar TODAS as oportunidades (inclusive não exibidas)
+    const resposta = await fetch(`${API_URL}?admin=true&_=${Date.now()}`, { cache: 'no-store' });
     if (resposta.status === 304) {
-      const r2 = await fetch(`${API_URL}?force=1&_=${Date.now()}`, { cache: 'no-store' });
+      const r2 = await fetch(`${API_URL}?admin=true&force=1&_=${Date.now()}`, { cache: 'no-store' });
       if (!r2.ok) throw new Error('Falha ao recarregar oportunidades (304)');
       return renderOportunidades(await r2.json());
     }
@@ -24,7 +25,7 @@ async function carregarOportunidades() {
   } catch (erro) {
     
     document.getElementById("lista-oportunidades").innerHTML =
-      `<tr><td colspan="6">Erro ao carregar notícias.</td></tr>`;
+      `<tr><td colspan="7">Erro ao carregar notícias.</td></tr>`;
   }
 }
 
@@ -37,6 +38,7 @@ function renderOportunidades(oportunidades){
       <td>${oportunidade.idoportunidade}</td>
       <td>${oportunidade.titulo}</td>
       <td>${oportunidade.descricao}</td>
+      <td>${oportunidade.image ? '<a href="'+oportunidade.image+'" target="_blank">Ver</a>' : '-'}</td>
       <td>${new Date(oportunidade.validade).toLocaleDateString()}</td>
       <td>${oportunidade.exibir ? "Sim" : "Não"}</td>
       <td class="acoes">
@@ -61,6 +63,7 @@ async function adicionarOportunidade(event) {
 
   const titulo = document.getElementById("titulo").value.trim();
   const descricao = document.getElementById("descricao").value.trim();
+  const imagemUrl = document.getElementById("imagemUrl").value.trim();
   const validade = document.getElementById("validade").value;
   const exibir = document.getElementById("exibir").checked;
   
@@ -86,7 +89,7 @@ async function adicionarOportunidade(event) {
     const resposta = await fetch(url, {
       method: metodo,
       headers,
-      body: JSON.stringify({ titulo, descricao, validade, exibir }),
+      body: JSON.stringify({ titulo, descricao, validade, exibir, imagemUrl }),
     });
 
     if (!resposta.ok) {
@@ -149,6 +152,7 @@ async function editarOportunidade(id) {
     // Preenche os campos do formulário com os dados da notícia
     document.getElementById("titulo").value = oportunidade.titulo;
     document.getElementById("descricao").value = oportunidade.descricao;
+    document.getElementById("imagemUrl").value = oportunidade.image || '';
     // jocelio ver explicação 
     document.getElementById("validade").value = oportunidade.validade.split("T")[0];
     document.getElementById("exibir").checked = oportunidade.exibir;

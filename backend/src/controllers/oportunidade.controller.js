@@ -2,14 +2,21 @@ const pool = require('./db');
 
 // Criar uma nova oportunidade
 async function createOportunidade(req, res) {
-  const { titulo, descricao, validade, exibir } = req.body;
+  const { titulo, descricao, validade, exibir, imagemUrl } = req.body;
+  // Prioriza imagemUrl (link externo) sobre upload de arquivo
+  // Valida se imagemUrl não é string vazia
+  const image = (imagemUrl && typeof imagemUrl === 'string' && imagemUrl.trim() !== '') 
+    ? imagemUrl.trim() 
+    : (req.file ? `/uploads/${req.file.filename}` : null);
+
+  console.log('📝 Criando oportunidade:', { titulo, imagemUrl, imageResult: image, body: req.body });
 
   try {
     const result = await pool.query(
-      `INSERT INTO oportunidades (titulo, descricao, validade, exibir)
-       VALUES ($1, $2, $3, $4)
+      `INSERT INTO oportunidades (titulo, descricao, validade, exibir, image)
+       VALUES ($1, $2, $3, $4, $5)
        RETURNING *`,
-      [titulo, descricao, validade, exibir]
+      [titulo, descricao, validade, exibir, image]
     );
 
     const oportunidade = result.rows[0];
@@ -26,7 +33,13 @@ async function createOportunidade(req, res) {
 // Obter todas as oportunidades
 async function getAllOportunidades(req, res) {
   try {
-    const result = await pool.query('SELECT * FROM oportunidades WHERE exibir = true ORDER BY idoportunidade DESC');
+    // Se admin=true vier como query param, retorna todas (inclusive não exibidas)
+    const isAdmin = req.query.admin === 'true';
+    const query = isAdmin 
+      ? 'SELECT * FROM oportunidades ORDER BY idoportunidade DESC'
+      : 'SELECT * FROM oportunidades WHERE exibir = true ORDER BY idoportunidade DESC';
+    
+    const result = await pool.query(query);
     res.status(200).json(result.rows);
   } catch (error) {
     console.error('Erro ao buscar oportunidades:', error);
@@ -52,16 +65,27 @@ async function getOportunidadeById(req, res) {
 // Atualizar uma oportunidade existente
 async function updateOportunidade(req,res) {
   const { id } = req.params;
-  const { titulo, descricao, validade, exibir } = req.body;
+  const { titulo, descricao, validade, exibir, imagemUrl } = req.body;
+  // Se imagemUrl vier, usa; senão mantém a imagem atual (não sobrescreve com null)
+  // Valida se imagemUrl não é string vazia
+  const image = (imagemUrl !== undefined && typeof imagemUrl === 'string' && imagemUrl.trim() !== '') 
+    ? imagemUrl.trim() 
+    : undefined;
+
+  console.log('✏️ Atualizando oportunidade:', { id, imagemUrl, imageResult: image, body: req.body });
 
   try {
-    const result = await pool.query(
-      `UPDATE oportunidades
-       SET titulo = $1, descricao = $2, validade = $3, exibir = $4
-       WHERE idoportunidade = $5
-       RETURNING *`,
-      [titulo, descricao, validade, exibir, id]
-    );
+    // Monta query dinâmica para não sobrescrever imagem se não vier no body
+    let query = `UPDATE oportunidades SET titulo = $1, descricao = $2, validade = $3, exibir = $4`;
+    let params = [titulo, descricao, validade, exibir];
+    if (image !== undefined) {
+      query += `, image = $5 WHERE idoportunidade = $6 RETURNING *`;
+      params.push(image, id);
+    } else {
+      query += ` WHERE idoportunidade = $5 RETURNING *`;
+      params.push(id);
+    }
+    const result = await pool.query(query, params);
 
     if (result.rows.length === 0) {
       return res.status(404).json({ error: 'Oportunidade não encontrada para atualização' });
