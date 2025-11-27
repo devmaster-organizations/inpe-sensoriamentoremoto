@@ -40,27 +40,44 @@ window.initVagas = async function initVagas() {
       const dataValidade = new Date(v.validade);
       const dataFormatada = dataValidade.toLocaleDateString('pt-BR');
       
-      // Trunca descrição para preview
-      const descricaoPreview = (v.descricao && v.descricao.length > 150)
-        ? v.descricao.substring(0, 150) + '...' 
-        : (v.descricao || 'Sem descrição');
-      
       card.innerHTML = `
         <div class="page-card-header">
           <img src="${imagemUrl}" alt="${v.titulo || 'Vaga'}" loading="lazy">
         </div>
         <div class="page-card-body">
           <h2>${v.titulo || 'Sem título'}</h2>
-          <p>${descricaoPreview}</p>
+          <p class="descricao">${v.descricao || 'Sem descrição'}</p>
           <p class="page-card-date">Validade: ${dataFormatada}</p>
         </div>
       `;
+      
+      // Adiciona evento de clique para expandir/recolher
+      card.addEventListener('click', (e) => {
+        e.stopPropagation();
+        
+        // Fecha todos os outros cards expandidos
+        document.querySelectorAll('.page-card.expandido').forEach(c => {
+          if (c !== card) c.classList.remove('expandido');
+        });
+        
+        // Toggle no card atual
+        card.classList.toggle('expandido');
+      });
       
       return card;
     }
 
     // Adiciona cards
     vagas.forEach(v => grid.appendChild(criarCard(v)));
+    
+    // Fecha cards expandidos ao clicar fora
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.page-card')) {
+        document.querySelectorAll('.page-card.expandido').forEach(card => {
+          card.classList.remove('expandido');
+        });
+      }
+    });
     
     // Configura busca
     if (searchInput) {

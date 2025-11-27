@@ -77,12 +77,19 @@ a{
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: opacity 300ms ease, transform 300ms ease, box-shadow 300ms ease;
+    transition: opacity 300ms ease, transform 300ms ease, box-shadow 300ms ease, max-height 300ms ease;
     opacity: 1;
     transform: scale(1);
-    min-height: 220px; /* garante altura mínima agradável */
-    /* para evitar que o foco se perca atrás de outros elementos quando animado */
+    height: 480px;
+    max-height: 480px;
+    cursor: pointer;
     will-change: transform, box-shadow;
+}
+
+.page-card.expandido {
+    height: auto;
+    max-height: 800px;
+    cursor: default;
 }
   
   /* estado "sumido" — ainda presente no DOM até o JS definir display:none */
@@ -158,6 +165,19 @@ a{
     line-height:1.4;
     margin: 0;
     text-align: justify;
+}
+
+.page-card-body .descricao {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.page-card.expandido .page-card-body .descricao {
+    display: block;
+    -webkit-line-clamp: unset;
 }
 
 .page-card-body .page-card-date {
