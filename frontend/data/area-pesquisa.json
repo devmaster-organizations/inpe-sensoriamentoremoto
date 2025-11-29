@@ -1,0 +1,49 @@
+{
+  "id": "area-pesquisa",
+  "titulo": "Área de Pesquisa",
+  "descricao": "Explore as diversas áreas de pesquisa em sensoriamento remoto, incluindo estudos de vegetação, monitoramento ambiental, análise urbana e muito mais. Descubra como nossas pesquisas contribuem para o avanço do conhecimento e a solução de desafios globais.",
+  "palavrasChave": [
+    "sensoriamento remoto",
+    "pesquisa ambiental",
+    "monitoramento da vegetação",
+    "análise urbana",
+    "tecnologia de satélites",
+    "ciência de dados",
+    "mudanças climáticas",
+    "geoprocessamento",
+    "inovação tecnológica"
+  ],
+  "areas": {
+    "monitoramento": {
+      "titulo": "Monitoramento e Mapeamento Agrícola",
+      "imagem": "img/mma.png",
+      "descricao": "O AgriRS realiza o monitoramento e o mapeamento das principais culturas agrícolas cultivadas no Brasil utilizando dados de sensoriamento remoto. As classificações são feitas utilizando imagens de satélite pré-processadas e algoritmos de classificação que visam identificar áreas cultivadas com diferentes culturas. Essa abordagem permite acompanhar a dinâmica espacial das lavouras ao longo das safras, contribuindo para o planejamento agrícola e para políticas públicas voltadas ao setor."
+    },
+    "produtividade": {
+      "titulo": "Estimativas de Produtividade",
+      "imagem": "img/ep.png",
+      "descricao": "Com base em séries temporais de imagens de satélite e dados meteorológicos, o AgriRS desenvolve metodologias para estimar a produtividade das culturas e avaliar perdas causadas por eventos extremos, como estiagens e geadas. Essas análises permitem identificar áreas com risco de quebra de safra e fornecer informações estratégicas para órgãos de planejamento, assistência técnica e seguro agrícola."
+    },
+    "fenologia": {
+      "titulo": "Fenologia de Culturas Agrícolas",
+      "imagem": "img/fca.png",
+      "descricao": "No AgriRS, o acompanhamento da fenologia das culturas é realizado por meio de séries temporais de índices espectrais derivados de imagens de satélite. Essa abordagem possibilita identificar etapas importantes do ciclo das culturas, como datas de plantio, enchimento de grãos, florescimento e colheita."
+    },
+    "impactos": {
+      "titulo": "Análise de Impactos Ambientais",
+      "imagem": "img/aia.png",
+      "descricao": "O AgriRS aplica técnicas de sensoriamento remoto para detectar alterações no uso da terra, como desmatamentos, expansão agrícola sobre áreas naturais e degradação da vegetação nativa. Essas análises podem servir como subsídio para ações de fiscalização ambiental e gestão mais sustentável dos recursos naturais. Isso contribui para a preservação dos biomas e para o desenvolvimento de práticas agrícolas mais sustentáveis."
+    },
+    "quebras": {
+    "titulo": "Análise de Quebras de Safras",
+    "imagem": "img/aqs.png",
+    "descricao": "No AgriRS, a análise de quebras de safra utiliza dados multitemporais de sensoriamento remoto integrados a séries históricas de produtividade agrícola. A partir de índices espectrais, anomalias climáticas e modelos estatísticos, o sistema identifica reduções significativas no vigor vegetativo e estima o impacto potencial sobre a produção. Esse monitoramento permite antecipar riscos, apoiar ações de mitigação e orientar políticas públicas voltadas ao setor agrícola."
+    },
+    "desmatamento": {
+    "titulo": "Detecção de Desmatamento",
+    "imagem": "img/dd.png",
+    "descricao": "A detecção de desmatamento no AgriRS combina algoritmos de classificação, mudança de uso do solo e análise temporal de imagens orbitais. O sistema identifica padrões recentes de supressão de vegetação, reconhece áreas em regeneração e quantifica a extensão das alterações. Essa metodologia assegura maior precisão na identificação de áreas críticas, contribuindo para o monitoramento ambiental contínuo e para ações de fiscalização e conservação."
+    }
+
+  }
+}

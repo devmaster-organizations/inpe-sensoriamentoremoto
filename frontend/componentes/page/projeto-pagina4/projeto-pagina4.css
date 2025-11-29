@@ -1,0 +1,39 @@
+.corpo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    align-self: center;
+    justify-self: center;
+}
+.esquerda {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 16px;
+}
+
+.esquerda img{
+    height: 280px;
+    width: auto;
+}
+
+.direita {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 16px;
+}
+
+.direita p{
+    text-align: justify;
+    font-family: "poppins";
+}
+
+@media (max-width: 900px) {
+    .corpo{
+        flex-direction: column;
+    }
+}

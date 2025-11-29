@@ -1,0 +1,38 @@
+### Listar as publicações
+GET http://localhost:3000/api/publicacoes
+
+### Criar uma publicação
+POST http://localhost:3000/api/publicacoes
+Content-Type: application/json
+
+{
+ "texto":"Alcântara, E., Novo, E., Stech, J., Lorenzzetti, J., Barbosa, C., Assireu, A., and Souza, A.: A contribution to understanding the turbidity behaviour in an Amazon floodplain, Hydrol. Earth Syst. Sci., 14, 351–364, , 2010.",
+ "ano":"2010", 
+ "link": "https://hess.copernicus.org/articles/14/351/2010/hess-14-351-2010.html",
+ "doi":"https://doi.org/10.5194/hess-14-351-2010" 
+}
+
+### Criar uma publicação
+POST http://localhost:3000/api/publicacoes
+Content-Type: application/json
+
+{
+ "texto":"Marcelo Curtarelli, Enner Alcântara, Camilo Rennó, José Stech,Effects of cold fronts on MODIS-derived sensible and latent heat fluxes in Itumbiara reservoir (Central Brazil), Advances in Space Research,Volume 52, Issue 9,2013",
+ "ano":"2013", 
+ "link": "https://www.sciencedirect.com/science/article/abs/pii/S0273117713004663",
+ "doi":"https://doi.org/10.1016/j.asr.2013.07.037" 
+}
+
+### Atualizar uma publicação
+PUT http://localhost:3000/api/publicacoes/1
+Content-Type: application/json
+
+{
+ "texto":"ALCÂNTARA, E., Novo, E., Stech, J., Lorenzzetti, J., Barbosa, C., Assireu, A., and Souza, A.: A contribution to understanding the turbidity behaviour in an Amazon floodplain, Hydrol. Earth Syst. Sci., 14, 351–364, , 2010.",
+ "ano":"2011", 
+ "link": "https://hess.copernicus.org/articles/14/351/2010/hess-14-351-2010.html",
+ "doi":"https://doi.org/10.5194/hess-14-351-2010" 
+}
+
+### Atualizar uma publicação
+DELETE http://localhost:3000/api/publicacoes/1

@@ -1,0 +1,114 @@
+/* ---------- estilo base ---------- */
+.carousel {
+  max-width: 1200px;
+  margin: 72px auto 28px; /* empurra para baixo do header */
+  position: relative;
+  padding: 0 12px;
+}
+
+/* viewport: área visível */
+.carousel__viewport {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: transparent; /* remove fundo preto */
+}
+
+/* slides empilhados (fade) */
+.carousel__viewport .slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  width: 100%;
+  transform: translateZ(0);
+  transition: opacity 600ms cubic-bezier(.2,.9,.3,1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: stretch;
+  text-align: left;
+  padding: 0; /* elimina faixa/borda em volta da imagem */
+}
+
+/* slide ativo */
+.carousel__viewport .slide.is-active {
+  opacity: 1;
+  position: relative;         /* bring to flow so its link is reachable */
+}
+
+/* imagem */
+.slide img {
+  width: 100%;
+  height: clamp(220px, 48vh, 520px);
+  object-fit: cover;
+  display: block;
+  border-radius: 12px; /* volta arredondado sem cor de fundo */
+  background: transparent;
+}
+
+/* título sobre a imagem/abaixo (personalize) */
+.slide__title {
+  margin-top: 10px;
+  font-family: "Poppins", system-ui, sans-serif;
+  font-size: 1.1rem;
+  color: #111;
+}
+
+/* botões prev/next */
+.carousel__btn {
+  position: absolute;
+  top: 45%;
+  transform: translateY(-45%);
+  z-index: 20;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255,255,255,0.4);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  cursor: pointer;
+  font-size: larger;
+  font-weight: 700;
+}
+.carousel__prev { left: 8px; }
+.carousel__next { right: 8px; }
+.carousel__btn:focus { outline: 3px solid rgba(0,150,0,0.14); outline-offset: 2px; }
+
+/* dots (bolinhas) */
+.carousel__dots {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 12px;
+}
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.12);
+  background: rgba(255,255,255,0.25);
+  transition: background .18s ease, transform .12s ease, box-shadow .12s;
+  cursor: pointer;
+}
+.dot[aria-selected="true"] {
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+  transform: scale(1.15);
+}
+
+/* oculto para leitores de tela */
+.sr-only {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* responsivo: ajustar botões em mobile */
+@media (max-width: 520px) {
+  .carousel__btn { width: 40px; height: 40px; }
+  .dot { width: 14px; height: 14px; }
+}

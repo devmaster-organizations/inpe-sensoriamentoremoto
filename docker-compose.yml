@@ -1,0 +1,82 @@
+
+
+networks:
+  fatec-network:
+    driver: bridge
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: agrirslab-frontend
+    environment:
+      - PORT=3021
+      - API_BASE_URL=http://server:3013
+    ports:
+      - "3021:3021"
+    depends_on:
+      - server
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+    networks:
+      - fatec-network
+
+  server:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: agrirslab-server
+    environment:
+      - PORT=3013
+      - POSTGRES_HOST=postgres
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=abp
+      - POSTGRES_PORT=5432
+    ports:
+      - "3013:3013"
+    depends_on:
+      - postgres
+    volumes:
+      - uploads:/app/src/uploads
+    networks:
+      - fatec-network
+
+  postgres:
+    image: postgres:16
+    container_name: agrirslab-postgres
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=abp
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./backend/src/controllers/db.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+    networks:
+      - fatec-network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: fatec@example.com
+      PGADMIN_DEFAULT_PASSWORD: fatec
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    networks:
+      - fatec-network
+
+  
+volumes:
+  pgdata:
+  uploads:
+  pgadmin_data:
+

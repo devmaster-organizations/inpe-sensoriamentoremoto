@@ -1,0 +1,39 @@
+### Listar as notícias
+GET http://localhost:3000/api/noticias
+
+### Criar uma notícia
+POST http://localhost:3000/api/noticias
+Content-Type: application/json
+
+{
+ "titulo":"Laboratório de Sensoriamento Remoto em Agricultura",
+ "link":"http://www.dsr.inpe.br/DSR/laboratorios/AgriRS_Lab",
+ "postagem": "2025-10-01",
+ "exibir": "true"
+}
+
+### Criar uma notícia
+POST http://localhost:3000/api/noticias
+Content-Type: application/json
+
+{
+ "titulo":"AgriRS Lab, desenvolvemos pesquisas voltadas para a produção de ciência",
+ "link":"https://github.com/agrirslab",
+ "postagem": "2025-08-21",
+ "exibir": "true"
+}
+
+### Atualizar uma notícia
+PUT http://localhost:3000/api/noticias/1
+Content-Type: application/json
+
+
+{
+ "titulo":"LABORATÓRIO de Sensoriamento Remoto em Agricultura",
+ "link":"http://www.dsr.inpe.br/DSR/laboratorios/AgriRS_Lab",
+ "postagem": "2025-10-22",
+ "exibir": "true"
+}
+
+### Atualizar uma notícia
+DELETE http://localhost:3000/api/noticias/1

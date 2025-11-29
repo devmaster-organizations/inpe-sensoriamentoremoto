@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root{
+    --fonte-devmaster: Poppins;
+}
+*{
+    border: 0;
+    padding: 0;
+}
+/* Footer fixo, invisível por padrão; mostrado via classe .is-visible controlada por JS */
+footer{
+    width: 100vw; /* Ocupa toda a largura da viewport */
+    height: 220px;
+    background-color: var(--color-footer);
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+    z-index: 998; /* Abaixo do header */
+    /* Esconde totalmente fora da tela e desabilita interação */
+    transform: translateY(100%);
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform 0.28s ease, visibility 0s linear 0.28s;
+}
+
+/* Quando visível, desliza para dentro e permite interação */
+footer.is-visible {
+    transform: translateY(0);
+    visibility: visible;
+    pointer-events: auto;
+    transition: transform 0.28s ease, visibility 0s linear 0s;
+}
+
+/* Quando o footer estiver visível, empurra o conteúdo para cima um pouco
+   (o JS define --footer-height com a altura real do footer) */
+body.has-footer-visible {
+    padding-bottom: var(--footer-height, 220px);
+    transition: padding-bottom 0.2s ease;
+}
+#rodape{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+#nome{
+    display: flex;
+    padding: 0%;
+    margin: 0%;
+    flex: 1;
+    color: white;
+    font-size: 45px;
+    font-weight: bold;
+    font-family: var(--fonte-devmaster);
+    justify-content: center;
+}
+#redes{
+    display: flex;
+    flex: 2;
+    justify-content: space-around;
+}
+.links i{
+    height: 45px;
+    color: white;
+}
+.links a{
+    text-decoration: none;
+    color: black;
+    font-size: 27px;
+    font-family: var(--fonte-devmaster);
+}
+.links a:hover{
+    color: white;
+}
+i.fa-brands{
+   font-size: 37px; 
+}
+i.fa-solid{
+    margin-right: 3px;
+    font-size: 37px;
+}
+.links{
+    display: block;
+}
+
+@media (max-width: 900px){
+    #nome{
+        font-size: 32px;
+    }
+    .links a{
+        font-size: 20px;
+    }
+    .links i{
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 548px){
+    #redes{
+        flex-direction: column;
+    }
+    #rodape{
+        flex-direction: column;
+    }
+    #nome{
+        font-size: 24px;
+    }
+    .links a{
+        font-size: 16px;
+    }
+    .links i{
+        font-size: 24px;
+    }
+}

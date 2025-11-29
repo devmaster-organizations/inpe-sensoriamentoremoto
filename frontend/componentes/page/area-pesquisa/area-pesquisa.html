@@ -1,0 +1,102 @@
+<div class="page-container">
+    <section class="area-pesquisa">
+    
+        <h1>Área de Pesquisa</h1> <!-- Título principal -->
+    
+        <!-- Seção que contém os cards -->
+        <section class="secao-cards-areapesquisa">
+            <div class="Card_container">
+                <!-- Exemplo de um card -->
+                <div class="card">
+                    <div class="card-photos">
+                        <img src="../../../img/mma.png" alt="Imagem_card1">
+                    </div>
+                    <div class="card-hearder">
+                        <h3>Monitoramento e Mapeamento Agrícola</h3>
+                    </div>
+                    <div class="card-conteudo_oculto">
+                        <!-- Botão que abre o modal -->
+                        <a href="#"  class="ver-mais"
+                        data-info="monitoramento"><p>Saiba mais</p></a> <!-- href ="#" significa: Link temporário que não redireciona. Ele não leva a lugar nenhum por padrão, apenas "volta" para o topo da página. Link será controlado por JS para abrir modal com conteúdo sem redirecionar para outra página. -->
+                    </div>
+                </div>
+                <!-- Os demais cards seguem o mesmo padrão -->
+                <div class="card">
+                    <div class="card-photos">
+                        <img src="../../../img/ep.png" alt="Imagem_card2">
+                    </div>
+                    <div class="card-hearder">
+                        <h3>Estimativas de Produtividade</h3>
+                    </div>
+                    <div class="card-conteudo_oculto">
+                        <a href="#" class="ver-mais" data-info="produtividade">Saiba mais</a>
+                    </div>
+                </div>
+    
+    
+                <div class="card">
+                    <div class="card-photos">
+                        <img src="../../../img/fca.png" alt="Imagem_card3">
+                    </div>
+                    <div class="card-hearder">
+                        <h3>Fenologia de Culturas Agrícolas</h3>
+                    </div>
+                    <div class="card-conteudo_oculto">
+                        <a href="#" class="ver-mais" data-info="fenologia">Saiba mais</a>
+                    </div>
+                </div>
+    
+    
+                <div class="card">
+                    <div class="card-photos">
+                        <img src="../../../img/aia.png" alt="Imagem_card4">
+                    </div>
+                    <div class="card-hearder">
+                        <h3>Análises de Impactos Ambientais</h3>
+                    </div>
+                    <div class="card-conteudo_oculto">
+                        <a href="#" class="ver-mais" data-info="impactos">Saiba mais</a>
+                    </div>
+                </div>
+    
+    
+                <div class="card">
+                    <div class="card-photos">
+                        <img src="../../../img/aqs.png" alt="Imagem_card5">
+                    </div>
+                    <div class="card-hearder">
+                        <h3>Análises de Quebras de Safras</h3>
+                    </div>
+                    <div class="card-conteudo_oculto">
+                       <a href="#" class="ver-mais" data-info="quebras">Saiba mais</a>
+                    </div>
+                </div>
+    
+    
+                <div class="card">
+                    <div class="card-photos">
+                        <img src="../../../img/dd.png" alt="Imagem_card6">
+                    </div>
+                    <div class="card-hearder">
+                        <h3>Detecção de Desmatamento</h3>
+                    </div>
+                    <div class="card-conteudo_oculto">
+                        <a href="#" class="ver-mais" data-info="desmatamento">Saiba mais</a>
+                    </div>
+                </div>
+    
+    
+            </div>
+        </section>
+    
+        <!-- Estrutura do modal que aparece ao clicar em "Saiba mais" -->
+        <div id="modalInfo" class="modal">
+            <div class="modal-content">
+                <span class="modal-close">&times;</span> <!-- Botão de fechar -->
+                <div id="modal-texto"></div> <!-- Texto carregado pelo JS -->
+            </div>
+        </div>
+    
+    <!-- Script da modal é global (scripts/noticias.js) e já é carregado no index.html -->
+    </section>
+</div>

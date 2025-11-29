@@ -1,0 +1,41 @@
+<section class="carousel" aria-label="Destaques" id="newsCarousel">
+    <div class="carousel__viewport">
+        <!-- cada slide pode ser um link para a notícia -->
+        <article class="slide" data-index="0" aria-hidden="false">
+            <!-- "https://atlasescolar.ibge.gov.br/images/atlas2022/introducao/51.jpg"  -->
+            <img src="https://github.com/devmaster-organizations/inpe-sensoriamentoremoto/blob/feat/server/frontend/img/imagem1.jpg?raw=true" alt="Título da notícia 1" loading="lazy">
+            <h3 class="slide__title">Título da notícia 1</h3>
+        </article>
+    
+        <article class="slide" data-index="1" aria-hidden="true">
+            <img src="https://github.com/devmaster-organizations/inpe-sensoriamentoremoto/blob/feat/server/frontend/img/imagem2.jpg?raw=true" alt="Título da notícia 2" loading="lazy">
+            <h3 class="slide__title">Título da notícia 2</h3>
+        </article>
+    
+        <article class="slide" data-index="2" aria-hidden="true">
+            <img src="https://github.com/devmaster-organizations/inpe-sensoriamentoremoto/blob/feat/server/frontend/img/imagem3.jpg?raw=true" alt="Título da notícia 3" loading="lazy">
+            <h3 class="slide__title">Título da notícia 3</h3>
+        </article>
+    
+        <article class="slide" data-index="3" aria-hidden="true">
+            <img src="https://github.com/devmaster-organizations/inpe-sensoriamentoremoto/blob/feat/server/frontend/img/imagem4.jpg?raw=true" alt="Título da notícia 4" loading="lazy">
+            <h3 class="slide__title">Título da notícia 4</h3>
+        </article>
+
+    </div>
+    
+    <!-- controles -->
+    <button class="carousel__btn carousel__prev" aria-label="Notícia anterior" data-action="prev">&lt;</button>
+    <button class="carousel__btn carousel__next" aria-label="Próxima notícia" data-action="next">&gt;</button>
+    
+    <!-- dots -->
+    <div class="carousel__dots" role="tablist" aria-label="Navegação por slides">
+        <button class="dot" role="tab" aria-selected="true" aria-controls="slide-0" data-index="0" aria-label="Ir para notícia 1"></button>
+        <button class="dot" role="tab" aria-selected="false" aria-controls="slide-1" data-index="1" aria-label="Ir para notícia 2"></button>
+        <button class="dot" role="tab" aria-selected="false" aria-controls="slide-2" data-index="2" aria-label="Ir para notícia 3"></button>
+        <button class="dot" role="tab" aria-selected="false" aria-controls="slide-3" data-index="3" aria-label="Ir para notícia 4"></button>       
+    </div>
+    
+    <!-- status para leitores de tela -->
+    <div class="sr-only" aria-live="polite" id="carouselStatus">Notícia 1 de 4</div>
+</section>

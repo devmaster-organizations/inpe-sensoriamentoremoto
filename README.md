@@ -116,39 +116,106 @@ Desenvolver um **website institucional moderno e responsivo** para o **Laborató
 | 🎯 **Project Board** | [GitHub Projects](https://github.com/orgs/devmaster-organizations/projects/5) | Kanban e acompanhamento de tarefas |
 | 🎨 **Design System** | [Figma](https://www.figma.com/design/r2rq2R7oh6zVwKZGYy1w82/ABP?node-id=62-2&p=f&t=CaYGauHSDEwjccZu-0) | Protótipos e identidade visual |
 | 📝 **Atas das Reuniões** | [ATIVIDADES.md](./ATIVIDADES.md) | Registro detalhado das atividades |
-| 🎥 **Demo das Sprints** | [YouTube](https://www.youtube.com/watch?v=vQp3FPSWLzI) | Vídeos de demonstração |
+| 🎥 **Demo Sprint 1** | [YouTube](https://www.youtube.com/watch?v=vQp3FPSWLzI) | Setup inicial e estrutura base |
+| 🎥 **Demo Sprint 2** | [YouTube](https://studio.youtube.com/video/kEUIirE55iU/edit) | Páginas principais e navegação |
+| 🎥 **Demo Sprint 3** | [YouTube](https://youtu.be/1lPcz2Hxr5M) | Plataforma completa |
 | 📈 **Burndown Chart** | [Dashboard](#) | Acompanhamento do progresso |
 
 ## 🚀 Como Executar o Projeto
 
-### Pré-requisitos
-- Navegador web moderno
-- Servidor local (opcional para desenvolvimento)
+### Desenvolvimento Local (Recomendado para a equipe)
 
-### Instalação
+**Pré-requisitos:** Node.js 18+ e PostgreSQL local
+
 ```bash
-# Clone o repositório
-git clone https://github.com/devmaster-organizations/inpe-sensoriamentoremoto.git
+# Setup rápido (script automático)
+node dev-start.js
 
-# Entre no diretório
-cd inpe-sensoriamentoremoto
-
-# Abra o index.html no navegador
+# OU manual em 2 terminais:
+cd backend && npm install && npm run dev    # Terminal 1
+cd frontend && npm install && npm run dev   # Terminal 2
 ```
 
-### Estrutura do Projeto
+📖 **Guia completo**: [DEV-LOCAL.md](./DEV-LOCAL.md)
+
+### Docker (Produção/CI)
+
+```bash
+# Subir todos os serviços
+docker compose up --build
+
+# Subir apenas o frontend (desenvolvimento)
+docker compose up frontend --build
+
+# Subir apenas o backend
+docker compose up server postgres --build
 ```
-inpe-sensoriamentoremoto/
-├── 📁 componentes/          # Componentes reutilizáveis
-│   ├── 📁 layouts/         # Header, footer, menu
-│   └── 📁 page/           # Páginas do site
-├── 📁 img/                # Imagens e assets
-├── 📁 scripts/            # JavaScript
-├── 📄 index.html          # Página principal
-├── 🎨 global.css          # Estilos globais 
-├── 📋 REQUISITOS.md      # Requisitos do projeto
-├── 📋 ATIVIDADES.md     # Atas das reuniões
-└── 📋 README.md          # Este arquivo
+
+## 🚀 Estrutura Reorganizada do Projeto
+
 ```
+├── frontend/              # Interface web (HTML, CSS, JS, SPA)
+│   ├── componentes/       # Componentes da interface
+│   ├── data/             # Dados estáticos (JSON)  
+│   ├── img/              # Imagens e assets
+│   ├── scripts/          # JavaScript (SPA router, APIs)
+│   ├── global.css        # Estilos globais
+│   ├── index.html        # Página principal
+│   ├── server.js         # Servidor estático com proxy
+│   └── Dockerfile        # Container do frontend
+├── backend/              # API Express + Postgres
+│   ├── src/              # Código fonte do backend
+│   ├── package.json      # Dependências do Node.js
+│   └── Dockerfile        # Container do backend
+└── docker-compose.yml    # Orquestração dos serviços
+```
+
+### Subir tudo com Docker (frontend + backend + Postgres)
+
+```bash
+# Subir todos os serviços
+docker compose up --build
+
+# Subir apenas o frontend (desenvolvimento)
+docker compose up frontend --build
+
+# Subir apenas o backend
+docker compose up server postgres --build
+```
+
+### Acessos
+- **Frontend**: http://localhost:3021
+- **Backend API**: http://localhost:3013
+- **PostgreSQL**: localhost:5432
+- **PgAdmin**: http://localhost:5050 (fatec@example.com / fatec)
+
+### Arquitetura
+- **Frontend**: SPA simples com proxy para API (evita CORS), apenas GET
+- **Backend**: Express.js + PostgreSQL com CRUD completo
+- **Banco**: Inicialização automática via `backend/src/controllers/db.sql`
+
+## 🔐 Área Administrativa e Autenticação
+
+O site público (todas as páginas acessadas pelo SPA em `frontend/`) permanece totalmente aberto: qualquer pessoa pode listar e enviar conteúdo pelas telas disponíveis sem autenticação. A autenticação (login) destina‑se somente às páginas da **Área Administrativa** acessadas via botão "Área Administrativa" na página inicial.
+
+### Como funciona o login
+1. O administrador acessa `/adminpage/login.html`.
+2. Insere suas credenciais (usuário definido na tabela `usuarios`).
+3. Recebe um **JWT** retornado pelo backend (`/api/auth/login`).
+4. O token é armazenado em `localStorage` e enviado automaticamente (header `Authorization: Bearer <token>`) pelos scripts de gerenciamento.
+
+### Escopo atual
+No momento, as rotas de criação/edição/remoção estão abertas (sem middleware de validação) para manter o fluxo público conforme solicitado. Os arquivos JS da área administrativa já enviam o token quando existente, permitindo reativar a proteção rapidamente adicionando novamente o middleware `authGuard` nas rotas do backend.
+
+### Futuro (opcional)
+Para restringir somente a administração mantendo o site público aberto, recomenda‑se:
+* Criar rotas segregadas ` /api/admin/* ` protegidas com `authGuard`.
+* Manter rotas públicas para leitura e, se desejado, apenas submissões básicas.
+* Adicionar expiração e refresh de token.
+
+### Segurança
+Como o site público aceita POST sem autenticação, aplique validações rígidas de entrada (sanitização) e, em produção, considere limitar tipos/mime de upload, tamanho máximo e eventualmente introduzir moderação.
+
+
 
 

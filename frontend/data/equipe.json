@@ -1,0 +1,222 @@
+{
+"Coordenadores": [
+    {
+      "nome": "Marcos Adami",
+      "funcao": "Pesquisador / Coordenador",
+      "descricao": "Pesquisador titular do Instituto Nacional de Pesquisas Espaciais, graduado em Ciências Econômicas pela Faculdade de Filosofia Ciências e Letras de Cornélio Procópio (1997), mestrado e doutorado em Sensoriamento Remoto pelo Instituto Nacional de Pesquisas Espaciais (2003 e 2010). Possui experiência em sistemas de informação geográfica e sensoriamento remoto com ênfase nos seguintes temas: análise de séries temporais, mudança de uso da terra, amostragem e estatísticas agrícolas.",
+      "lattes": "http://lattes.cnpq.br/7484071887086439",
+      "foto": "../../img/Marcos_Adami.jpg"
+    }
+  ],
+
+  "Pesquisadores Associados": [
+    {
+      "nome": "Cleverton Santana",
+      "funcao": "Pesquisador Associado",
+      "descricao": "Engenheiro Agrônomo (UNEMAT), com mestrado em Agronomia - Agricultura (FAC-UNESP) e doutorado em Sensoriamento Remoto (INPE). Atualmente é analista na Conab, desenvolvendo pesquisas na área de monitoramento agrícola com foco em estádios fenológicos, estimativa de área e produtividade.",
+      "lattes": "https://lattes.cnpq.br/6403186357124271",
+      "foto": "../../img/Cleverton_Santana.jpeg"
+    },
+    {
+      "nome": "Victor Prudente",
+      "funcao": "Pesquisador Associado",
+      "descricao": "Pesquisador de pós-doutorado na School for Environment and Sustainability (SEAS) na Universidade de Michigan. Tem experiência em Sensoriamento Remoto, atuando nas seguintes subáreas: sensoriamento remoto agrícola, sensoriamento remoto por micro-ondas (SAR), multisensor, mudanças de uso e cobertura da terra, e monitoramento de agricultura familiar. Doutor em Sensoriamento Remoto pelo INPE. Bacharel e Mestre em Engenharia Agrícola (Unioeste).",
+      "lattes": "http://lattes.cnpq.br/6154929133513022",
+      "foto": "../../img/Victor Prudente.jpg"
+    },
+    {
+      "nome": "Michel Eustáquio",
+      "funcao": "Pesquisador Associado",
+      "descricao": "Adicionar texto (INPE)",
+      "lattes": "http://lattes.cnpq.br",
+      "foto": "../../img/sem_foto.jpg"
+    },
+    {
+      "nome": "Hugo Bendini",
+      "funcao": "Pesquisador Associado",
+      "descricao": "Adicionar texto (INPE)",
+      "lattes": "http://lattes.cnpq.br",
+      "foto": "../../img/sem_foto.jpg"
+    },
+    {
+      "nome": "Lucas Oldoni",
+      "funcao": "Pesquisador Associado",
+      "descricao": "Adicionar texto (INPE)",
+      "lattes": "http://lattes.cnpq.br",
+      "foto": "../../img/sem_foto.jpg"
+    },
+    {
+      "nome": "Andrés Velástegui",
+      "funcao": "Pesquisador Associado",
+      "descricao": "Adicionar texto (INPE)",
+      "lattes": "http://lattes.cnpq.br",
+      "foto": "../../img/sem_foto.jpg"
+    },
+    {
+      "nome": "João de Souza",
+      "funcao": "Pesquisador Associado",
+      "descricao": "Adicionar texto (INPE)",
+      "lattes": "http://lattes.cnpq.br",
+      "foto": "../../img/sem_foto.jpg"
+    },
+   {
+      "nome": "Felipe Petrone",
+      "funcao": "Pesquisador Associado",
+      "descricao": "Adicionar texto (INPE)",
+      "lattes": "http://lattes.cnpq.br",
+      "foto": "../../img/sem_foto.jpg"
+    },
+    {
+      "nome": "Nicole",
+      "funcao": "Pesquisador Associado",
+      "descricao": "Adicionar texto (INPE)",
+      "lattes": "http://lattes.cnpq.br",
+      "foto": "../../img/sem_foto.jpg"
+    }
+    
+  ],
+  "Bolsistas": [
+    {
+      "nome": "André Garcia",
+      "funcao": "Bolsista de Projeto (CNPq)",
+      "descricao": "Agrônomo (IFES) e Doutor em Sensoriamento Remoto (INPE), com foco em mapeamento e caracterização de cultivos agrícolas usando ../../img orbitais ópticas e SAR.",
+      "lattes": "http://lattes.cnpq.br/7262240008707700",
+      "foto": "../../img/Andre_Garcia.jpeg"
+    },
+    {
+      "nome": "Kellin Kang",
+      "funcao": "Bolsista de Projeto (CNPq)",
+      "descricao": "Cientista Ambiental (UNIFESP). Atualmente é bolsista de projeto (CNPq) do AgriRS (INPE) em parceria com a CONAB.",
+      "lattes": "http://lattes.cnpq.br/",
+      "foto": "../../img/sem_foto.jpg"
+    },
+  {
+      "nome": "Lorrany Colegnac",
+      "funcao": "Bolsista de Projeto (CNPq)",
+      "descricao": "Bacharel em Geografia (UNICENTRO). Atualmente é bolsista de projeto (CNPq) do AgriRS (INPE) em parceria com a CONAB..",
+      "lattes": "http://lattes.cnpq.br/1847544097139347",
+      "foto": "../../img/Lorrany_Colegnac.jpg"
+    },
+    {
+      "nome": "Mayrine Silva",
+      "funcao": "Bolsista de Projeto (CNPq)",
+      "descricao": "Bióloga (UTP) e Engenheira Florestal (UFSC), mestre em Ciências pelo PPG em Ecossistemas Agrícolas e Naturais (UFSC). Atualmente é bolsista de projeto (CNPq) do AgriRS em parceria com a CONAB.",
+      "lattes": "http://lattes.cnpq.br/7746175904660682",
+      "foto": "../../img/Mayrine_Silva.jpg"
+    },
+    {
+      "nome": "Thaísa",
+      "funcao": "Bolsista de Projeto (CNPq)",
+      "descricao": "Cientista Ambiental (UFG), mestre em Ciências Ambientais (UnB) e doutoranda em Ciências Ambientais (UFG). Atualmente é bolsista de projeto (CNPq) do AgriRS (INPE) em parceria com a CONAB.",
+      "lattes": "http://lattes.cnpq.br",
+      "foto": "../../img/Thaisa_Fernandes.jpeg"
+    },
+    {
+      "nome": "Grazieli Rodigheri",
+      "funcao": "Bolsista de Projeto (CNPq)",
+      "descricao": "Engenheira Ambiental (UPF), mestre em Sensoriamento Remoto e Geoprocessamento (UFRGS) e doutora em Sensoriamento Remoto (INPE). Atua em projetos de monitoramento agrícola em parceria com a CONAB.",
+      "lattes": "http://lattes.cnpq.br/0334477245993338",
+      "foto": "../../img/Grazieli_Rodigheri.jpeg"
+    }
+  ],
+
+  "Doutorados":[
+    {
+      "nome":"Ângela Pires",
+      "funcao":"Doutorado",
+      "descricao":"Adicionar texto (INPE)",
+      "lattes":"http://lattes.cnpq.br",
+      "foto":"../../img/sem_foto.jpg"
+    },
+    {
+      "nome":"Baggio de Castro",
+      "funcao":"Doutorado",
+      "descricao":"Adicionar texto (INPE)",
+      "lattes":"http://lattes.cnpq.br",
+      "foto":"../../img/sem_foto.jpg"
+    },
+    {
+      "nome":"Darlan Teles",
+      "funcao":"Doutorado",
+      "descricao":"Doutorando em Sensoriamento Remoto no Instituto Nacional de Pesquisas Espaciais (INPE) com ênfase em indicadores remoto para qualidade de pastagens no Cerrado. Mestre em Meteorologia Aplicada na Universidade Federal de Viçosa (UFV). Engenheiro Agrícola formado pela Universidade Federal de Sergipe (UFS).",
+      "lattes":"http://lattes.cnpq.br/2688151470890069",
+      "foto":"../../img/Darlan_Teles.jpeg"
+    },
+    {
+      "nome":"Gabriel Sansigolo",
+      "funcao":"Doutorado",
+      "descricao":"Doutorando em Computação Aplicada pelo Instituto Nacional de Pesquisas Espaciais. Mestre em Computação Aplicada e Tecnólogo em Análise e Desenvolvimento de Sistemas. Tem experiência na área de Ciência da Computação, com ênfase em Geoinformática. Atualmente é pesquisador da Fundação para o Desenvolvimento Científico e Tecnológico em Saúde e desenvolvedor Full-stack nos Projetos Brazil Data Cube e HARMONIZE. ",
+      "lattes":"http://lattes.cnpq.br/4094434844735694",
+      "foto":"../../img/Gabriel_Sansigolo.jpeg"
+    },
+    {
+      "nome":"Heithor Queiroz",
+      "funcao":"Doutorado",
+      "descricao":"Adicionar texto (INPE)",
+      "lattes":"http://lattes.cnpq.br",
+      "foto":"../../img/sem_foto.jpg"
+    },
+    {
+      "nome":"Luis Maurano",
+      "funcao":"Doutorado",
+      "descricao":"Doutorando em Sensoriamento Remoto no Instituto Nacional de Pesquisas Espaciais (INPE 2024/2027). Mestre em Sensoriamento Remoto pelo Instituto Nacional de Pesquisas Espaciais (INPE 2016/2018). Possui graduação de Tecnólogo em Processamento de Dados pela Faculdade de Tecnologia da Universidade Presbiteriana Mackenzie (1988). Atualmente é Tecnologista Sênior III da Divisão de Processamento de Imagens (DPI) do Instituto Nacional de Pesquisas Espaciais (INPE) com atuação no Programa Biomas BR - PRODES, DETER e TERRACLASS. Concepção, modelagem e implantação do banco de dados geográficos para suporte ao programa de monitoramento de queimadas e desmatamento por satélite do INPE.",
+      "lattes":"http://lattes.cnpq.br/8242319727045776",
+      "foto":"../../img/sem_foto.jpg"
+    },
+    {
+      "nome":"Luiz Gabriel",
+      "funcao":"Doutorado",
+      "descricao":"Doutorando em Sensoriamento Remoto no Programa de Pós Graduação em Sensoriamento Remoto do Instituto Nacional de Pesquisas Espaciais. Possui graduação e mestrado em Engenharia Agronômica (UFSCar) e graduação em Ciências Moleculares (USP). Possui experiência em ciência de dados e tem interesse em processos de mudança de uso da terra e ordenamento territorial, meteorologia e ecologia.",
+      "lattes":"https://lattes.cnpq.br/9832175220121645",
+      "foto":"../../img/sem_foto.jpg"
+    },
+    {
+      "nome":"Nildson Silva",
+      "funcao":"Doutorado",
+      "descricao":"Engenheiro Agrônomo (UFRPE) com graduação-sanduíche no curso de Engenharia Agrícola e do Meio Rural (USC/Espanha) e mestre em Sensoriamento Remoto (INPE). Atualmente doutorando em Sensoriamento Remoto (INPE) e Analista de Geoprocessamento na Serasa Experian.",
+      "lattes":"http://lattes.cnpq.br/8478468854171346",
+      "foto":"../../img/Nildson_Silva.jpg"
+    },
+    {
+      "nome":"Priscilla Santos",
+      "funcao":"Doutorado",
+      "descricao":"Engenheira Agrimensora e Cartógrafa, Mestra em Geociências e Especialista em Estatística Aplicada pela Universidade Federal Rural do Rio de Janeiro (UFRRJ). Atualmente, Doutoranda em Sensoriamento Remoto pelo Instituto Nacional de Pesquisas Espaciais (INPE). Possui experiência na área de Geociências, com ênfase em Geomática.",
+      "lattes":"http://lattes.cnpq.br/1105545816489485",
+      "foto":"../../img/Priscilla_Santos.jpg"
+    },
+    {
+      "nome":"Tânia Beatriz Hoffmann",
+      "funcao":"Doutorado",
+      "descricao":"Geógrafa pela Universidade Federal de Santa Catarina (UFSC), mestre e atualmente doutoranda em Sensoriamento Remoto pelo Instituto Nacional de Pesquisas Espaciais (INPE), com período sanduíche na Universidade de Maryland (UMD).",
+      "lattes":"http://lattes.cnpq.br/4681448772106846",
+      "foto":"../../img/Tania_Hoffmann.jpg"
+    },
+    {
+      "nome":"Yan Azeredo da Silva",
+      "funcao":"Doutorado",
+      "descricao":"Geógrafo pela Universidade Federal Fluminense (UFF) e mestre em Sensoriamento Remoto pelo Instituto Nacional de Pesquisas Espaciais (INPE). Atualmente, é doutorando pelo mesmo instituto, com foco em monitoramento da vegetação nativa no bioma Cerrado. Possui experiência em geoprocessamento, modelagem ambiental e processamento digital de ../../img de satélite, com ênfase em estudos de cobertura e uso da terra, desastres naturais e conservação ambiental.",
+      "lattes":"http://lattes.cnpq.br/7374513612608164",
+      "foto":"../../img/sem_foto.jpg"
+    }
+  ],
+
+  "Mestrados":[
+    {
+      "nome":"Ana Júlia Dias",
+      "funcao":"Mestrado",
+      "descricao":"Mestranda do Programa de Pós Graduação em Sensoriamento Remoto, no Instituto Nacional de Pesquisas espaciais (INPE). Formada em Bacharel em Geografia, com ênfase em análise ambiental e geoprocessamento, pela Universidade Estadual Paulista Júlio de Mesquita Filho - UNESP. Atualmente faz pesquisa com foco na identificação semi-automatizada de degradação na vegetação do Cerrado e atua no projeto Lethal Psi (Leeds- UK) na área de coleta e processamento de dados radiométricos da vegetação Amazônica. Tem experiência na área de Geografia, com ênfase em geoprocessamento e Sensoriamento Remoto, atuando principalmente nos seguintes temas: Vegetação, Cerrado, Radiometria,Temperatura e Saúde",
+      "lattes":"http://lattes.cnpq.br/3916239078525280",
+      "foto":"../../img/sem_foto.jpg"
+    },
+    {
+      "nome":"Marina Galdez",
+      "funcao":"Mestrado",
+      "descricao":"Engenheira Agrícola e Ambiental formada pela Universidade Federal Fluminense (UFF). Atualmente, mestranda do Programa de Pós Graduação em Sensoriamento Remoto pelo Instituto Nacional de Pesquisas Espaciais (INPE). Desenvolve pesquisas voltadas ao monitoramento agrícola, com foco na estimativa da cobertura do solo por resíduos culturais.",
+      "lattes":"http://lattes.cnpq.br/3273203574648394",
+      "foto":"../../img/sem_foto.jpg"
+    }
+  ]
+
+ 
+
+}

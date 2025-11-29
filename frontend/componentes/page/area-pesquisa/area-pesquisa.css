@@ -1,0 +1,406 @@
+@scope (.page-area-pesquisa) {
+* {
+    margin: 0;
+    padding: 0px;
+    box-sizing: border-box;
+} /* Reset de estilos padrão */
+
+/*. Remove body styling that centers everything */
+/* body { ... } - remove this block */
+
+.area-pesquisa {
+    padding: 40px 20px;
+    width: 100%;
+    max-width: none; /* remove max-width restriction */
+}
+
+.area-pesquisa h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    color: #333;
+}
+
+.secao-cards-areapesquisa h2 {
+    margin-bottom: 30px;
+    font-size: var(--fonte-size-title);
+    color: #333;
+}
+
+
+.Card_container {
+    display: grid; /*Elemento Container de grade - Organização em linhas e colunas*/
+    grid-template-columns: repeat(3, 1fr);  /* 3 colunas de cards ocupando uma fração igual do espaço disponível*/
+    gap: 20px; /*Espaçamento da coluna e linha*/
+    max-width: none;
+    margin: 0 auto; /*Centralizar o container automaticamente*/
+    width: 100%; /*Ocupa 100% da largura disponível*/
+    padding: 20px; /* Espaçamento interno da borda do container e conteúdo*/
+}
+
+
+@media (max-width: 900px) {
+    .Card_container {
+        grid-template-columns: repeat(2,1fr); /* 2 colunas em telas menores */
+    }
+}
+
+@media (max-width: 600px) {
+    .Card_container {
+        grid-template-columns: 1fr; /* 1 coluna em celulares */
+    }
+}
+
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease, background-color 0.2s ease;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    background-color: #87F27D;
+}
+
+.card-photos  {
+    display: flex;
+    justify-content: center; 
+    align-items: center;   
+    padding: 10px 0;
+}
+
+.card-photos img {
+    max-width: 60px;
+    height: auto;
+    display: block;
+}
+
+.card-hearder h3 {
+    text-align: center;
+    font-size: 1rem;
+    color: #333;
+    padding: 15px 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+}
+}
+
+.card-hearder h3:hover {
+    background-color:#87F27D;
+;
+}
+
+.card-conteudo_oculto {
+    display: none;
+    padding: 15px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.card:hover .card-conteudo_oculto {
+    display: block;
+}
+
+.ver-mais {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 14px;
+    background-color: #87F27D;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background-color 0.3s, transform 0.2s;
+
+
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.06);
+    backdrop-filter: blur(3px);  /* Efeito de desfoque */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 800px;
+    width: 90%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    animation: modalFade 0.3s ease;
+}
+
+@keyframes modalFade {
+    from   {transform: translateY(-30px);opacity: 0;}to {transform: translateY(0);opacity: 1;}
+} /* @keyframes → Define uma animação CSS personalizada / modalFade → É o nome da animação / 
+from { ... } → Estado inicial da animação./transform: translateY(-30px); → Move o elemento 
+30 pixels para cima de sua posição original / opacity: 0; → Começa invisível./ to { ... } → Estado final
+ da animação./transform: translateY(0); → Retorna à posição normal./opacity: 1; → Fica totalmente
+  visível.  */
+
+
+/*Botão X de fechar*/
+.modal-close {
+    float: right; /*Botão X ==>Posição direita*/
+    font-size: 24px;
+    font-weight:bold;
+    cursor: pointer; /*Botão X ==> Ao passar o cursor, muda para mão apontando clique*/
+    color: #000;
+}
+
+.modal-close:hover {
+    color: #87F27D; /*Botão X ==> Ao passar o cursor, o efeito hover irá para essa cor*/
+}
+
+#modal-texto {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+#modal-texto .modal-image {
+    flex: 0 0 200px;
+    max-width: 200px;
+}
+
+#modal-texto .modal-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+#modal-texto .modal-text {
+    flex: 1;
+}
+
+#modal-texto h3 {
+    margin-top: 0;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+#modal-texto p {
+    line-height: 1.8;
+    margin-top: 10px;
+    text-align: justify;
+}
+
+@media (max-width: 768px) {
+    #modal-texto {
+        flex-direction: column;
+    }
+    #modal-texto .modal-image {
+        flex: 0 0 auto;
+        max-width: 100%;
+    }
+}
+
+/* ===== Escopo compatível (sem @scope) para garantir 3 cards por linha ===== */
+.page-area-pesquisa * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.page-area-pesquisa .area-pesquisa {
+    padding: 40px 20px;
+    width: 100%;
+    max-width: none;
+}
+
+.page-area-pesquisa .area-pesquisa h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    color: #333;
+}
+
+.page-area-pesquisa .secao-cards-areapesquisa h2 {
+    margin-bottom: 30px;
+    font-size: var(--fonte-size-title);
+    color: #333;
+}
+
+.page-area-pesquisa .Card_container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: none;
+    margin: 0 auto;
+    width: 100%;
+    padding: 20px;
+}
+
+@media (max-width: 900px) {
+    .page-area-pesquisa .Card_container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .page-area-pesquisa .Card_container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.page-area-pesquisa .card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease, background-color 0.2s ease;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-area-pesquisa .card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    background-color: #87F27D;
+}
+
+.page-area-pesquisa .card-photos  {
+    display: flex;
+    justify-content: center; 
+    align-items: center;   
+    padding: 10px 0;
+}
+
+.page-area-pesquisa .card-photos img {
+    max-width: 60px;
+    height: auto;
+    display: block;
+}
+
+.page-area-pesquisa .card-hearder h3 {
+    text-align: center;
+    font-size: 1rem;
+    color: #333;
+    padding: 15px 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.page-area-pesquisa .card-hearder h3:hover {
+    background-color:#87F27D;
+}
+
+.page-area-pesquisa .card-conteudo_oculto {
+    display: none;
+    padding: 15px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.page-area-pesquisa .card:hover .card-conteudo_oculto {
+    display: block;
+}
+
+.page-area-pesquisa .ver-mais {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 14px;
+    background-color: #87F27D;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.page-area-pesquisa .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.06);
+    backdrop-filter: blur(3px);
+}
+
+.page-area-pesquisa .modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 1000px;
+    width: 90%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    animation: modalFade 0.3s ease;
+}
+
+.page-area-pesquisa .modal-close {
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #000;
+}
+
+.page-area-pesquisa .modal-close:hover {
+    color: #87F27D;
+}
+
+.page-area-pesquisa #modal-texto {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.page-area-pesquisa #modal-texto .modal-image {
+    flex: 0 0 200px;
+    max-width: 200px;
+}
+
+.page-area-pesquisa #modal-texto .modal-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.page-area-pesquisa #modal-texto .modal-text {
+    flex: 1;
+}
+
+.page-area-pesquisa #modal-texto h3 {
+    margin-top: 0;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+.page-area-pesquisa #modal-texto p {
+    line-height: 1.8;
+    margin-top: 10px;
+    text-align: justify;
+}
+
+@media (max-width: 768px) {
+    .page-area-pesquisa #modal-texto {
+        flex-direction: column;
+    }
+    .page-area-pesquisa #modal-texto .modal-image {
+        flex: 0 0 auto;
+        max-width: 100%;
+    }
+}

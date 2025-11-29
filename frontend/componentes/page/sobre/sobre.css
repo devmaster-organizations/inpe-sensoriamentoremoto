@@ -1,0 +1,59 @@
+.page-sobre .titulo {
+  display: flex;
+  width: 100%;
+  padding:  10px 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-sobre .titulo h1 {
+  font-size: 2.5rem;
+  color: #333;
+  text-align: center;
+}
+
+.page-sobre .sobre-nos {
+  font-family:"poppins";
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 40px;
+  background-color: #e6ffe6; /* verde claro */
+  max-width: 1200px;
+  margin: 28px auto;
+}
+
+.page-sobre .texto {
+  flex: 1;
+  padding-right: 40px;
+}
+
+.page-sobre .cards {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.page-sobre .card {
+  background: rgba(245, 245, 245, 0.973);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  padding: 20px;
+  text-align: center;
+  transition:all 0.3s ease;
+  border: 1px solid #afafaf;
+}
+.page-sobre .card:hover{
+cursor: pointer;
+transform:scale(1.04) translateY(-5px);
+background-color: #9dffaf;
+
+}
+.page-sobre .card-icon {
+  font-size: 32px;
+  color: green;
+  margin-bottom: 10px;
+}
