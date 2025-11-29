@@ -116,7 +116,9 @@ Desenvolver um **website institucional moderno e responsivo** para o **Laborató
 | 🎯 **Project Board** | [GitHub Projects](https://github.com/orgs/devmaster-organizations/projects/5) | Kanban e acompanhamento de tarefas |
 | 🎨 **Design System** | [Figma](https://www.figma.com/design/r2rq2R7oh6zVwKZGYy1w82/ABP?node-id=62-2&p=f&t=CaYGauHSDEwjccZu-0) | Protótipos e identidade visual |
 | 📝 **Atas das Reuniões** | [ATIVIDADES.md](./ATIVIDADES.md) | Registro detalhado das atividades |
-| 🎥 **Demo das Sprints** | [YouTube](https://www.youtube.com/watch?v=vQp3FPSWLzI) | Vídeos de demonstração |
+| 🎥 **Demo Sprint 1** | [YouTube](https://www.youtube.com/watch?v=vQp3FPSWLzI) | Setup inicial e estrutura base |
+| 🎥 **Demo Sprint 2** | [YouTube](https://studio.youtube.com/video/kEUIirE55iU/edit) | Páginas principais e navegação |
+| 🎥 **Demo Sprint 3** | [YouTube](https://youtu.be/1lPcz2Hxr5M) | Plataforma completa |
 | 📈 **Burndown Chart** | [Dashboard](#) | Acompanhamento do progresso |
 
 ## 🚀 Como Executar o Projeto
