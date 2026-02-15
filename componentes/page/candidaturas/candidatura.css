@@ -1,0 +1,121 @@
+/* ====== Estilo Base ====== */
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', Arial, sans-serif;
+  }
+  
+  body {
+    background-color: #fafafa;
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+  
+  .form-container {
+    max-width: 800px;
+    margin: 60px auto;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 40px 50px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  }
+  
+  h1 {
+    text-align: center;
+    color: #69ca6e;
+    font-weight: 600;
+    margin-bottom: 40px;
+  }
+  
+  label {
+    display: block;
+    font-weight: 500;
+    color: #375e39;
+    margin-bottom: 6px;
+    margin-top: 20px;
+  }
+  
+  input, select, textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    color: #333;
+  }
+  
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #d45a8c;
+    box-shadow: 0 0 0 3px rgba(212,90,140,0.2);
+  }
+  
+  .row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .col {
+    flex: 1;
+    min-width: 220px;
+  }
+  
+  .icon-input {
+    position: relative;
+  }
+  
+  .icon-input input {
+    padding-left: 38px;
+  }
+  
+  .icon-input i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+  }
+  
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  
+  button {
+    display: block;
+    width: 100%;
+    margin-top: 30px;
+    background-color: #69ca6e;
+    border: none;
+    color: #fff;
+    padding: 14px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  button:hover {
+    background-color: #48b860;
+  }
+  
+  .success {
+    display: none;
+    margin-top: 20px;
+    text-align: center;
+    color: #69ca6e;
+    background-color: #e6f4ea;
+    border: 1px solid #c8e6c9;
+    border-radius: 8px;
+    padding: 15px;
+  }
+  
+  /* Placeholder mais sutil */
+  ::placeholder {
+    color: #aaa;
+    font-size: 0.95em;
+  }
+  

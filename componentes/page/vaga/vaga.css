@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    color: white;
+}
+
+#vaga-btn-search {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.btn-search-vaga {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    background-color: white;
+    width: 100%;
+    max-width: 420px;
+    border-radius: 20px;
+    padding: 6px 12px;
+    color: #4b4b4b;
+    transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+#searchinput-vaga {
+    padding: 8px;
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    outline: none;
+    font-size: 15px;
+}
+
+#filters {
+    margin: 20px 0;
+    text-align: center;
+}
+
+#filters label {
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+#filters select {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.vaga-lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    align-items: center;
+}
+
+.card-vagas {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.card-vagas:hover {
+    transform: translateY(-10px);
+}
+
+.card-vagas h3 {
+    font-size: 20px;
+    color: #333;
+}
+
+.vaga-desc {
+    font-size: 14px;
+    color: #666;
+    margin: 10px 0;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.btn-saiba-mais {
+    background-color: #2b6cb0;
+    color: white;
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
+}
+
+.btn-candidatar {
+    background-color: #28a745;
+    color: white;
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
+}
+
+button a {
+    color: white;
+    text-decoration: none;
+}
+
+button:hover {
+    opacity: 0.8;
+}
